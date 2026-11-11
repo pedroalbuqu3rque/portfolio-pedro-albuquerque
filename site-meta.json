@@ -13,8 +13,8 @@
   },
   "/fragmentos/a-potencia-do-fazer-digital-na-educacao": {
     "title": "A potência do fazer digital na educação | Fragmentos",
-    "description": "Ensaio de exemplo sobre aprendizagem, criação, tecnologia e cultura do fazer. Fragmentos de Pedro Albuquerque.",
-    "robots": "noindex,follow",
+    "description": "Ensaio sobre aprendizagem, criação, tecnologia e cultura do fazer. Fragmentos de Pedro Albuquerque.",
+    "robots": "index,follow",
     "ogType": "article"
   }
 }

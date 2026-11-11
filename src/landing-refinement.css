@@ -2,92 +2,6 @@
    Ajustes isolados das páginas internas e dos demais elementos do portfólio. */
 
 /* EduComp: a interface é o foco; sem mockup de notebook ou painel preto pesado. */
-.project-featured {
-  border: 1px solid #d9dfe9;
-  background: #fff;
-  border-radius: 10px;
-}
-.project-featured .featured-visual {
-  flex: 0 0 344px;
-  height: 344px;
-  margin: 0;
-  border-radius: 0;
-  display: block;
-  background: #edf3fc;
-  overflow: hidden;
-}
-.edu-preview { position: relative; width: 100%; height: 100%; overflow: hidden; }
-.edu-preview-index {
-  position: absolute; left: 28px; top: 22px; z-index: 1;
-  font-size: 10px; font-weight: 800; letter-spacing: .075em;
-  color: #2c405b;
-}
-.edu-preview-shape {
-  position: absolute; top: 53px; bottom: 14px; right: -1px; width: 40%;
-  background: #1761d8; border-radius: 12px 0 0 12px;
-}
-.edu-preview-window {
-  position: absolute; top: 52px; left: 29px; right: 29px; height: 268px;
-  background: #fff; border: 1px solid #dce3ed; border-radius: 7px;
-  box-shadow: 0 17px 35px rgb(22 45 89 / .15);
-  overflow: hidden;
-}
-.edu-preview-browser {
-  height: 19px; padding: 0 12px; border-bottom: 1px solid #e6e9ee;
-  background: #f9fbfd; display: flex; align-items: center; justify-content: space-between;
-  color: #9aa6b7; font-size: 7px; font-weight: 600; letter-spacing: .035em;
-}
-.edu-preview-browser-dots { display: flex; align-items: center; gap: 4px; }
-.edu-preview-browser-dots i { width: 5px; height: 5px; border: 1px solid #bfc8d6; border-radius: 50%; }
-.edu-preview-navbar {
-  height: 35px; padding: 0 15px; border-bottom: 1px solid #e5eaf1;
-  display: flex; align-items: center; gap: 18px; background: #fff;
-}
-.edu-preview-identity { display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 800; color: #303d58; white-space: nowrap; }
-.edu-preview-identity i { display: block; width: 13px; height: 13px; border-radius: 3px; background: #1761d8; }
-.edu-preview-menu { margin-left: auto; display: flex; gap: 15px; align-items: center; font-size: 8px; color: #6d7685; white-space: nowrap; }
-.edu-preview-menu b { font-weight: 800; color: #1761d8; }
-.edu-preview-account { font-size: 8px; font-weight: 700; border: 1px solid #cdd9eb; color: #1761d8; border-radius: 3px; padding: 5px 11px; white-space: nowrap; }
-.edu-preview-page { padding: 15px 18px 18px; }
-.edu-preview-eyebrow { display: block; font-size: 7px; font-weight: 800; letter-spacing: .065em; color: #1761d8; }
-.edu-preview-heading { display: block; margin-top: 3px; color: #303d58; font-size: 23px; font-weight: 800; letter-spacing: -.05em; line-height: 1.1; }
-.edu-preview-search { display: flex; gap: 7px; align-items: center; height: 27px; margin-top: 12px; }
-.edu-preview-search > span { height: 27px; display: flex; align-items: center; flex: 1; min-width: 0; border: 1px solid #d3dbe7; border-radius: 3px; color: #99a1af; padding: 0 10px; font-size: 8px; }
-.edu-preview-search > b { height: 27px; display: grid; place-items: center; background: #1761d8; border-radius: 3px; padding: 0 14px; color: white; font-size: 8px; }
-.edu-preview-filters { display: flex; gap: 6px; margin-top: 8px; font-size: 7px; color: #51617a; }
-.edu-preview-filters span { border-radius: 3px; padding: 3px 8px; background: #eff3f9; }
-.edu-preview-cards { margin-top: 12px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
-.edu-preview-resource { min-width: 0; overflow: hidden; border: 1px solid #e0e5ee; border-radius: 4px; background: #fff; }
-.edu-preview-resource-art { display: flex; align-items: center; justify-content: center; gap: 7px; height: 47px; position: relative; overflow: hidden; }
-.edu-preview-resource-art i { display: block; flex: none; }
-.edu-preview-resource-art.art-one { background: #e7eeff; }
-.edu-preview-resource-art.art-one i { width: 17px; height: 17px; border: 3px solid #1761d8; border-radius: 3px; transform: rotate(45deg); }
-.edu-preview-resource-art.art-one i:nth-child(2) { background: #1761d8; }
-.edu-preview-resource-art.art-two { background: #f1f4f8; }
-.edu-preview-resource-art.art-two i { border-radius: 50%; width: 22px; height: 22px; border: 5px solid #1761d8; }
-.edu-preview-resource-art.art-two i:nth-child(2) { width: 13px; height: 13px; background: #303d58; border: 0; }
-.edu-preview-resource-art.art-three { background: #eaf5f7; }
-.edu-preview-resource-art.art-three i { width: 20px; height: 20px; border-radius: 3px; background: #1761d8; transform: rotate(-11deg); }
-.edu-preview-resource-art.art-three i:nth-child(2) { width: 13px; height: 13px; background: #83a8ff; transform: rotate(20deg); }
-.edu-preview-resource-copy { display: flex; flex-direction: column; min-width: 0; gap: 3px; padding: 7px 8px 10px; }
-.edu-preview-resource-copy small { font-size: 6px; color: #1761d8; font-weight: 800; letter-spacing: .025em; }
-.edu-preview-resource-copy b { font-size: 9px; line-height: 1.15; color: #27364d; font-weight: 800; overflow-wrap: anywhere; }
-.edu-preview-resource-copy em { font-size: 7px; color: #818b9a; font-style: normal; }
-.edu-preview-caption { position: absolute; right: 23px; bottom: 11px; color: #405474; font-weight: 800; font-size: 9px; letter-spacing: .045em; }
-
-.project-featured .featured-detail {
-  min-height: 0; height: auto; flex: 1;
-  display: flex; flex-direction: column; align-items: stretch;
-  color: #111; background: #fff;
-  padding: 18px 25px 18px;
-}
-.project-featured .featured-detail::before { display: none; }
-.project-featured .featured-category { color: #1761d8; font-size: 10px; font-weight: 800; line-height: 16px; letter-spacing: .08em; }
-.project-featured .featured-detail > strong { font-size: 39px; line-height: 45px; margin-top: 2px; letter-spacing: -.04em; font-weight: 900; }
-.project-featured .featured-detail > p { color: #4a5260; font-size: 15px; line-height: 21px; max-width: 530px; margin-top: 5px; }
-.featured-bottom { display: flex; justify-content: space-between; align-items: end; gap: 10px; margin-top: auto; padding-top: 12px; border-top: 1px solid #e5e9ef; }
-.featured-bottom small { color: #788393; font-size: 9px; font-weight: 750; letter-spacing: .02em; line-height: 1.35; }
-.project-featured .featured-bottom .text-link { font-size: 12px; line-height: 17px; font-weight: 800; white-space: nowrap; margin: 0; }
 
 /* Área de atuação: margem inferior fixa e tags alinhadas sem sobreposição. */
 .areas { height: 797px; }
@@ -120,46 +34,8 @@
   .areas { height: auto; }
   .area-card { height: auto; min-height: 390px; }
   .timeline-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 28px; }
-  .projects .project-featured .featured-visual { height: 344px; }
 }
 @media (max-width: 700px) {
-  .project-featured { height: 405px; }
-  .project-featured .featured-visual { flex: 0 0 205px; height: 205px; }
-  .edu-preview-index { top: 12px; left: 15px; font-size: 8px; }
-  .edu-preview-shape { top: 36px; bottom: 8px; width: 43%; }
-  .edu-preview-window { top: 31px; left: 14px; right: 14px; height: 163px; border-radius: 5px; }
-  .edu-preview-browser { height: 13px; padding: 0 7px; font-size: 6px; }
-  .edu-preview-browser-dots i { width: 4px; height: 4px; }
-  .edu-preview-navbar { height: 25px; padding: 0 8px; gap: 6px; }
-  .edu-preview-identity { font-size: 9px; gap: 4px; }
-  .edu-preview-identity i { width: 10px; height: 10px; }
-  .edu-preview-menu { gap: 7px; font-size: 6px; }
-  .edu-preview-account { font-size: 6px; padding: 3px 5px; }
-  .edu-preview-page { padding: 8px 9px; }
-  .edu-preview-eyebrow { font-size: 5px; }
-  .edu-preview-heading { font-size: 15px; margin-top: 2px; }
-  .edu-preview-search { height: 19px; margin-top: 6px; gap: 4px; }
-  .edu-preview-search > span, .edu-preview-search > b { height: 19px; font-size: 5.5px; padding: 0 6px; }
-  .edu-preview-filters { gap: 4px; margin-top: 5px; font-size: 5px; }
-  .edu-preview-filters span { padding: 2px 5px; }
-  .edu-preview-cards { margin-top: 6px; gap: 5px; }
-  .edu-preview-resource-art { height: 26px; gap: 4px; }
-  .edu-preview-resource-art.art-one i { width: 11px; height: 11px; border-width: 2px; }
-  .edu-preview-resource-art.art-two i { width: 12px; height: 12px; border-width: 3px; }
-  .edu-preview-resource-art.art-two i:nth-child(2) { width: 8px; height: 8px; }
-  .edu-preview-resource-art.art-three i { width: 12px; height: 12px; }
-  .edu-preview-resource-copy { padding: 4px 5px; gap: 1px; }
-  .edu-preview-resource-copy small { font-size: 4px; }
-  .edu-preview-resource-copy b { font-size: 6.5px; line-height: 1.1; }
-  .edu-preview-resource-copy em { font-size: 5px; }
-  .edu-preview-caption { bottom: 5px; right: 12px; font-size: 6px; }
-  .project-featured .featured-detail { padding: 15px 17px 16px; }
-  .project-featured .featured-category { font-size: 9px; line-height: 14px; }
-  .project-featured .featured-detail > strong { font-size: 32px; line-height: 37px; }
-  .project-featured .featured-detail > p { font-size: 12px; line-height: 17px; margin-top: 5px; }
-  .featured-bottom { flex-wrap: wrap; gap: 7px; padding-top: 10px; }
-  .featured-bottom small { font-size: 8px; }
-  .project-featured .featured-bottom .text-link { font-size: 11px; }
   .areas .section-content { padding-bottom: 74px; }
   .area-card { min-height: 416px; padding: 17px 13px 15px; }
   .area-card .area-mark { width: 49px; height: 49px; }
@@ -184,18 +60,6 @@
   .timeline-year-card li { padding: 8px 0; }
   .timeline-year-card li strong { font-size: 13px; }
   .timeline-year-card li span { font-size: 11px; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .edu-preview-window { transform: none !important; }
-}
-
-/* A grade de projetos não pode usar uma largura intrínseca maior que o carrossel
-   em tablets; o slide permanece exatamente do tamanho da janela visível. */
-@media (min-width: 701px) and (max-width: 1100px) {
-  .projects-carousel .project-slide { width: min(calc(100vw - 64px), 880px); min-width: 0; }
-  .projects-carousel .featured-projects { grid-template-columns: minmax(0, 48%) minmax(0, 1fr); gap: 18px; }
-  .projects-carousel .project-featured { min-width: 0; }
-  .projects-carousel .secondary-projects { min-width: 0; }
 }
 
 /* Nos telefones, os cards são editoriais e legíveis em uma coluna,

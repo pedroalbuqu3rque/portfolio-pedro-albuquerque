@@ -2,15 +2,17 @@ import React, { useEffect, useRef, useState } from 'react';
 import DeskIllustration from './components/DeskIllustration';
 import EduCompPage from './pages/EduCompPage';
 import FragmentosPage from './pages/FragmentosPage';
+import ProjectsSection from './components/ProjectsSection';
 import './internal-pages.css';
 import { updatePageMetadata } from './seo';
+import { shouldNavigateInApp } from './navigation';
 
-type PlaceholderKind = 'cv' | 'content' | null;
-type IconName = 'linkedin' | 'github' | 'mail' | 'left' | 'right' | 'close';
+type PlaceholderKind = 'cv' | null;
+type IconName = 'left' | 'right' | 'close';
 type AreaType = 'education' | 'qa' | 'ux' | 'development' | 'games';
 
 type Area = { kind: AreaType; title: string; description: string; tags: string[] };
-type Reading = { category: string; title: string; description: string; visual: string };
+type Reading = { category: string; title: string; description: string };
 
 const CONTACT = {
   email: 'p3dro.albuquerque@gmail.com',
@@ -48,9 +50,9 @@ const AREAS: Area[] = [
 ];
 
 const READINGS: Reading[] = [
-  { category: 'ESTUDO', title: 'Design instrucional\nna prática', description: 'Princípios e escolhas para criar experiências de aprendizagem mais efetivas.', visual: 'design' },
-  { category: 'REFLEXÃO', title: 'Jogos, aprendizagem\ne território', description: 'Como jogos podem promover aprendizagens significativas e valorizar contextos locais.', visual: 'games' },
-  { category: 'EXPERIMENTO', title: 'Tecnologia, pesquisa\ne experiência', description: 'Aprendizados na interseção entre pesquisa, design e tecnologia digital.', visual: 'research' },
+  { category: 'EM PREPARAÇÃO', title: 'Novo ensaio', description: 'Espaço reservado para uma futura publicação.' },
+  { category: 'EM PREPARAÇÃO', title: 'Novas notas', description: 'Espaço reservado para uma futura publicação.' },
+  { category: 'EM PREPARAÇÃO', title: 'Próxima reflexão', description: 'Espaço reservado para uma futura publicação.' },
 ];
 
 type TimelinePoint = { date: string; title: string; detail: string };
@@ -112,12 +114,9 @@ const AREA_ARTWORK: Record<AreaType, string> = {
 
 function Glyph({ name, size = 23 }: { name: IconName; size?: number }) {
   const props = { width: size, height: size, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 1.8, strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const, 'aria-hidden': true as const };
-  if (name === 'mail') return <svg {...props}><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg>;
   if (name === 'left') return <svg {...props}><path d="m14.5 5.5-6.5 6.5 6.5 6.5"/></svg>;
   if (name === 'right') return <svg {...props}><path d="m9.5 5.5 6.5 6.5-6.5 6.5"/></svg>;
-  if (name === 'close') return <svg {...props}><path d="M5 5 19 19M19 5 5 19"/></svg>;
-  if (name === 'linkedin') return <svg {...props} fill="currentColor" stroke="none"><path d="M4.8 2.6a2.1 2.1 0 1 0 0 4.2 2.1 2.1 0 0 0 0-4.2ZM2.9 8.6h3.8v12.5H2.9V8.6ZM8.9 8.6h3.6v1.7h.1c.5-.9 1.8-2 3.7-2 3.9 0 4.6 2.4 4.6 5.4v7.4h-3.8v-6.6c0-1.6 0-3.6-2.2-3.6s-2.5 1.7-2.5 3.5v6.7H8.9V8.6Z"/></svg>;
-  return <svg {...props} fill="currentColor" stroke="none"><path d="M12 .9a11.1 11.1 0 0 0-3.5 21.6c.6.1.7-.2.7-.5v-2c-3.1.7-3.8-1.3-3.8-1.3-.5-1.3-1.2-1.7-1.2-1.7-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 .1.8 2.2 3.3 2.6.4-.7.5-1.2.7-1.5-2.5-.3-5.2-1.2-5.2-5.5 0-1.2.4-2.2 1.1-3-.1-.3-.5-1.5.1-3.1 0 0 .9-.3 3.1 1.2a10.6 10.6 0 0 1 5.6 0c2.1-1.5 3.1-1.2 3.1-1.2.6 1.6.2 2.8.1 3.1.7.8 1.1 1.8 1.1 3 0 4.3-2.7 5.2-5.2 5.5.4.4.7 1.1.7 2.2v3.3c0 .3.2.6.8.5A11.1 11.1 0 0 0 12 .9Z"/></svg>;
+  return <svg {...props}><path d="M5 5 19 19M19 5 5 19"/></svg>;
 }
 
 function AreaMark({ kind }: { kind: AreaType }) {
@@ -265,52 +264,8 @@ function PhotoGallery() {
   </div>;
 }
 
-// Prévia estilizada da biblioteca: um elemento de composição, não uma captura do sistema.
-function EduCompPreview() {
-  return <div className="edu-preview" role="img" aria-label="Ilustração da biblioteca EduComp com busca, filtros e materiais de Computação">
-    <span className="edu-preview-index" aria-hidden="true">01 / ESTUDO DE CASO</span>
-    <span className="edu-preview-shape" aria-hidden="true" />
-    <div className="edu-preview-window" aria-hidden="true">
-      <div className="edu-preview-browser"><span className="edu-preview-browser-dots"><i/><i/><i/></span><span>educomp / biblioteca</span></div>
-      <div className="edu-preview-navbar">
-        <span className="edu-preview-identity"><i/>EduComp</span>
-        <span className="edu-preview-menu"><b>Biblioteca</b><span>Salvos</span><span>Enviar material</span></span>
-        <span className="edu-preview-account">Entrar</span>
-      </div>
-      <div className="edu-preview-page">
-        <span className="edu-preview-eyebrow">MATERIAIS PARA ENSINAR COMPUTAÇÃO</span>
-        <strong className="edu-preview-heading">Biblioteca</strong>
-        <div className="edu-preview-search"><span>Buscar por título, tema ou palavra-chave</span><b>Buscar</b></div>
-        <div className="edu-preview-filters"><span>Todos os materiais</span><span>Etapa de ensino</span><span>Tipo de atividade</span></div>
-        <div className="edu-preview-cards">
-          <div className="edu-preview-resource"><span className="edu-preview-resource-art art-one"><i/><i/><i/></span><span className="edu-preview-resource-copy"><small>ATIVIDADE · DESPLUGADA</small><b>Desafio dos algoritmos</b><em>Ensino Fundamental</em></span></div>
-          <div className="edu-preview-resource"><span className="edu-preview-resource-art art-two"><i/><i/><i/></span><span className="edu-preview-resource-copy"><small>MATERIAL DE APOIO</small><b>Lógica e Computação</b><em>Ensino Médio</em></span></div>
-          <div className="edu-preview-resource"><span className="edu-preview-resource-art art-three"><i/><i/><i/></span><span className="edu-preview-resource-copy"><small>JOGO · PLUGADA</small><b>Aprender jogando</b><em>Ensino Fundamental</em></span></div>
-        </div>
-      </div>
-    </div>
-    <span className="edu-preview-caption" aria-hidden="true">BIBLIOTECA COLABORATIVA / 2026</span>
-  </div>;
-}
-
-function ProjectPlaceholder({ title, onOpen }: { title: string; onOpen: () => void }) {
-  return <button className="project-small" type="button" onClick={onOpen}>
-    <span className="project-small-art" aria-hidden="true"/>
-    <span className="project-small-copy"><span className="tag-blue">TAG DE CONTEÚDO</span><strong>{title}</strong><span className="small-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</span><span className="text-link">Ver detalhes <span aria-hidden="true">→</span></span></span>
-  </button>;
-}
-
-function ProjectFuture() {
-  return <div className="project-slide project-future" aria-label="Espaços para projetos futuros">
-    <div className="future-main"><div className="future-art"/><span className="eyebrow blue-text">PRÓXIMOS TRABALHOS</span><strong>Novos projetos<br/>em preparação.</strong></div>
-    <div className="future-side"><div className="future-row"><div className="future-thumb"/><div><strong>Espaço reservado<br/>para um novo projeto.</strong><small>EM PREPARAÇÃO</small></div></div><div className="future-row"><div className="future-thumb"/><div><strong>Espaço reservado<br/>para um novo projeto.</strong><small>EM PREPARAÇÃO</small></div></div></div>
-  </div>;
-}
-
-function ArticleArtwork({ visual }: { visual: string }) {
-  if (visual === 'design') return <div className="article-art art-design" aria-hidden="true"><span className="art-top"/><span className="art-row"/><span className="art-row"/><span className="art-row"/><span className="art-check"/></div>;
-  if (visual === 'games') return <div className="article-art art-games" aria-hidden="true"><span className="art-grid"/><span className="art-dots">•••</span><span className="art-connector"/></div>;
-  return <div className="article-art art-research" aria-hidden="true"><span className="art-browser"/><span className="art-highlight"/><span className="art-check">✓</span></div>;
+function ArticleArtwork() {
+  return <div className="article-art art-placeholder" aria-hidden="true"><span>+</span></div>;
 }
 
 
@@ -347,10 +302,10 @@ function SiteHeader({ onNavigate, currentPath }: { onNavigate: (path: string, an
   }, []);
   return <header className={`site-header${scrolled ? ' is-scrolled' : ''}`}>
     <div className="header-inner">
-      <a href="/#inicio" className="monogram" onClick={(event) => { event.preventDefault(); setMenuOpen(false); onNavigate('/', 'inicio'); }} aria-label="Pedro Albuquerque — ir para início">PA<span>.</span></a>
+      <a href="/#inicio" className="monogram" onClick={(event) => { if (!shouldNavigateInApp(event)) return; event.preventDefault(); setMenuOpen(false); onNavigate('/', 'inicio'); }} aria-label="Pedro Albuquerque — ir para início">PA<span>.</span></a>
       <button type="button" className={`mobile-toggle${menuOpen ? ' is-open' : ''}`} ref={menuButtonRef} aria-controls="primary-navigation" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'} aria-expanded={menuOpen}><span className="menu-lines" aria-hidden="true"><span/><span/></span></button>
       <nav id="primary-navigation" className={menuOpen ? 'nav-menu is-open' : 'nav-menu'} aria-label="Navegação principal">
-        {NAV.map(item => <a key={item.id} className={(currentPath === '/' ? activeSection : currentPath.startsWith('/projetos/') ? 'projetos' : currentPath.startsWith('/fragmentos/') ? 'fragmentos' : '') === item.id ? 'nav-active' : ''} aria-current={(currentPath === '/' ? activeSection : currentPath.startsWith('/projetos/') ? 'projetos' : currentPath.startsWith('/fragmentos/') ? 'fragmentos' : '') === item.id ? 'location' : undefined} href={`/#${item.id}`} onClick={(event) => { event.preventDefault(); setMenuOpen(false); setActiveSection(item.id); onNavigate('/', item.id); }}>{item.label}</a>)}
+        {NAV.map(item => <a key={item.id} className={(currentPath === '/' ? activeSection : currentPath.startsWith('/projetos/') ? 'projetos' : currentPath.startsWith('/fragmentos/') ? 'fragmentos' : '') === item.id ? 'nav-active' : ''} aria-current={(currentPath === '/' ? activeSection : currentPath.startsWith('/projetos/') ? 'projetos' : currentPath.startsWith('/fragmentos/') ? 'fragmentos' : '') === item.id ? 'location' : undefined} href={`/#${item.id}`} onClick={(event) => { if (!shouldNavigateInApp(event)) return; event.preventDefault(); setMenuOpen(false); setActiveSection(item.id); onNavigate('/', item.id); }}>{item.label}</a>)}
       </nav>
     </div>
   </header>;
@@ -387,23 +342,7 @@ function HomePage({ onNavigate, openPlaceholder, openContact }: { onNavigate: (p
       <picture><source srcSet="/assets/hero-collage.webp" type="image/webp"/><img className="hero-collage" src="/assets/hero-collage.png" width={1374} height={1145} fetchPriority="high" loading="eager" decoding="async" alt="Colagem editorial em preto, branco e azul com retrato de Pedro Albuquerque e referências a educação, testes, desenvolvimento, design e jogos sérios."/></picture>
       <div className="social-links" aria-label="Redes e contato"><a href={CONTACT.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn"><ContactArtwork kind="linkedin"/></a><a href={CONTACT.github} target="_blank" rel="noreferrer" aria-label="GitHub"><ContactArtwork kind="github"/></a><a href={`mailto:${CONTACT.email}`} aria-label="E-mail"><ContactArtwork kind="email"/></a></div>
     </div></section>
-    <section className="projects" id="projetos" aria-labelledby="projects-title"><div className="content-width section-content">
-      <SectionLabel>TRABALHOS EM DESTAQUE</SectionLabel><h2 id="projects-title" className="section-title">Projetos</h2>
-      <Carousel className="projects-carousel" step={1336} label="Projetos em destaque">
-        <div className="project-slide featured-projects">
-          <a className="project-featured" href="/projetos/educomp" onClick={(event) => { event.preventDefault(); onNavigate('/projetos/educomp'); }} aria-label="Conhecer o projeto EduComp">
-            <div className="featured-visual"><EduCompPreview/></div>
-            <div className="featured-detail">
-              <span className="featured-category">PLATAFORMA WEB · EDUCAÇÃO</span>
-              <strong>EduComp</strong>
-              <p>Uma biblioteca colaborativa para encontrar e compartilhar materiais didáticos de Computação.</p>
-              <span className="featured-bottom"><small>UX/UI · DESIGN INSTRUCIONAL · 2026</small><span className="text-link">Conhecer o projeto <span aria-hidden="true">↗</span></span></span>
-            </div>
-          </a>
-          <div className="secondary-projects"><ProjectPlaceholder title="Teste de Teste Apenas um Testchi" onOpen={() => openPlaceholder('content')}/><ProjectPlaceholder title="Olha o Textinho" onOpen={() => openPlaceholder('content')}/></div>
-        </div><ProjectFuture/>
-      </Carousel>
-    </div></section>
+    <ProjectsSection onNavigate={onNavigate}/>
     <section className="areas" id="areas" aria-labelledby="areas-title"><div className="content-width section-content">
       <SectionLabel>ÁREAS DE ATUAÇÃO</SectionLabel><h2 id="areas-title" className="section-title">Pontos de <span className="blue-text">encontro.</span></h2><p className="areas-lead">Entre aulas, testes, interfaces e jogos, estas são as áreas em que tenho trabalhado.</p>
       <div className="areas-grid">{AREAS.map(area => <article className="area-card" key={area.kind}><AreaMark kind={area.kind}/><h3>{area.title.split('\n').map((line, i) => <React.Fragment key={i}>{i > 0 && <br/>}{line}</React.Fragment>)}</h3><p>{area.description}</p><div className="area-tags">{area.tags.map(tag => <span key={tag}>{tag}</span>)}</div><span className="area-accent" aria-hidden="true"/></article>)}</div>
@@ -412,11 +351,11 @@ function HomePage({ onNavigate, openPlaceholder, openContact }: { onNavigate: (p
     <div className="section-spacer spacer-large" aria-hidden="true"/>
     <section className="fragments" id="fragmentos" aria-labelledby="fragments-title"><div className="content-width section-content">
       <div className="fragment-intro"><div className="fragment-copy"><SectionLabel>FRAGMENTOS</SectionLabel><h2 id="fragments-title" className="section-title">Notas,<br/>ensaios e<br/><span className="blue-text">ideias.</span></h2><p>Ideias e anotações que surgem entre projetos, leituras e experiências.</p></div>
-        <a className="fragment-featured" href="/fragmentos/a-potencia-do-fazer-digital-na-educacao" onClick={(event) => { event.preventDefault(); onNavigate('/fragmentos/a-potencia-do-fazer-digital-na-educacao'); }}><div className="fragment-featured-image"><DeskIllustration/></div><div className="fragment-featured-text"><span className="tag-solid">ENSAIO</span><h3>A potência do fazer<br/>digital na educação</h3><p>Como a cultura do fazer, os projetos e as tecnologias digitais podem ampliar a autonomia, a criatividade e o engajamento na aprendizagem.</p><span className="fragment-read">Ler artigo <span aria-hidden="true">→</span></span></div></a>
+        <a className="fragment-featured" href="/fragmentos/a-potencia-do-fazer-digital-na-educacao" onClick={(event) => { if (!shouldNavigateInApp(event)) return; event.preventDefault(); onNavigate('/fragmentos/a-potencia-do-fazer-digital-na-educacao'); }} aria-label="Ler ensaio A potência do fazer digital na educação"><div className="fragment-featured-image"><DeskIllustration/><span className="fragment-image-label">01 / FRAGMENTOS</span></div><div className="fragment-featured-text"><div className="fragment-featured-top"><span className="fragment-featured-type"><i aria-hidden="true"/>ENSAIO</span><span>2026</span></div><h3>A potência do fazer<br/>digital na educação</h3><p>Como a cultura do fazer e as tecnologias digitais podem ampliar a autonomia, a criatividade e a aprendizagem.</p><span className="fragment-read"><span>Ler ensaio</span><span className="fragment-read-arrow" aria-hidden="true">→</span></span></div></a>
       </div>
       <Carousel className="reading-carousel" label="Notas, ensaios e ideias" step={445} controlsPosition="bottom">
-        {READINGS.map(reading => <button className="reading-card" type="button" key={reading.title} onClick={() => openPlaceholder('content')}><ArticleArtwork visual={reading.visual}/><span className="reading-info"><span className="tag-solid">{reading.category}</span><strong>{reading.title.split('\n').map((l, i) => <React.Fragment key={i}>{i > 0 && <br/>}{l}</React.Fragment>)}</strong><span className="reading-desc">{reading.description}</span><span className="text-link">Ler artigo <span aria-hidden="true">→</span></span></span></button>)}
-        <article className="reading-card upcoming-reading"><span className="new-article-plus">+</span><span className="reading-info"><span className="eyebrow blue-text">EM PREPARAÇÃO</span><strong>Novas leituras<br/>em breve.</strong><span className="reading-desc">Espaço reservado para mais notas e ensaios.</span></span></article>
+        {READINGS.map(reading => <article className="reading-card reading-card-placeholder" key={reading.title} aria-label={`${reading.title} - em preparação`}><ArticleArtwork/><span className="reading-info"><span className="tag-blue">{reading.category}</span><strong>{reading.title}</strong><span className="reading-desc">{reading.description}</span></span></article>)}
+
       </Carousel>
     </div></section>
     <section className="about about-editorial" id="sobre" aria-labelledby="about-title">
@@ -437,10 +376,7 @@ function HomePage({ onNavigate, openPlaceholder, openContact }: { onNavigate: (p
                 </article>)}
               </Carousel>
             </div>
-            <div className="about-text">
-              <p>Minha trajetória passa pela sala de aula, pela pesquisa e por projetos que vão de materiais didáticos e jogos educacionais a interfaces e testes de software. Já trabalhei com <strong>educação inclusiva</strong>, <strong>ensino de inteligência artificial</strong> e <strong>pesquisa em jogos digitais</strong>. Hoje, também exploro UX/UI, qualidade de software e desenvolvimento.</p>
-              <p>Sou curioso, atento aos detalhes e gosto de entender como as coisas funcionam e podem ser melhores para quem as usa. Acredito que boa parte do aprendizado acontece quando a gente coloca a mão na massa. Por aqui, compartilho um pouco do que faço, estudo e invento pelo caminho.</p>
-            </div>
+            <div className="about-text"><p>Minha trajetória passa pela sala de aula, pela pesquisa e por projetos que vão de materiais didáticos e jogos educacionais a interfaces e testes de software. Já trabalhei com educação inclusiva, ensino de inteligência artificial e pesquisa em jogos digitais. Hoje, também exploro UX/UI, qualidade de software e desenvolvimento. Acredito que boa parte do aprendizado acontece quando a gente coloca a mão na massa. Por aqui, compartilho um pouco do que faço, estudo e invento pelo caminho.</p></div>
           </div>
           <div className="about-gallery"><PhotoGallery/></div>
         </div>
@@ -495,7 +431,7 @@ function PlaceholderModal({ kind, close }: { kind: PlaceholderKind; close: () =>
     if (kind && element && !element.open) element.showModal();
     if (!kind && element?.open) element.close();
   }, [kind]);
-  return <dialog ref={ref} className="placeholder-dialog" onClose={close} onCancel={close} onClick={event => { if (event.target === ref.current) close(); }} aria-labelledby="modal-title"><div className="modal-header"><span>PA. / PORTFÓLIO</span><button type="button" onClick={close} aria-label="Fechar aviso"><Glyph name="close" size={20}/></button></div><div className="modal-inner"><SectionLabel>EM PREPARAÇÃO</SectionLabel><h2 id="modal-title">{kind === 'cv' ? 'Currículo ainda não anexado.' : 'Conteúdo ainda não publicado.'}</h2><p>{kind === 'cv' ? 'O download estará disponível quando o currículo em PDF for adicionado ao portfólio.' : 'Este card é demonstrativo. A página completa será adicionada quando o material estiver pronto.'}</p><button type="button" className="button button-dark" onClick={close}>Voltar <span aria-hidden="true">→</span></button></div></dialog>;
+  return <dialog ref={ref} className="placeholder-dialog" onClose={close} onCancel={close} onClick={event => { if (event.target === ref.current) close(); }} aria-labelledby="modal-title"><div className="modal-header"><span>PA. / PORTFÓLIO</span><button type="button" onClick={close} aria-label="Fechar aviso"><Glyph name="close" size={20}/></button></div><div className="modal-inner"><SectionLabel>EM PREPARAÇÃO</SectionLabel><h2 id="modal-title">Currículo ainda não anexado.</h2><p>O download estará disponível quando o currículo em PDF for adicionado ao portfólio.</p><button type="button" className="button button-dark" onClick={close}>Voltar <span aria-hidden="true">→</span></button></div></dialog>;
 }
 
 function normalizePath(pathname: string) {
@@ -520,5 +456,5 @@ export default function App() {
     if (anchor) requestAnimationFrame(() => requestAnimationFrame(() => document.getElementById(anchor)?.scrollIntoView({ behavior: 'smooth' })));
     else window.scrollTo({ top: 0, behavior: 'instant' });
   }
-  return <><a href="#conteudo" className="skip-link">Pular para o conteúdo</a><SiteHeader onNavigate={navigate} currentPath={path}/><main id="conteudo" tabIndex={-1}>{path === '/projetos/educomp' ? <EduCompPage onNavigate={navigate}/> : path.startsWith('/fragmentos/') ? <FragmentosPage onNavigate={navigate} openPlaceholder={() => setPlaceholder('content')}/> : <HomePage onNavigate={navigate} openPlaceholder={setPlaceholder} openContact={() => setContactOpen(true)}/>}</main><PlaceholderModal kind={placeholder} close={() => setPlaceholder(null)}/><ContactModal open={contactOpen} close={() => setContactOpen(false)}/></>;
+  return <><a href="#conteudo" className="skip-link">Pular para o conteúdo</a><SiteHeader onNavigate={navigate} currentPath={path}/><main id="conteudo" tabIndex={-1}>{path === '/projetos/educomp' ? <EduCompPage onNavigate={navigate}/> : path.startsWith('/fragmentos/') ? <FragmentosPage onNavigate={navigate}/> : <HomePage onNavigate={navigate} openPlaceholder={setPlaceholder} openContact={() => setContactOpen(true)}/>}</main><PlaceholderModal kind={placeholder} close={() => setPlaceholder(null)}/><ContactModal open={contactOpen} close={() => setContactOpen(false)}/></>;
 }

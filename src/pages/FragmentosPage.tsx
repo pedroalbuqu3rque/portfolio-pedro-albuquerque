@@ -1,24 +1,15 @@
 import React, { useEffect, useState } from 'react';
+import { shouldNavigateInApp } from '../navigation';
 import DeskIllustration from '../components/DeskIllustration';
 
 type Props = {
   onNavigate: (path: string, anchor?: string) => void;
-  openPlaceholder: () => void;
 };
 
 const relatedReadings = [
-  {
-    category: 'ESTUDO', title: 'Design instrucional na prática',
-    description: 'Princípios e escolhas para criar experiências de aprendizagem mais efetivas.',
-  },
-  {
-    category: 'REFLEXÃO', title: 'Jogos, aprendizagem e território',
-    description: 'Como jogos podem promover aprendizagens significativas e valorizar contextos locais.',
-  },
-  {
-    category: 'EXPERIMENTO', title: 'Tecnologia, pesquisa e experiência',
-    description: 'Aprendizados na interseção entre pesquisa, design e tecnologia digital.',
-  },
+  { category: 'EM PREPARAÇÃO', title: 'Novo ensaio', description: 'Espaço reservado para uma futura publicação.' },
+  { category: 'EM PREPARAÇÃO', title: 'Próxima leitura', description: 'Espaço reservado para uma futura publicação.' },
+  { category: 'EM PREPARAÇÃO', title: 'Novas notas', description: 'Espaço reservado para uma futura publicação.' },
 ];
 
 const outline = [
@@ -52,8 +43,27 @@ function EssayProgress() {
   return <div className="reading-scroll-progress" aria-hidden="true"><span style={{ width: `${progress}%` }}/></div>;
 }
 
-export default function FragmentosPage({ onNavigate, openPlaceholder }: Props) {
+export default function FragmentosPage({ onNavigate }: Props) {
+  const [shareFeedback, setShareFeedback] = useState('');
+  async function shareEssay() {
+    const url = new URL('/fragmentos/a-potencia-do-fazer-digital-na-educacao', window.location.origin).toString();
+    if (typeof navigator.share === 'function') {
+      try {
+        await navigator.share({ title: 'A potência do fazer digital na educação', url });
+        return;
+      } catch (error) {
+        if (error instanceof DOMException && error.name === 'AbortError') return;
+      }
+    }
+    try {
+      await navigator.clipboard.writeText(url);
+      setShareFeedback('Link copiado para compartilhar.');
+    } catch {
+      window.prompt('Copie o link do ensaio:', url);
+    }
+  }
   function returnToFragments(event: React.MouseEvent<HTMLAnchorElement>) {
+    if (!shouldNavigateInApp(event)) return;
     event.preventDefault();
     onNavigate('/', 'fragmentos');
   }
@@ -61,12 +71,12 @@ export default function FragmentosPage({ onNavigate, openPlaceholder }: Props) {
   return <div className="reading-page">
     <EssayProgress />
     <section className="reading-hero" aria-labelledby="reading-title"><div className="content-width">
-      <div className="reading-topline"><EssayEyebrow>FRAGMENTOS &nbsp;/&nbsp; ENSAIO</EssayEyebrow><span>LEITURA 01 / ENSAIO</span></div>
-      <a className="reading-return" href="/#fragmentos" onClick={returnToFragments}>← VOLTAR A FRAGMENTOS</a>
+      <div className="reading-topline"><EssayEyebrow>FRAGMENTOS &nbsp;/&nbsp; ENSAIO</EssayEyebrow></div>
+
       <h1 id="reading-title">A potência do fazer<br/>digital na educação.</h1>
       <span className="reading-blue-rule" aria-hidden="true"/>
       <p className="reading-lead">Como a cultura do fazer, os projetos e as tecnologias digitais podem ampliar a autonomia, a criatividade e o engajamento na aprendizagem.</p>
-      <div className="reading-metadata"><strong>PEDRO ALBUQUERQUE</strong><span>EDUCAÇÃO &nbsp;·&nbsp; TECNOLOGIA &nbsp;·&nbsp; APRENDIZAGEM</span><span>TEXTO DE EXEMPLO</span></div>
+      <div className="reading-metadata"><strong>PEDRO ALBUQUERQUE</strong><span>EDUCAÇÃO &nbsp;·&nbsp; TECNOLOGIA &nbsp;·&nbsp; APRENDIZAGEM</span><time dateTime="2026-11-11">PUBLICADO EM 11 NOV 2026</time></div>
     </div></section>
 
     <section className="reading-hero-image" aria-label="Imagem e apresentação do ensaio"><div className="content-width">
@@ -74,7 +84,7 @@ export default function FragmentosPage({ onNavigate, openPlaceholder }: Props) {
         <div className="reading-editorial-photo"><DeskIllustration/></div>
         <div className="reading-media-panel"><span>IMAGENS, IDEIAS E POSSIBILIDADES.</span><h2>Fazer é<br/>também<br/>pensar.</h2><span className="reading-blue-rule" aria-hidden="true"/><small>CULTURA DO FAZER&nbsp; / &nbsp;EDUCAÇÃO</small></div>
       </div>
-      <p className="reading-image-caption">ENSAIO &nbsp;/&nbsp; A POTÊNCIA DO FAZER DIGITAL NA EDUCAÇÃO</p>
+
     </div></section>
 
     <article className="reading-body" aria-label="Texto do ensaio"><div className="content-width reading-body-grid">
@@ -103,16 +113,18 @@ export default function FragmentosPage({ onNavigate, openPlaceholder }: Props) {
           <p>O fazer digital ganha potência justamente aí: na combinação entre autoria, colaboração e reflexão. Não se trata de fazer mais coisas com tecnologia, mas de criar condições para aprender de outras maneiras.</p>
         </section>
         <div className="reading-ending"><span aria-hidden="true"/> <strong>Pensar. Fazer. Refazer.</strong></div>
+        <div className="reading-actions" aria-label="Ações do ensaio"><button className="reading-action reading-action-primary" type="button" onClick={shareEssay}>Compartilhar <span aria-hidden="true">↗</span></button><a className="reading-action reading-action-secondary" href="/#fragmentos" onClick={returnToFragments}><span aria-hidden="true">←</span> Voltar a Fragmentos</a></div>
+        <p className="reading-share-feedback" role="status" aria-live="polite">{shareFeedback}</p>
       </div>
       <aside className="reading-sidenote" aria-label="Nota de leitura"><span>NOTA DE LEITURA</span><p>Projetos permitem observar os caminhos da aprendizagem, não apenas seus resultados.</p><span className="reading-sidenote-mark" aria-hidden="true">//</span></aside>
     </div></article>
 
     <section className="reading-related" aria-labelledby="related-title"><div className="content-width">
-      <EssayEyebrow>FRAGMENTOS &nbsp;/&nbsp; OUTRAS LEITURAS</EssayEyebrow><h2 id="related-title">Outras ideias para explorar.</h2>
-      <div className="reading-related-grid">{relatedReadings.map(reading => <button className="reading-related-card" type="button" key={reading.title} onClick={openPlaceholder} aria-label={`Ver artigo ${reading.title} (em preparação)`}>
+      <EssayEyebrow>FRAGMENTOS &nbsp;/&nbsp; OUTRAS LEITURAS</EssayEyebrow><h2 id="related-title">Novas leituras em breve.</h2>
+      <div className="reading-related-grid">{relatedReadings.map(reading => <article className="reading-related-card reading-related-placeholder" key={reading.title}>
         <span>{reading.category}</span><strong>{reading.title}</strong><p>{reading.description}</p>
-      </button>)}</div>
+      </article>)}</div>
     </div></section>
-    <footer className="reading-footer"><div className="content-width"><a href="/#inicio" onClick={e => { e.preventDefault(); onNavigate('/', 'inicio'); }} aria-label="Voltar para o início">PA<span>.</span></a><span>Feito aqui. Por mim</span></div></footer>
+    <footer className="reading-footer"><div className="content-width"><a href="/#inicio" onClick={event => { if (!shouldNavigateInApp(event)) return; event.preventDefault(); onNavigate('/', 'inicio'); }} aria-label="Voltar para o início">PA<span>.</span></a><span>Feito aqui. Por mim</span></div></footer>
   </div>;
 }

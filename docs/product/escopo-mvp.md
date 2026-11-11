@@ -14,7 +14,7 @@ Este documento delimita o que faz parte da primeira versão publicável do portf
 | Dispositivos | Layout adaptável para desktop, tablet e celular |
 | Metadados | Títulos, descrições, favicon e regras de indexação por rota |
 
-Os quatro espaços reservados da galeria do EduComp e os cards demonstrativos fazem parte do estado atual da interface. Não devem ser apresentados como projetos ou artigos concluídos.
+Os quatro espaços reservados da galeria do EduComp e os cards de projetos e publicações futuras fazem parte do estado atual da interface. Não devem ser apresentados como projetos ou artigos concluídos.
 
 ## Pendências antes de publicar
 

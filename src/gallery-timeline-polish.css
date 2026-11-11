@@ -274,19 +274,13 @@ html { scroll-padding-top: 82px; }
   .hero-copy { top: 64px; }
   .hero-collage { top: 67px; }
   .social-links { bottom: 22px; }
-  .projects { height: 840px; }
-  .projects .section-label { top: 43px; }
-  .projects .section-title { top: 77px; }
-  .projects-carousel { top: 207px; }
 }
 @media (min-width: 701px) and (max-width: 1100px) {
   .hero-body { min-height: 620px; }
-  .projects .section-content { padding-top: 61px; }
 }
 @media (max-width: 700px) {
   .hero-body::after { left: 0; width: 44px; }
   .hero-body { padding-bottom: 62px; }
-  .projects .section-content { padding-top: 55px; }
 }
 
 /* Áreas: mesma linha de base para tags e traços, com o mínimo espaço livre. */

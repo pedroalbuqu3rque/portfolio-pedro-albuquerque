@@ -5,7 +5,7 @@ Este documento organiza as verificações antes de publicar o portfólio. **Não
 ## Preparação
 
 ```bash
-npm install
+npm ci
 npm run check:content
 npm run typecheck
 npm run build
@@ -20,7 +20,8 @@ No PowerShell, use `npm.cmd` se o Windows bloquear a execução de `npm.ps1`.
 - [ ] O botão azul **Ver projetos** leva à seção Projetos e **Currículo** mantém seu comportamento de download ou aviso.
 - [ ] O cabeçalho permanece visível ao rolar e os links levam às seções corretas.
 - [ ] O card EduComp abre `/projetos/educomp` e o retorno funciona.
-- [ ] A ilustração da biblioteca no card do EduComp não é anunciada como captura real.
+- [ ] O EduComp aparece como card principal, com área de imagem vazia acima das informações, sem cortes ou sobreposições.
+- [ ] Os outros dois projetos aparecem abaixo dele, um por linha, sem links que levem a conteúdo inexistente.
 - [ ] As tags das cinco áreas não se sobrepõem às descrições em desktop e mobile.
 - [ ] Os cards de Áreas ganham leve escala e sombra no hover sem parecer links; a animação é desativada com movimento reduzido.
 - [ ] A trajetória apresenta os marcos reais de 2026 a 2023 em uma linha horizontal e pode ser percorrida sem mouse.
@@ -30,8 +31,8 @@ No PowerShell, use `npm.cmd` se o Windows bloquear a execução de `npm.ps1`.
 
 ## Interações
 
-- [ ] Os carrosséis de Projetos, Fragmentos, Trajetória e Galeria podem ser percorridos com setas, teclado e toque.
-- [ ] As oito fotografias da galeria independente aparecem em 4:3, com cantos arredondados e sem distorção.
+- [ ] Os carrosséis de Fragmentos, Trajetória e Galeria podem ser percorridos com setas, teclado e toque. Projetos não usa carrossel.
+- [ ] As oito fotografias da galeria integrada ao Sobre mim aparecem em 4:3, com cantos arredondados e sem distorção.
 - [ ] Cada fotografia abre ampliada e fecha pelo botão, clique externo ou Esc; as setas permitem percorrer as fotos.
 - [ ] A animação das tecnologias não impede a leitura e respeita movimento reduzido.
 - [ ] O modal de contato abre e fecha pelo X, Esc e clique fora.
@@ -53,6 +54,7 @@ Conferir as três páginas pelo menos em 320, 390, 768, 1024 e 1440 px.
 ## Publicação
 
 - [ ] A URL pública está em `VITE_SITE_URL`.
+- [ ] Uma instalação limpa (`npm ci`) seguida de `npm run build` funciona no sistema usado para publicar.
 - [ ] O favicon, os títulos e a imagem de compartilhamento foram conferidos.
 - [ ] Sitemap, `robots.txt` e indexação correspondem ao conteúdo publicado.
 - [ ] Os arquivos públicos carregam corretamente.

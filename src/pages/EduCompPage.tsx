@@ -1,4 +1,5 @@
 import React from 'react';
+import { shouldNavigateInApp } from '../navigation';
 
 type Props = {
   onNavigate: (path: string, anchor?: string) => void;
@@ -14,10 +15,10 @@ const galleryItems = [
 ] as const;
 
 const process = [
-  { title: 'Estruturar a biblioteca', description: 'Tipos de materiais, categorias e formas de encontrar recursos.' },
-  { title: 'Desenhar os fluxos', description: 'Caminhos de consulta, salvamento, envio e moderação.' },
-  { title: 'Refinar a interface', description: 'Hierarquia, consistência visual e legibilidade das telas.' },
-  { title: 'Construir e revisar', description: 'Implementação gradual e ajustes ao longo do projeto.' },
+  { title: 'Produto (PO)', description: 'Definição do escopo, organização do acervo e priorização dos fluxos principais.' },
+  { title: 'UX/UI Design', description: 'Arquitetura, prototipação e refinamento de usabilidade e acessibilidade.' },
+  { title: 'Desenvolvimento', description: 'Implementação das interfaces e integração das funcionalidades da plataforma.' },
+  { title: 'QA e testes', description: 'Verificação dos fluxos, registro de falhas e revisão do comportamento da aplicação.' },
 ];
 
 function CaseEyebrow({ children }: { children: React.ReactNode }) {
@@ -64,17 +65,17 @@ export default function EduCompPage({ onNavigate }: Props) {
   return <div className="case-page">
     <section className="case-hero" aria-labelledby="case-title">
       <div className="content-width case-hero-inner">
-        <a className="case-back" href="/#projetos" onClick={event => { event.preventDefault(); onNavigate('/', 'projetos'); }}>← VOLTAR A PROJETOS</a>
+        <a className="case-back" href="/#projetos" onClick={event => { if (!shouldNavigateInApp(event)) return; event.preventDefault(); onNavigate('/', 'projetos'); }}>← VOLTAR A PROJETOS</a>
         <div className="case-hero-copy">
           <CaseEyebrow>ESTUDO DE CASO&nbsp; / &nbsp;EDUCAÇÃO DIGITAL</CaseEyebrow>
           <h1 id="case-title">EduComp</h1><span className="case-hero-rule" aria-hidden="true" />
           <h2>Uma biblioteca colaborativa<br />para ensinar Computação.</h2>
           <p>Um espaço para encontrar, compartilhar e organizar materiais didáticos de Computação. Recursos, pessoas e ideias reunidos em uma experiência simples de usar.</p>
-          <div className="case-hero-actions"><a href={PROTOTYPE_URL} className="button button-primary" target="_blank" rel="noopener noreferrer">Explorar o protótipo&nbsp; →</a><span>PROJETO EM DESENVOLVIMENTO &nbsp;·&nbsp; 2026</span></div>
+          <div className="case-hero-actions"><a href={PROTOTYPE_URL} className="button button-primary" target="_blank" rel="noopener noreferrer">Explorar o protótipo&nbsp; →</a></div>
         </div>
         <dl className="case-facts">
           <div><dt>TIPO DE PROJETO</dt><dd>Plataforma web colaborativa</dd></div>
-          <div><dt>MINHA ATUAÇÃO</dt><dd>UX/UI Design · Desenvolvimento</dd></div>
+          <div><dt>MINHA ATUAÇÃO</dt><dd>PO · UX/UI Design · Desenvolvimento · QA</dd></div>
           <div><dt>PÚBLICO</dt><dd>Professores de Computação</dd></div>
         </dl>
       </div>
@@ -114,7 +115,7 @@ export default function EduCompPage({ onNavigate }: Props) {
         <CaseEyebrow>03 &nbsp;/&nbsp; EXPERIÊNCIA</CaseEyebrow>
         <h2 id="case-flows-title">Da descoberta à contribuição.</h2>
         <p className="case-lead">Três percursos que conectam quem procura materiais a quem quer compartilhá-los.</p>
-        <p className="case-flow-intro">Cada percurso apresenta a tela, sua função e a escolha de interface por trás dela.</p>
+        <p className="case-flow-intro">PO · UX/UI Design · Desenvolvimento · QA</p>
         <div className="case-flow-grid">{flows.map(flow => <article className="case-flow-card" key={flow.number}>
           <EduCompMiniature kind={flow.kind}/>
           <div className="case-flow-label">{flow.number} / {flow.action}</div>
@@ -126,15 +127,15 @@ export default function EduCompPage({ onNavigate }: Props) {
 
     <section className="case-process" aria-labelledby="case-process-title">
       <div className="content-width case-process-layout">
-        <div className="case-process-copy"><CaseEyebrow>04 &nbsp;/&nbsp; DA IDEIA À INTERFACE</CaseEyebrow><h2 id="case-process-title">O trabalho por trás<br/>das telas.</h2><p>Entre estrutura, conteúdo e interface, cada decisão procura tornar o acesso aos materiais mais claro e a participação mais simples.</p><span className="case-process-rule"/><small>ESTRUTURA · EXPERIÊNCIA · DESENVOLVIMENTO</small></div>
+        <div className="case-process-copy"><CaseEyebrow>04 &nbsp;/&nbsp; DA IDEIA À INTERFACE</CaseEyebrow><h2 id="case-process-title">O trabalho por trás<br/>das telas.</h2><p>Entre estrutura, conteúdo e interface, cada decisão procura tornar o acesso aos materiais mais claro e a participação mais simples.</p><span className="case-process-rule"/><small>PO · UX/UI · DESENVOLVIMENTO · QA</small></div>
         <ol className="case-process-grid">{process.map((item, index) => <li key={item.title}><span>{String(index + 1).padStart(2, '0')}</span><h3>{item.title}</h3><p>{item.description}</p></li>)}</ol>
       </div>
     </section>
 
     <section className="case-final" aria-labelledby="case-final-title"><div className="content-width">
-      <div className="case-tools"><span>FERRAMENTAS E CONTEXTO</span><div className="case-tool-list">{['FIGMA', 'GITHUB', 'SUPABASE', 'PROTÓTIPO INTERATIVO'].map(t => <span key={t}>{t}</span>)}</div><small>PROJETO DE PORTFÓLIO · EM DESENVOLVIMENTO</small></div>
+      <div className="case-tools"><span>FERRAMENTAS E CONTEXTO</span><div className="case-tool-list">{['FIGMA', 'GITHUB', 'SUPABASE', 'PROTÓTIPO INTERATIVO'].map(t => <span key={t}>{t}</span>)}</div><small>PROJETO DE PORTFÓLIO · CONCLUÍDO</small></div>
       <div className="case-final-cta"><div><CaseEyebrow>EXPLORAR O PROJETO</CaseEyebrow><h2 id="case-final-title">Veja o EduComp<br/>por dentro.</h2><span className="case-process-rule"/><p>O protótipo reúne as principais telas e fluxos da plataforma.</p></div><a className="button button-primary" href={PROTOTYPE_URL} target="_blank" rel="noopener noreferrer">Abrir protótipo no Figma&nbsp; →</a></div>
     </div></section>
-    <footer className="case-page-footer"><div className="content-width"><a href="/#inicio" onClick={e => {e.preventDefault();onNavigate('/', 'inicio')}} aria-label="Voltar para o início">PA<span>.</span></a><span>Feito aqui. Por mim</span></div></footer>
+    <footer className="case-page-footer"><div className="content-width"><a href="/#inicio" onClick={event => { if (!shouldNavigateInApp(event)) return; event.preventDefault(); onNavigate('/', 'inicio'); }} aria-label="Voltar para o início">PA<span>.</span></a><span>Feito aqui. Por mim</span></div></footer>
   </div>;
 }

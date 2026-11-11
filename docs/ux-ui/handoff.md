@@ -12,49 +12,29 @@ Este documento relaciona as telas do Figma à implementação atual. Serve como 
 
 As alturas representam o protótipo desktop. No navegador, variam conforme fonte, conteúdo e largura.
 
-## Pontos implementados
+## Estrutura atual
 
-A landing contém apresentação, projetos, áreas, tecnologias, Fragmentos, trajetória, Sobre mim e contato. Os cards usam navegação horizontal quando necessário, com controles acessíveis.
+A landing reúne Início, Projetos, Áreas, tecnologias, Fragmentos e Sobre mim (com trajetória e galeria), seguida do contato. O cabeçalho continua visível durante a rolagem.
 
-O EduComp apresenta o contexto do projeto, quatro espaços reservados para capturas, três fluxos e decisões de UX. A página de Fragmentos tem estrutura editorial para leitura, índice e outras publicações.
+**Projetos:** a seção é vertical. O EduComp aparece primeiro, com uma área de imagem acima do texto; dois espaços reservados aparecem abaixo, um por linha. Os cards reservados não são interativos. A página interna do EduComp apresenta o caso, quatro espaços para futuras capturas, três fluxos e as fases PO, UX/UI Design, Desenvolvimento e QA. O projeto é apresentado como concluído.
 
-O modal de contato reúne e-mail, LinkedIn e GitHub. O rodapé usa **“Feito aqui. Por mim”**. A linha do tempo tem rolagem horizontal sem grupos por ano; a seção Sobre mim apresenta um texto pessoal e a linha do tempo. A galeria integra a coluna direita do Sobre mim e reúne oito fotografias reais em preto e branco, em proporção 4:3, com ampliação e cantos arredondados.
+**Fragmentos:** há um ensaio principal com data de publicação, índice de leitura, botão de compartilhar e retorno à seção. As publicações seguintes ainda são reservas de conteúdo. O carrossel horizontal permanece nessa área.
 
-## Materiais pendentes
+**Sobre mim:** a coluna esquerda reúne apresentação, trajetória horizontal de 12 marcos e texto; a direita contém a galeria de oito fotos 4:3, que podem ser ampliadas. Em telas menores, os blocos passam a ficar empilhados.
 
-| Item | Situação |
-| --- | --- |
-| Currículo | Adicionar `public/curriculo-pedro-albuquerque.pdf` |
-| Galeria EduComp | Substituir quatro espaços por capturas reais |
-| Imagem do ensaio | Exportar a fotografia do Figma, sem alterar a composição |
-| Projetos e ensaios demonstrativos | Decidir o conteúdo que será publicado |
-| Links externos | Conferir destinos sociais e protótipo |
-| Publicação | Configurar domínio, SEO e testes no endereço definitivo |
+O contato abre um modal com e-mail, LinkedIn e GitHub. O currículo só é oferecido para download quando o PDF existe; caso contrário, a interface informa a ausência do arquivo.
 
-Não substituir imagens por referências diferentes apenas para preencher os espaços.
+## Antes da publicação
 
-## Observações para desenvolvimento
+- Adicionar `public/curriculo-pedro-albuquerque.pdf`.
+- Substituir os quatro espaços da galeria EduComp por capturas reais quando estiverem disponíveis.
+- Conferir a imagem editorial do ensaio com a versão do Figma.
+- Validar os destinos de redes sociais e do protótipo.
+- Executar `npm ci`, `npm run check:content`, `npm run typecheck` e `npm run build` em uma instalação limpa.
+- Conferir desktop e mobile, acessibilidade básica, navegação direta nas rotas e metadados no domínio definitivo.
 
-O código é a referência para as interações mais recentes, especialmente a composição mobile e o modal de contato. O Figma continua útil para verificar identidade, proporção e hierarquia do desktop.
+## Continuidade
 
-Antes de publicar, executar os passos do [plano de testes](../qa/plano-de-testes.md). A organização técnica está em [arquitetura](../technical/arquitetura.md).
+O Figma registra a direção visual, enquanto os componentes e estilos atuais definem o comportamento implementado. A seção Projetos está em `src/components/ProjectsSection.tsx` e `src/projects.css`, sem dependência do carrossel geral.
 
-## Ajustes recentes da landing (v0.15)
-
-- A abertura e Projetos mantêm uma transição editorial discreta.
-- A faixa preta de tecnologias foi posicionada com espaçamento visual equilibrado entre Áreas e Fragmentos.
-- A linha do tempo foi integrada ao Sobre mim, abaixo do nome, em uma só linha horizontal de 12 marcos. A seção de Trajetória independente foi eliminada.
-- A foto de destaque isolada abaixo do nome foi removida. A galeria de oito fotos em 4:3 fica em uma seção própria, sem legendas ou botões sobre as imagens.
-- A abertura exibe **Ver projetos** e **Currículo**. O download do PDF continua pendente de inclusão.
-
-## Revisão 0.18
-
-- Os 12 marcos da Trajetória usam períodos, nomes de cargos e instituições revisados pelo autor, incluindo atividades atuais, sem numerção.
-- As tags de Áreas estão um pouco maiores e o hover amplia discretamente o card; em movimento reduzido, esse efeito fica desativado.
-- A galeria independente permanece sem legendas e sem frase de encerramento.
-
-- O fundo da seção Áreas acompanha o branco da landing, e as tags Game Design e Imersão aparecem na mesma linha no card Jogos Sérios.
-
-## Composição do Sobre mim (v0.20)
-
-No desktop, a coluna esquerda apresenta nome, linha do tempo horizontal e texto. A coluna direita apresenta o título “Fora da tela, também tem história.” e uma fotografia por vez, em 4:3. A galeria usa controles discretos abaixo da foto, suporta arrastar e toque e permite ampliação em modal. Não há legendas visuais. Em telas menores, a galeria fica após o texto.
+Para verificações funcionais, consultar o [plano de testes](../qa/plano-de-testes.md). Para dependências e rotas, consultar a [arquitetura técnica](../technical/arquitetura.md).

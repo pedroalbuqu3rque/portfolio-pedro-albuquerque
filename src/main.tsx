@@ -5,6 +5,8 @@ import './styles.css';
 import './editorial.css';
 import './landing-refinement.css';
 import './gallery-timeline-polish.css';
+import './finishing-touches.css';
+import './projects.css';
 
 createRoot(document.getElementById('root')!).render(
   <React.StrictMode>

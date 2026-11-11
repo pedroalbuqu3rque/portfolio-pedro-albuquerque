@@ -6,10 +6,14 @@ O portfólio utiliza React 19, TypeScript, Vite 6 e CSS. É uma aplicação est�
 
 ## Organização do código
 
-- `src/App.tsx`: landing, cabeçalho, carrosséis, modal de contato, navegação e dados dos cards.
+- `src/App.tsx`: landing, cabeçalho, carrosséis de Fragmentos, trajetória e galeria, modais e dados das seções.
 - `src/pages/EduCompPage.tsx`: estudo de caso EduComp.
 - `src/pages/FragmentosPage.tsx`: página do ensaio.
-- `src/components/`: componentes reutilizáveis.
+- `src/components/ProjectsSection.tsx`: cards verticais de projetos, separados dos carrosséis.
+- `src/components/`: ilustração editorial e componentes da landing.
+- `src/projects.css`: composição e responsividade exclusivas da seção Projetos.
+- `src/finishing-touches.css`: acabamento editorial de Fragmentos e Sobre mim.
+- `src/navigation.ts`: preserva clique modificado e abertura em nova aba nos links internos.
 - `src/styles.css`: estilos principais.
 - `src/internal-pages.css`: estilos das páginas internas.
 - `src/editorial.css`: ajustes de tipografia, composição e responsividade.
@@ -46,12 +50,12 @@ Na ausência do arquivo, o botão informa que o download não está disponível.
 
 O arquivo `site-meta.json` define título, descrição e indexação por rota. O script `scripts/generate-seo.mjs` gera os metadados do build e o sitemap quando a URL pública está configurada.
 
-Após definir o domínio, configure `VITE_SITE_URL` em `.env.production`, sem barra final. O ensaio de exemplo está marcado com `noindex,follow` até receber seu conteúdo definitivo.
+Após definir o domínio, configure `VITE_SITE_URL` em `.env.production`, sem barra final. As três rotas atuais estão configuradas para indexação. Antes de publicar, conferir se cada texto e metadado está pronto para divulgação.
 
 ## Comandos
 
 ```bash
-npm install
+npm ci
 npm run dev
 npm run check:content
 npm run typecheck
