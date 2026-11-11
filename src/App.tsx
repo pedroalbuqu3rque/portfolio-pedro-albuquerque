@@ -419,18 +419,33 @@ function HomePage({ onNavigate, openPlaceholder, openContact }: { onNavigate: (p
         <article className="reading-card upcoming-reading"><span className="new-article-plus">+</span><span className="reading-info"><span className="eyebrow blue-text">EM PREPARAÇÃO</span><strong>Novas leituras<br/>em breve.</strong><span className="reading-desc">Espaço reservado para mais notas e ensaios.</span></span></article>
       </Carousel>
     </div></section>
-    <section className="about" id="sobre" aria-labelledby="about-title"><div className="content-width"><div className="about-inner"><div className="about-heading"><SectionLabel>SOBRE MIM</SectionLabel><h2 id="about-title" className="section-title">Olá! Eu sou o<br/><span className="blue-text">Pedro Albuquerque.</span></h2><span className="about-underline" aria-hidden="true"/><div className="about-trajectory" id="trajetoria" role="group" aria-label="Trajetória profissional e acadêmica"><Carousel className="timeline-carousel timeline-points about-timeline" label="Trajetória profissional e acadêmica" step={295} controlsPosition="bottom">
-          {TIMELINE_POINTS.map(point => <article className="timeline-point" key={`${point.date}-${point.title}`}>
-            <time className="timeline-point-date">{point.date}</time>
-            <span className="timeline-point-dot" aria-hidden="true"/>
-            <div className="timeline-point-body"><h3>{point.title}</h3><p>{point.detail}</p></div>
-          </article>)}
-        </Carousel></div></div><div className="about-text">
-          <p>Minha trajetória passa pela sala de aula, pela pesquisa e por projetos diferentes entre si, de materiais didáticos e jogos educacionais a interfaces e testes de software.</p>
-          <p>Já trabalhei com <strong>educação inclusiva</strong>, <strong>ensino de inteligência artificial</strong> e <strong>pesquisa em jogos digitais</strong>. Hoje, também exploro <strong>UX/UI</strong>, <strong>qualidade de software</strong> e <strong>desenvolvimento</strong>. Gosto de entender como as coisas funcionam, experimentar possibilidades e descobrir como podem ser melhores para quem as usa.</p>
-          <p>Tenho interesses que nem sempre cabem na mesma área e gosto disso. Sou curioso, atento aos detalhes e <strong>acredito que boa parte do aprendizado acontece quando a gente coloca a mão na massa.</strong> Por aqui, compartilho um pouco do que faço, estudo e invento pelo caminho.</p>
-        </div></div></div></section>
-    <section className="gallery-section" aria-labelledby="memory-gallery-title"><div className="content-width"><PhotoGallery/></div></section>
+    <section className="about about-editorial" id="sobre" aria-labelledby="about-title">
+      <div className="content-width">
+        <div className="about-inner">
+          <div className="about-left">
+            <div className="about-heading">
+              <SectionLabel>SOBRE MIM</SectionLabel>
+              <h2 id="about-title" className="section-title">Olá! Eu sou o<br/><span className="blue-text">Pedro Albuquerque.</span></h2>
+              <span className="about-underline" aria-hidden="true"/>
+            </div>
+            <div className="about-trajectory" id="trajetoria" role="group" aria-label="Trajetória profissional e acadêmica">
+              <Carousel className="timeline-carousel timeline-points about-timeline" label="Trajetória profissional e acadêmica" step={295} controlsPosition="bottom">
+                {TIMELINE_POINTS.map(point => <article className="timeline-point" key={`${point.date}-${point.title}`}>
+                  <time className="timeline-point-date">{point.date}</time>
+                  <span className="timeline-point-dot" aria-hidden="true"/>
+                  <div className="timeline-point-body"><h3>{point.title}</h3><p>{point.detail}</p></div>
+                </article>)}
+              </Carousel>
+            </div>
+            <div className="about-text">
+              <p>Minha trajetória passa pela sala de aula, pela pesquisa e por projetos que vão de materiais didáticos e jogos educacionais a interfaces e testes de software. Já trabalhei com <strong>educação inclusiva</strong>, <strong>ensino de inteligência artificial</strong> e <strong>pesquisa em jogos digitais</strong>. Hoje, também exploro UX/UI, qualidade de software e desenvolvimento.</p>
+              <p>Sou curioso, atento aos detalhes e gosto de entender como as coisas funcionam e podem ser melhores para quem as usa. Acredito que boa parte do aprendizado acontece quando a gente coloca a mão na massa. Por aqui, compartilho um pouco do que faço, estudo e invento pelo caminho.</p>
+            </div>
+          </div>
+          <div className="about-gallery"><PhotoGallery/></div>
+        </div>
+      </div>
+    </section>
     <section className="contact-section" id="contato" aria-labelledby="contact-title">
       <div className="content-width contact-inner">
         <div className="contact-copy">

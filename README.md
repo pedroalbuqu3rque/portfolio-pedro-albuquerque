@@ -101,11 +101,11 @@ Os ícones de tecnologias, áreas e contato ficam em `public/assets/visuais/`, t
 
 **Refinamento:** os ícones das áreas estão maiores e as tags e o traço azul ficam próximos das descrições. A navegação foi reduzida e a palavra “aqui.” usa o azul principal. A galeria editorial reúne fotografias pessoais em preto e branco.
 
-**Galeria fotográfica:** as oito imagens autorais foram integradas a uma seção própria, em proporção 4:3, com bordas arredondadas e visualização ampliada ao clicar. As legendas visuais foram retiradas, preservando os textos alternativos para acessibilidade. A correspondência entre os originais e os arquivos otimizados está documentada em [`public/assets/galeria/README.md`](public/assets/galeria/README.md).
+**Galeria fotográfica:** as oito imagens autorais foram integradas ao Sobre mim, em proporção 4:3, com bordas arredondadas e visualização ampliada ao clicar. As legendas visuais foram retiradas, preservando os textos alternativos para acessibilidade. A correspondência entre os originais e os arquivos otimizados está documentada em [`public/assets/galeria/README.md`](public/assets/galeria/README.md).
 
 **Composição da landing:** o botão de currículo aparece como **Currículo**. A abertura e Projetos são separados por um traço discreto, sem vão artificial. A faixa preta de tecnologias tem respiro equivalente em relação às seções de Áreas e Fragmentos. Os cards mantêm tags e filetes azuis alinhados.
 
-**Sobre mim e Trajetória:** o texto pessoal e a linha do tempo dividem a mesma composição de duas colunas no desktop. Os 12 marcos aparecem abaixo do nome, em uma linha horizontal com controles e rolagem por toque ou teclado. Não há mais uma seção isolada de Trajetória ou fotografia avulsa abaixo do título. A galeria de oito fotos em preto e branco aparece em uma seção independente logo depois, em 4:3 e com cantos arredondados.
+**Sobre mim e Trajetória:** o texto pessoal e a linha do tempo dividem a mesma composição de duas colunas no desktop. Os 12 marcos aparecem abaixo do nome, em uma linha horizontal com controles e rolagem por toque ou teclado. Não há mais uma seção isolada de Trajetória ou fotografia avulsa abaixo do título. A galeria de oito fotos em preto e branco ocupa a coluna direita do Sobre mim, com uma fotografia por vez, em 4:3 e com cantos arredondados.
 
 **Ajustes da versão 0.16 (histórico):** a abertura tinha apenas o botão de currículo, que fica azul ao passar o mouse. O botão de currículo no contato traz uma seta para baixo. A linha do tempo preserva os marcos e a navegação horizontal, sem título visível ou numeração. A apresentação pessoal destaca em negrito as áreas selecionadas, e a galeria passa a ser uma seção independente, sem legendas nas fotos ou na visualização ampliada.
 
@@ -114,3 +114,7 @@ Os ícones de tecnologias, áreas e contato ficam em `public/assets/visuais/`, t
 **Versão 0.18:** o botão azul **Ver projetos** voltou para a abertura ao lado de **Currículo**. Os 12 pontos da linha do tempo usam os períodos, cargos e instituições fornecidos pelo autor. As tags dos cards de Áreas foram levemente ampliadas; em dispositivos com mouse, os cards ganham relevo e escala discreta ao passar o cursor, sem mudar sua função informativa. A galeria permanece sem legendas individuais.
 
 **Versão 0.19:** o fundo de Áreas foi igualado ao branco da landing (`#FFFFFF`), a largura das tags de Jogos Sérios foi liberada para manter Game Design e Imersão na mesma linha, o Estágio em Geoprocessamento foi corrigido para jan/2024 a jun/2024, e a frase de encerramento abaixo da galeria foi removida.
+
+**Versão 0.20:** a seção Sobre mim reúne em uma única composição editorial o nome, a trajetória horizontal e o texto pessoal na coluna esquerda; a galeria ocupa a coluna direita, com uma foto 4:3 por vez, navegação lateral e ampliação em modal. Em tablet e celular, o conteúdo é empilhado sem perder a ordem de leitura.
+
+**Versão 0.21:** apresentação pessoal resumida em dois parágrafos, com destaque apenas para as três experiências indicadas. A trajetória mostra dois marcos completos por vez no desktop e usa uma altura mais compacta para aproximar o texto. O título da galeria passa a ocupar uma linha no desktop. Divisórias finas com um pequeno detalhe azul separam os blocos principais da landing, respeitando o padrão estabelecido na abertura.

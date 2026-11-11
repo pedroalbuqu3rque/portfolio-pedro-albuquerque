@@ -38,7 +38,7 @@ O menu visível utiliza **Início, Projetos, Áreas, Fragmentos e Sobre mim**. T
 
 As páginas internas reutilizam o cabeçalho. Seus links retornam à landing e posicionam a pessoa na seção correspondente.
 
-Os carrosséis de projetos e publicações revelam conteúdo adicional na horizontal. A trajetória usa uma única linha horizontal, com um ponto por experiência, sem agrupamento em anos. A galeria pessoal integra o Sobre mim, percorre oito fotografias em formato 4:3 e permite ampliá-las. No desktop, há controles discretos; em telas sensíveis ao toque, é possível deslizar. Os controles não devem depender exclusivamente do mouse.
+Os carrosséis de projetos e publicações revelam conteúdo adicional na horizontal. A trajetória usa uma única linha horizontal, com um ponto por experiência, sem agrupamento em anos. A galeria pessoal integra a coluna direita do Sobre mim no desktop, exibe uma das oito fotografias em formato 4:3 por vez e permite ampliá-las. No desktop, há controles discretos; em telas sensíveis ao toque, é possível deslizar. Os controles não devem depender exclusivamente do mouse.
 
 A estrutura não exige autenticação, busca interna nem filtros na primeira versão.
 

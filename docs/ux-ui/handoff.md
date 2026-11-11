@@ -18,7 +18,7 @@ A landing contém apresentação, projetos, áreas, tecnologias, Fragmentos, tra
 
 O EduComp apresenta o contexto do projeto, quatro espaços reservados para capturas, três fluxos e decisões de UX. A página de Fragmentos tem estrutura editorial para leitura, índice e outras publicações.
 
-O modal de contato reúne e-mail, LinkedIn e GitHub. O rodapé usa **“Feito aqui. Por mim”**. A linha do tempo tem rolagem horizontal sem grupos por ano; a seção Sobre mim apresenta um texto pessoal e a linha do tempo. A galeria independente reúne oito fotografias reais em preto e branco, em proporção 4:3, com ampliação e cantos arredondados.
+O modal de contato reúne e-mail, LinkedIn e GitHub. O rodapé usa **“Feito aqui. Por mim”**. A linha do tempo tem rolagem horizontal sem grupos por ano; a seção Sobre mim apresenta um texto pessoal e a linha do tempo. A galeria integra a coluna direita do Sobre mim e reúne oito fotografias reais em preto e branco, em proporção 4:3, com ampliação e cantos arredondados.
 
 ## Materiais pendentes
 
@@ -54,3 +54,7 @@ Antes de publicar, executar os passos do [plano de testes](../qa/plano-de-testes
 - A galeria independente permanece sem legendas e sem frase de encerramento.
 
 - O fundo da seção Áreas acompanha o branco da landing, e as tags Game Design e Imersão aparecem na mesma linha no card Jogos Sérios.
+
+## Composição do Sobre mim (v0.20)
+
+No desktop, a coluna esquerda apresenta nome, linha do tempo horizontal e texto. A coluna direita apresenta o título “Fora da tela, também tem história.” e uma fotografia por vez, em 4:3. A galeria usa controles discretos abaixo da foto, suporta arrastar e toque e permite ampliação em modal. Não há legendas visuais. Em telas menores, a galeria fica após o texto.
