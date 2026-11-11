@@ -1,0 +1,14 @@
+{
+  "name": "Pedro Albuquerque | Portf\u00f3lio",
+  "short_name": "Pedro A.",
+  "description": "Projetos, estudos e experimentos em educa\u00e7\u00e3o, tecnologia e design.",
+  "lang": "pt-BR",
+  "start_url": "/",
+  "display": "browser",
+  "theme_color": "#0e0e0e",
+  "background_color": "#ffffff",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

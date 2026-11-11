@@ -1,0 +1,617 @@
+/* v0.12 — final refinements to the compact navigation, area cards,
+   horizontal timeline and a photo-first personal gallery. */
+
+/* Slimmer navigation: smaller vertical footprint, same structure. */
+.site-header { height: 78px; }
+.header-inner { max-width: 1440px; }
+.monogram { font-size: 32px; }
+.monogram span { font-size: 40px; }
+.nav-menu { gap: 27px; }
+.nav-menu a { font-size: 15px; }
+.nav-menu a::after, .nav-menu .nav-active::after { bottom: 14px; }
+html { scroll-padding-top: 82px; }
+
+/* One blue throughout the portfolio. */
+.contact-highlight { color: var(--blue); }
+
+/* Keep description > tags > signature in one compact cluster. */
+.area-card .area-tags {
+  margin-top: 12px;
+  padding: 0;
+  padding-bottom: 0;
+  align-content: flex-start;
+}
+.area-card .area-accent {
+  margin-top: 13px;
+  margin-bottom: 0;
+  flex: 0 0 4px;
+  align-self: flex-start;
+}
+.area-card { padding-bottom: 20px; }
+
+/* Horizontal trajectory: one continuous line and one marker per milestone. */
+.trajectory { background: #f8f9fa; height: auto; }
+.trajectory .section-content { padding: 69px 0 119px; height: auto; }
+.trajectory .section-label { margin: 0 0 28px; }
+.timeline-points {
+  position: relative;
+  top: auto;
+  margin: 0;
+  height: auto;
+  min-height: 213px;
+}
+.timeline-points .carousel-viewport { height: auto; padding: 0 0 6px; }
+.timeline-points .carousel-track {
+  position: relative;
+  height: auto;
+  min-height: 209px;
+  gap: 0;
+  align-items: stretch;
+}
+.timeline-points .carousel-track::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 79px;
+  height: 1px;
+  background: #bfc7d2;
+}
+.timeline-point {
+  position: relative;
+  flex: 0 0 284px;
+  width: 284px;
+  min-height: 207px;
+  padding: 0 25px 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.timeline-point-index {
+  position: absolute;
+  top: 4px;
+  right: 29px;
+  font-size: 10px;
+  color: #9299a4;
+  letter-spacing: .06em;
+  font-weight: 700;
+}
+.timeline-point-date {
+  display: block;
+  padding-top: 18px;
+  color: var(--blue);
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 800;
+  letter-spacing: .02em;
+}
+.timeline-point-dot {
+  position: absolute;
+  top: 73px;
+  left: 0;
+  width: 13px;
+  height: 13px;
+  border: 3px solid var(--blue);
+  border-radius: 50%;
+  background: #f8f9fa;
+  z-index: 1;
+}
+.timeline-point-body { margin-top: 61px; padding-right: 7px; }
+.timeline-point-body h3 {
+  color: #111;
+  font-size: 17px;
+  line-height: 1.18;
+  font-weight: 800;
+  letter-spacing: -.027em;
+  max-width: 22ch;
+}
+.timeline-point-body p {
+  margin-top: 8px;
+  color: #626c79;
+  font-size: 13px;
+  line-height: 1.44;
+  max-width: 26ch;
+}
+.timeline-points .carousel-controls-bottom,
+.timeline-points .carousel-controls {
+  top: auto;
+  bottom: -58px;
+  right: 0;
+}
+.timeline-points .carousel-progress { background: #d6dce4; }
+.timeline-points .carousel-progress span { background: var(--blue); }
+
+/* Sobre mim: apresentação e galeria fazem parte da mesma seção editorial. */
+.about { background: #fff; height: auto; }
+.about-inner { padding-top: 86px; padding-bottom: 43px; }
+.memory-gallery { padding-bottom: 105px; }
+.memory-gallery-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 300px);
+  align-items: end;
+  gap: 34px;
+  padding-top: 0;
+}
+.memory-gallery-intro h3 {
+  font-size: clamp(26px, 3vw, 41px);
+  font-weight: 850;
+  line-height: 1.13;
+  letter-spacing: -.045em;
+}
+.memory-gallery-intro p {
+  font-size: 14px;
+  line-height: 1.55;
+  color: #5e6877;
+  padding-bottom: 2px;
+  max-width: 38ch;
+}
+.memory-carousel { position: relative; margin-top: 25px; height: auto; }
+.memory-carousel .carousel-viewport { height: auto; padding: 0 0 9px; }
+.memory-carousel .carousel-track { gap: 16px; height: auto; }
+.memory-item { width: 344px; display: flex; flex-direction: column; flex: 0 0 344px; margin: 0; }
+.memory-photo {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  height: auto;
+  overflow: hidden;
+  border: none;
+  border-radius: 12px;
+  background: #171717;
+  color: #fff;
+  padding: 0;
+  text-align: left;
+  cursor: zoom-in;
+}
+.memory-photo > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+  object-fit: cover;
+  filter: grayscale(1);
+  transition: transform .35s ease;
+}
+.memory-expand {
+  position: absolute;
+  bottom: 12px;
+  right: 13px;
+  display: grid;
+  place-items: center;
+  width: 33px;
+  height: 33px;
+  border-radius: 50%;
+  z-index: 1;
+  font-size: 19px;
+  color: #fff;
+  background: rgb(0 0 0 / .60);
+  border: 1px solid rgb(255 255 255 / .35);
+}
+@media (hover: hover) and (pointer: fine) {
+  .memory-photo:hover > img { transform: scale(1.035); }
+}
+.memory-photo:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+.memory-caption {
+  padding: 13px 2px 4px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+.memory-caption span { color: #5b6570; font-size: 10px; letter-spacing: .07em; font-weight: 800; }
+.memory-caption strong { color: #111; font-size: 14px; font-weight: 800; letter-spacing: -.02em; text-align: right; }
+.memory-carousel .carousel-controls-bottom { bottom: -64px; }
+
+/* Ampliação das oito fotos, com navegação por teclado e botões. */
+.memory-lightbox {
+  border: 0;
+  background: #111;
+  color: white;
+  width: min(880px, calc(100vw - 34px));
+  max-height: calc(100dvh - 36px);
+  padding: 0;
+  border-radius: 12px;
+  overflow: auto;
+}
+.memory-lightbox::backdrop { background: rgb(6 6 6 / .85); backdrop-filter: blur(8px); }
+.memory-lightbox-inner { padding: 16px; }
+.memory-lightbox-bar, .memory-lightbox-bottom { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.memory-lightbox-bar { padding: 0 0 16px; font-size: 12px; letter-spacing: .07em; font-weight: 750; }
+.memory-lightbox button { background: transparent; border: 0; color: #fff; display: grid; place-items: center; padding: 8px; }
+.memory-lightbox-inner > img { display: block; width: 100%; max-height: calc(100dvh - 171px); object-fit: contain; filter: grayscale(1); }
+.memory-lightbox-bottom { min-height: 48px; font-size: 15px; font-weight: 700; }
+
+@media (min-width: 701px) and (max-width: 1100px) {
+  .site-header { height: 76px; }
+  .nav-menu { gap: 17px; }
+  .nav-menu a { font-size: 13px; }
+  .memory-gallery-intro h3 { font-size: 32px; }
+  .memory-item { flex-basis: 320px; width: 320px; }
+}
+@media (max-width: 700px) {
+  .site-header { height: 70px; }
+  .nav-menu { top: 70px; }
+  .header-inner { padding: 0 20px; }
+  .monogram { font-size: 29px; }
+  .monogram span { font-size: 37px; }
+  html { scroll-padding-top: 74px; }
+  .area-card .area-tags { margin-top: 12px; padding-bottom: 0; }
+  .area-card .area-accent { margin-top: 13px; }
+  .trajectory .section-content { padding: 56px 0 107px; }
+  .trajectory .section-label { margin-bottom: 23px; }
+  .timeline-point { flex-basis: 241px; width: 241px; min-height: 203px; padding-right: 20px; }
+  .timeline-point-body h3 { font-size: 16px; }
+  .timeline-point-body p { font-size: 12px; }
+  .timeline-points .carousel-controls-bottom { bottom: -57px; }
+  .about-inner { padding-bottom: 36px; }
+  .memory-gallery { padding-bottom: 105px; }
+  .memory-gallery-intro { grid-template-columns: 1fr; gap: 10px; padding-top: 0; }
+  .memory-gallery-intro h3 { font-size: clamp(27px, 8vw, 33px); }
+  .memory-gallery-intro p { font-size: 13px; }
+  .memory-carousel { margin-top: 22px; }
+  .memory-item { flex-basis: min(75vw, 305px); width: min(75vw, 305px); }
+  .memory-photo { aspect-ratio: 4 / 3; height: auto; }
+  .memory-caption { flex-direction: column; align-items: flex-start; gap: 5px; }
+  .memory-caption strong { text-align: left; }
+
+}
+@media (prefers-reduced-motion: reduce) {
+  .memory-photo > img { transition: none; }
+}
+
+/* v0.14 | Refinamento de proporções e ritmo visual da landing. */
+
+/* Hero com uma transição intencional, sem uma área vazia artificial. */
+.hero { border-bottom: 1px solid #e1e5eb; }
+.hero-body::after {
+  content: ''; position: absolute; bottom: -1px; left: 0; z-index: 1;
+  width: 58px; height: 3px; background: var(--blue);
+}
+@media (min-width: 1101px) {
+  .hero { height: 650px; }
+  .hero-copy { top: 64px; }
+  .hero-collage { top: 67px; }
+  .social-links { bottom: 22px; }
+  .projects { height: 840px; }
+  .projects .section-label { top: 43px; }
+  .projects .section-title { top: 77px; }
+  .projects-carousel { top: 207px; }
+}
+@media (min-width: 701px) and (max-width: 1100px) {
+  .hero-body { min-height: 620px; }
+  .projects .section-content { padding-top: 61px; }
+}
+@media (max-width: 700px) {
+  .hero-body::after { left: 0; width: 44px; }
+  .hero-body { padding-bottom: 62px; }
+  .projects .section-content { padding-top: 55px; }
+}
+
+/* Áreas: mesma linha de base para tags e traços, com o mínimo espaço livre. */
+.areas .section-content { padding-bottom: 56px; }
+@media (min-width: 601px) {
+  .area-card {
+    height: auto; min-height: 0; display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: 91px 57px minmax(96px, 1fr) 53px 4px;
+    padding: 20px 16px 19px;
+    align-items: start;
+  }
+  .area-card .area-mark { width: 85px; height: 85px; margin: -4px 0 0 -6px; }
+  .area-card h3 { margin: 0; min-height: 0; font-size: 21px; line-height: 26px; }
+  .area-card p, .area-card:first-child p {
+    margin: 0; font-size: 13px; line-height: 19px;
+  }
+  .area-card .area-tags {
+    height: 53px; min-height: 53px; margin: 0; padding: 0 0 12px;
+    display: flex; flex-wrap: wrap; gap: 4px;
+    align-content: flex-end; align-self: stretch;
+  }
+  .area-card .area-tags span { font-size: 8.5px; line-height: 1.15; padding: 4px 5px; }
+  .area-card .area-accent { margin: 0; align-self: end; width: 52px; height: 4px; }
+}
+@media (min-width: 601px) and (max-width: 1100px) {
+  .area-card { grid-template-rows: 88px 58px minmax(103px, 1fr) 53px 4px; }
+}
+@media (max-width: 600px) {
+  .areas .section-content { padding-bottom: 48px; }
+  .area-card .area-tags { margin-top: 13px; padding: 0; }
+  .area-card .area-accent { margin-top: 13px; }
+}
+
+/* A faixa de tecnologias encosta diretamente na seção cinza de áreas.
+   O espaço intencional permanece depois da faixa preta. */
+.areas + .stack-section { margin-top: 0; }
+
+/* Galeria fotografica integrada ao Sobre mim, sem botoes sobrepostos. */
+.memory-gallery-intro { display: block; }
+.memory-gallery-intro h3 { max-width: none; }
+.memory-photo { border-radius: 12px; }
+.memory-photo > img { filter: grayscale(1); }
+.memory-item { padding-bottom: 0; }
+.memory-carousel { margin-top: 24px; }
+@media (max-width: 700px) {
+  .memory-gallery-intro h3 { max-width: 100%; }
+}
+/* Tags curtas passam a ocupar duas linhas como as demais. */
+@media (min-width: 601px) {
+  .area-card:nth-child(2) .area-tags { max-width: 140px; }
+}
+
+
+/* v0.15 | Trajetoria integrada ao Sobre mim e respiro simetrico da faixa de tecnologias. */
+/* Aproxima a faixa de tecnologias do centro visual entre as duas secoes. */
+@media (min-width: 1101px) {
+  .areas { height: 784px; }
+  .section-spacer.spacer-large { height: 65px; }
+}
+@media (min-width: 701px) and (max-width: 1100px) {
+  .areas .section-content { padding-bottom: 95px; }
+  .section-spacer.spacer-large { height: 27px; }
+  .fragments .section-content { padding-top: 68px; }
+}
+@media (max-width: 700px) {
+  .areas .section-content { padding-bottom: 81px; }
+  .section-spacer.spacer-large { height: 29px; }
+  .fragments .section-content { padding-top: 55px; }
+}
+
+/* Um so bloco: apresentacao, linha do tempo e galeria fotografica. */
+.about-inner {
+  height: auto;
+  grid-template-columns: minmax(0, 1.04fr) minmax(0, 1fr);
+  gap: clamp(34px, 4.8vw, 64px);
+  align-items: start;
+  padding-top: 79px;
+  padding-bottom: 66px;
+}
+.about-heading { min-width: 0; padding: 0; }
+.about-heading .section-title {
+  font-size: clamp(45px, 4.2vw, 58px);
+  line-height: 1.14;
+  margin-top: 31px;
+}
+.about-underline { margin-top: 25px; width: 94px; height: 4px; }
+.about-text {
+  min-width: 0;
+  margin-top: 36px;
+  min-height: 0;
+  border-left: 1px solid #d9dfe7;
+  padding: 0 0 0 clamp(24px, 3.1vw, 42px);
+  font-size: clamp(16px, 1.22vw, 18px);
+  line-height: 1.6;
+}
+.about-text p + p { margin-top: 19px; }
+.about-trajectory {
+  min-width: 0;
+  width: 100%;
+  margin-top: 30px;
+  padding-bottom: 0;
+}
+.about-trajectory > h3 {
+  font-size: 12px;
+  line-height: 20px;
+  font-weight: 800;
+  letter-spacing: .055em;
+  color: #1a1a1a;
+}
+.about-trajectory .about-timeline {
+  position: relative;
+  inset: auto;
+  width: 100%;
+  height: auto;
+  min-height: 167px;
+  margin: 20px 0 0;
+}
+.about-trajectory .about-timeline .carousel-viewport {
+  height: 165px;
+  padding-bottom: 7px;
+  scroll-snap-type: x proximity;
+}
+.about-trajectory .about-timeline .carousel-track {
+  height: 158px;
+  min-height: 158px;
+  gap: 0;
+}
+.about-trajectory .about-timeline .carousel-track::before {
+  top: 50px;
+  background: #cbd2db;
+}
+.about-trajectory .timeline-point {
+  width: 218px;
+  flex: 0 0 218px;
+  min-height: 155px;
+  padding-right: 18px;
+}
+.about-trajectory .timeline-point-index { top: 0; right: 23px; font-size: 10px; }
+.about-trajectory .timeline-point-date {
+  padding-top: 1px;
+  font-size: 12px;
+  line-height: 20px;
+}
+.about-trajectory .timeline-point-dot {
+  top: 45px;
+  width: 11px;
+  height: 11px;
+  background: white;
+  border-width: 3px;
+}
+.about-trajectory .timeline-point-body { margin-top: 44px; padding-right: 5px; }
+.about-trajectory .timeline-point-body h3 { font-size: 15px; line-height: 1.23; }
+.about-trajectory .timeline-point-body p {
+  margin-top: 7px;
+  max-width: 25ch;
+  font-size: 12px;
+  line-height: 1.45;
+}
+.about-trajectory .about-timeline .carousel-controls {
+  top: -55px;
+  bottom: auto;
+  right: 0;
+  gap: 5px;
+}
+.about-trajectory .about-timeline .carousel-arrow {
+  min-width: 36px;
+  min-height: 36px;
+  width: 36px;
+  height: 36px;
+  border-radius: 7px;
+}
+.about-trajectory .about-timeline .carousel-progress {
+  flex-basis: 37px;
+  width: 37px;
+}
+
+@media (min-width: 701px) and (max-width: 1100px) {
+  .about-inner { gap: 28px; padding-top: 75px; }
+  .about-heading .section-title { font-size: clamp(36px, 4.25vw, 47px); line-height: 1.16; }
+  .about-text { margin-top: 33px; padding-left: 24px; font-size: 16px; }
+  .about-trajectory .timeline-point { flex-basis: 190px; width: 190px; }
+  .about-trajectory .timeline-point-body h3 { font-size: 14px; }
+  .about-trajectory .timeline-point-body p { font-size: 11px; }
+}
+@media (max-width: 700px) {
+  .about-inner {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+    padding-top: 64px;
+    padding-bottom: 44px;
+  }
+  .about-heading .section-title { font-size: clamp(37px, 9.4vw, 48px); line-height: 1.16; margin-top: 25px; }
+  .about-underline { margin-top: 24px; }
+  .about-trajectory { margin-top: 29px; }
+  .about-trajectory .about-timeline { margin-top: 19px; }
+  .about-trajectory .timeline-point { flex-basis: 202px; width: 202px; }
+  .about-text {
+    margin: 0;
+    border-left: 0;
+    border-top: 1px solid #d9dfe7;
+    padding: 25px 0 0;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+}
+
+/* v0.16 — botoes, percurso sem numeracao e galeria independente. */
+.hero-actions .hero-cv-button {
+  width: 184px;
+  flex: 0 0 auto;
+}
+.hero-actions .hero-cv-button:is(:hover, :focus-visible) {
+  background: var(--blue);
+  color: #fff;
+  border-color: var(--blue);
+}
+/* A linha do tempo conserva datas e marcos, mas dispensa titulo e numeros. */
+.about-trajectory .about-timeline { margin-top: 38px; }
+.about-trajectory .about-timeline .carousel-controls { top: -42px; }
+.about-text strong { color: inherit; font-weight: 800; }
+
+/* Fotografias com uma secao propria, separada semanticamente do Sobre mim. */
+.about-inner { padding-bottom: 28px; }
+.gallery-section {
+  background: #fff;
+  border-top: 1px solid #edf0f3;
+  padding-top: 66px;
+}
+.gallery-section .memory-gallery { padding-bottom: 108px; }
+.gallery-section .memory-lightbox-bottom { justify-content: space-between; }
+@media (max-width: 700px) {
+  .hero-actions .hero-cv-button { width: 184px; flex: 0 0 auto; }
+  .about-inner { padding-bottom: 32px; }
+  .about-trajectory .about-timeline { margin-top: 38px; }
+  .gallery-section { padding-top: 47px; }
+  .gallery-section .memory-gallery { padding-bottom: 93px; }
+}
+
+
+/* v0.17 | A primeira dobra apresenta apenas a abertura no desktop.
+   O calculo leva em conta a barra de navegacao fixa no fluxo (78px desktop,
+   76px tablet, 70px mobile). O conteudo permanece centralizado na area visivel. */
+@media (min-width: 1101px) {
+  .hero {
+    height: max(690px, calc(100vh - 78px));
+    height: max(690px, calc(100svh - 78px));
+  }
+  .hero-copy, .hero-collage {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+@media (min-width: 701px) and (max-width: 1100px) {
+  .hero-body {
+    min-height: max(620px, calc(100vh - 76px));
+    min-height: max(620px, calc(100svh - 76px));
+  }
+}
+@media (max-width: 700px) {
+  .hero-body {
+    min-height: calc(100vh - 70px);
+    min-height: calc(100svh - 70px);
+  }
+}
+
+
+/* v0.18 | Hero, percurso validado pelo autor, tags e galeria. */
+/* Restore the two primary actions without affecting the full-screen hero. */
+.hero-actions .hero-projects-button {
+  width: 212px;
+  flex: 0 0 auto;
+}
+@media (max-width: 700px) {
+  .hero-actions .hero-projects-button { width: auto; flex: 1 1 145px; }
+  .hero-actions .hero-cv-button { width: auto; flex: 1 1 135px; }
+}
+
+/* Slightly larger labels while retaining the shared tag and accent baseline. */
+@media (min-width: 1101px) {
+  .area-card { grid-template-rows: 91px 57px minmax(96px, 1fr) 61px 4px; }
+  .area-card .area-tags { height: 61px; min-height: 61px; padding-bottom: 12px; }
+  .area-card .area-tags span { font-size: 9.5px; padding: 4px 5px; }
+}
+@media (min-width: 601px) and (max-width: 1100px) {
+  .area-card { grid-template-rows: 88px 58px minmax(103px, 1fr) 65px 4px; }
+  .area-card .area-tags { height: 65px; min-height: 65px; padding-bottom: 12px; }
+  .area-card .area-tags span { font-size: 9px; padding: 4px 5px; }
+}
+@media (max-width: 600px) {
+  .area-card .area-tags span { font-size: 10.5px; padding: 4px 6px; }
+}
+@media (hover: hover) and (pointer: fine) {
+  .area-card:hover {
+    position: relative;
+    z-index: 2;
+    transform: translateY(-5px) scale(1.025);
+    border-color: #95b1ff;
+    box-shadow: 0 19px 36px rgb(12 27 59 / .15);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .area-card { transition: none !important; }
+  .area-card:hover { transform: none; box-shadow: none; }
+}
+
+/* Allow longer role names and institution names to remain fully visible. */
+.about-trajectory .about-timeline { min-height: 215px; }
+.about-trajectory .about-timeline .carousel-viewport { height: 207px; }
+.about-trajectory .about-timeline .carousel-track { height: 201px; min-height: 201px; }
+.about-trajectory .timeline-point { min-height: 198px; }
+.about-trajectory .timeline-point-date { font-size: 10.5px; letter-spacing: .012em; white-space: nowrap; }
+.about-trajectory .timeline-point-body { margin-top: 43px; }
+.about-trajectory .timeline-point-body h3 { line-height: 1.3; }
+.about-trajectory .timeline-point-body p { max-width: 28ch; }
+@media (min-width: 701px) and (max-width: 1100px) {
+  .about-trajectory .timeline-point { flex-basis: 219px; width: 219px; }
+}
+@media (max-width: 700px) {
+  .about-trajectory .about-timeline { min-height: 224px; }
+  .about-trajectory .about-timeline .carousel-viewport { height: 218px; }
+  .about-trajectory .about-timeline .carousel-track { height: 210px; min-height: 210px; }
+  .about-trajectory .timeline-point { min-height: 207px; flex-basis: 224px; width: 224px; }
+}
+
+
+
+/* v0.19 | Unify the Areas background and keep Game Design with Imersão on the first tag row. */

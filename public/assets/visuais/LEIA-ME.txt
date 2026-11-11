@@ -1,0 +1,10 @@
+ELEMENTOS VISUAIS / PORTFÓLIO
+
+23 imagens PNG em tela transparente de 256 x 256 px.
+Ocupação óptica padronizada (símbolo até 194 px em cada direção), centralização e proporções preservadas.
+
+stack/  — 15 arquivos recebidos. Os ícones brancos foram isolados do fundo preto, prontos para a faixa preta do site.
+areas/  — 5 arquivos com as cores originais, para os cards claros.
+contato/ — 3 círculos pretos com símbolos brancos, para o modal claro.
+
+Stack completa: o ícone de C# foi acrescentado como csharp.png. O ícone de e-mail foi atualizado.

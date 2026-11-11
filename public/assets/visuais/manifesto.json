@@ -1,0 +1,494 @@
+{
+  "descricao": "Elementos visuais normalizados; tela transparente, tamanhos e alinhamentos uniformes, sem deformar os logotipos.",
+  "canvas_px": 256,
+  "quantidade": 23,
+  "notas": [
+    "Todos os 15 ícones da stack estão presentes; C# corresponde à marca correta enviada pelo autor.",
+    "O ícone de e-mail foi substituído pela nova versão, sem alterar os outros canais."
+  ],
+  "arquivos": [
+    {
+      "categoria": "areas",
+      "origem": "areas/dev.png",
+      "arquivo": "areas/desenvolvimento.png",
+      "original_px": [
+        84,
+        69
+      ],
+      "novo_px": [
+        256,
+        256
+      ],
+      "conteudo_px": [
+        194,
+        159
+      ],
+      "posicao_px": [
+        31,
+        49
+      ]
+    },
+    {
+      "categoria": "areas",
+      "origem": "areas/desing.png",
+      "arquivo": "areas/design.png",
+      "original_px": [
+        64,
+        69
+      ],
+      "novo_px": [
+        256,
+        256
+      ],
+      "conteudo_px": [
+        180,
+        194
+      ],
+      "posicao_px": [
+        40,
+        34
+      ]
+    },
+    {
+      "categoria": "areas",
+      "origem": "areas/ens-comp.png",
+      "arquivo": "areas/ensino-computacao.png",
+      "original_px": [
+        74,
+        72
+      ],
+      "novo_px": [
+        256,
+        256
+      ],
+      "conteudo_px": [
+        194,
+        178
+      ],
+      "posicao_px": [
+        31,
+        40
+      ]
+    },
+    {
+      "categoria": "areas",
+      "origem": "areas/jogos.png",
+      "arquivo": "areas/jogos-serios.png",
+      "original_px": [
+        76,
+        68
+      ],
+      "novo_px": [
+        256,
+        256
+      ],
+      "conteudo_px": [
+        194,
+        174
+      ],
+      "posicao_px": [
+        33,
+        39
+      ]
+    },
+    {
+      "categoria": "areas",
+      "origem": "areas/qa.png",
+      "arquivo": "areas/qa-testes.png",
+      "original_px": [
+        68,
+        68
+      ],
+      "novo_px": [
+        256,
+        256
+      ],
+      "conteudo_px": [
+        194,
+        194
+      ],
+      "posicao_px": [
+        31,
+        31
+      ]
+    },
+    {
+      "categoria": "contato",
+      "origem": "o-email.png",
+      "arquivo": "contato/email.png",
+      "original_px": [
+        512,
+        512
+      ],
+      "novo_px": [
+        256,
+        256
+      ],
+      "conteudo_px": [
+        196,
+        196
+      ],
+      "posicao_px": [
+        30,
+        30
+      ]
+    },
+    {
+      "categoria": "contato",
+      "origem": "contato/github.png",
+      "arquivo": "contato/github.png",
+      "original_px": [
+        512,
+        512
+      ],
+      "novo_px": [
+        256,
+        256
+      ],
+      "conteudo_px": [
+        196,
+        192
+      ],
+      "posicao_px": [
+        30,
+        33
+      ]
+    },
+    {
+      "categoria": "contato",
+      "origem": "contato/linkedin.png",
+      "arquivo": "contato/linkedin.png",
+      "original_px": [
+        512,
+        512
+      ],
+      "novo_px": [
+        256,
+        256
+      ],
+      "conteudo_px": [
+        196,
+        196
+      ],
+      "posicao_px": [
+        30,
+        30
+      ]
+    },
+    {
+      "categoria": "stack",
+      "origem": "do-sustenido.png",
+      "arquivo": "stack/csharp.png",
+      "original_px": [
+        512,
+        512
+      ],
+      "novo_px": [
+        256,
+        256
+      ],
+      "conteudo_px": [
+        194,
+        170
+      ],
+      "posicao_px": [
+        31,
+        43
+      ]
+    },
+    {
+      "categoria": "stack",
+      "origem": "stack/docker.png",
+      "arquivo": "stack/docker.png",
+      "original_px": [
+        512,
+        512
+      ],
+      "novo_px": [
+        256,
+        256
+      ],
+      "conteudo_px": [
+        194,
+        139
+      ],
+      "posicao_px": [
+        33,
+        57
+      ]
+    },
+    {
+      "categoria": "stack",
+      "origem": "stack/figma.png",
+      "arquivo": "stack/figma.png",
+      "original_px": [
+        512,
+        512
+      ],
+      "novo_px": [
+        256,
+        256
+      ],
+      "conteudo_px": [
+        136,
+        194
+      ],
+      "posicao_px": [
+        61,
+        33
+      ]
+    },
+    {
+      "categoria": "stack",
+      "origem": "stack/github.png",
+      "arquivo": "stack/github.png",
+      "original_px": [
+        512,
+        512
+      ],
+      "novo_px": [
+        256,
+        256
+      ],
+      "conteudo_px": [
+        176,
+        194
+      ],
+      "posicao_px": [
+        40,
+        33
+      ]
+    },
+    {
+      "categoria": "stack",
+      "origem": "stack/Jira.png",
+      "arquivo": "stack/jira.png",
+      "original_px": [
+        1254,
+        1254
+      ],
+      "novo_px": [
+        256,
+        256
+      ],
+      "conteudo_px": [
+        194,
+        194
+      ],
+      "posicao_px": [
+        29,
+        33
+      ]
+    },
+    {
+      "categoria": "stack",
+      "origem": "stack/node.png",
+      "arquivo": "stack/nodejs.png",
+      "original_px": [
+        1254,
+        1254
+      ],
+      "novo_px": [
+        256,
+        256
+      ],
+      "conteudo_px": [
+        168,
+        194
+      ],
+      "posicao_px": [
+        44,
+        31
+      ]
+    },
+    {
+      "categoria": "stack",
+      "origem": "stack/Playwright.png",
+      "arquivo": "stack/playwright.png",
+      "original_px": [
+        1254,
+        1254
+      ],
+      "novo_px": [
+        256,
+        256
+      ],
+      "conteudo_px": [
+        194,
+        145
+      ],
+      "posicao_px": [
+        31,
+        56
+      ]
+    },
+    {
+      "categoria": "stack",
+      "origem": "stack/postgre.png",
+      "arquivo": "stack/postgresql.png",
+      "original_px": [
+        512,
+        512
+      ],
+      "novo_px": [
+        256,
+        256
+      ],
+      "conteudo_px": [
+        193,
+        194
+      ],
+      "posicao_px": [
+        31,
+        32
+      ]
+    },
+    {
+      "categoria": "stack",
+      "origem": "stack/postaman.png",
+      "arquivo": "stack/postman.png",
+      "original_px": [
+        1254,
+        1254
+      ],
+      "novo_px": [
+        256,
+        256
+      ],
+      "conteudo_px": [
+        194,
+        194
+      ],
+      "posicao_px": [
+        31,
+        31
+      ]
+    },
+    {
+      "categoria": "stack",
+      "origem": "stack/python.png",
+      "arquivo": "stack/python.png",
+      "original_px": [
+        512,
+        512
+      ],
+      "novo_px": [
+        256,
+        256
+      ],
+      "conteudo_px": [
+        194,
+        183
+      ],
+      "posicao_px": [
+        31,
+        37
+      ]
+    },
+    {
+      "categoria": "stack",
+      "origem": "stack/Qase.png",
+      "arquivo": "stack/qase.png",
+      "original_px": [
+        1254,
+        1254
+      ],
+      "novo_px": [
+        256,
+        256
+      ],
+      "conteudo_px": [
+        192,
+        194
+      ],
+      "posicao_px": [
+        31,
+        30
+      ]
+    },
+    {
+      "categoria": "stack",
+      "origem": "stack/react.png",
+      "arquivo": "stack/react.png",
+      "original_px": [
+        512,
+        512
+      ],
+      "novo_px": [
+        256,
+        256
+      ],
+      "conteudo_px": [
+        174,
+        194
+      ],
+      "posicao_px": [
+        41,
+        31
+      ]
+    },
+    {
+      "categoria": "stack",
+      "origem": "stack/Supabase.png",
+      "arquivo": "stack/supabase.png",
+      "original_px": [
+        1236,
+        1273
+      ],
+      "novo_px": [
+        256,
+        256
+      ],
+      "conteudo_px": [
+        183,
+        194
+      ],
+      "posicao_px": [
+        37,
+        31
+      ]
+    },
+    {
+      "categoria": "stack",
+      "origem": "stack/typescript.png",
+      "arquivo": "stack/typescript.png",
+      "original_px": [
+        1180,
+        1180
+      ],
+      "novo_px": [
+        256,
+        256
+      ],
+      "conteudo_px": [
+        194,
+        128
+      ],
+      "posicao_px": [
+        30,
+        65
+      ]
+    },
+    {
+      "categoria": "stack",
+      "origem": "stack/Unity.png",
+      "arquivo": "stack/unity.png",
+      "original_px": [
+        1312,
+        1199
+      ],
+      "novo_px": [
+        256,
+        256
+      ],
+      "conteudo_px": [
+        174,
+        194
+      ],
+      "posicao_px": [
+        41,
+        31
+      ]
+    }
+  ]
+}
