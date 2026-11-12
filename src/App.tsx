@@ -1,11 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
-import DeskIllustration from './components/DeskIllustration';
 import EduCompPage from './pages/EduCompPage';
 import FragmentosPage from './pages/FragmentosPage';
 import ProjectsSection from './components/ProjectsSection';
+import ArrowIcon from './components/ArrowIcon';
 import './internal-pages.css';
 import { updatePageMetadata } from './seo';
 import { shouldNavigateInApp } from './navigation';
+import { ESSAY_TITLE, ESSAY_SUBTITLE, ESSAY_PUBLISHED, ESSAY_PUBLISHED_LABEL } from './content/ensaio-fazer-digital';
 
 type PlaceholderKind = 'cv' | null;
 type IconName = 'left' | 'right' | 'close';
@@ -16,7 +17,6 @@ type Reading = { category: string; title: string; description: string };
 
 const CONTACT = {
   email: 'p3dro.albuquerque@gmail.com',
-  // Conferir estes endereços antes da publicação.
   github: 'https://github.com/pedroalbuqu3rque',
   linkedin: 'https://www.linkedin.com/in/pedroalbuqu3rque',
 };
@@ -60,27 +60,27 @@ type TimelinePoint = { date: string; title: string; detail: string };
 // Percurso sem agrupamento por ano: cada marco é um ponto da mesma linha do tempo.
 // Periodos e titulos fornecidos pelo autor, do mais recente ao mais antigo.
 const TIMELINE_POINTS: TimelinePoint[] = [
-  { date: "ATUALMENTE · SET/2026", title: "Projetos em Tecnologia", detail: "Level 5 Jr." },
-  { date: "ATUALMENTE · SET/2026", title: "Desenvolvimento de Jogo Educacional", detail: "Universidade Federal de Goiás" },
-  { date: "ATUALMENTE · 2026", title: "Licenciatura em Computação", detail: "Claretiano Centro Universitário" },
-  { date: "JUL/2026 · FEV/2026", title: "Professor de Inteligência Artificial", detail: "Grupo Salta Educação" },
-  { date: "JUL/2026 · JAN/2026", title: "Diagramador", detail: "Grupo Salta Educação" },
-  { date: "AGO/2026 · SET/2025", title: "Pesquisa em Jogos Sérios", detail: "Universidade Federal de Goiás" },
-  { date: "DEZ/2025 · MAIO/2025", title: "Apoio Pedagógico", detail: "Grupo Salta Educação" },
-  { date: "AGO/2025 · SET/2024", title: "Pesquisa em Educação", detail: "Universidade Federal de Goiás" },
-  { date: "SET/2025 · MAR/2024", title: "Membro e Diretor", detail: "Gaia Consultoria Ambiental Jr." },
-  { date: "JUN/2024 · JAN/2024", title: "Estágio em Geoprocessamento", detail: "Laboratório de Sensoriamento Remoto e Geoprocessamento" },
-  { date: "AGO/2024 · MAI/2023", title: "Iniciação à Docência", detail: "Universidade Federal de Goiás" },
-  { date: "ATUALMENTE · 2023", title: "Licenciatura em Geografia", detail: "Universidade Federal de Goiás" },
+  { date: "SET/2026 — ATUALMENTE", title: "Projetos em Tecnologia", detail: "Level 5 Jr." },
+  { date: "SET/2026 — ATUALMENTE", title: "Desenvolvimento de Jogo Educacional", detail: "Universidade Federal de Goiás" },
+  { date: "2026 — ATUALMENTE", title: "Licenciatura em Computação", detail: "Claretiano Centro Universitário" },
+  { date: "FEV/2026 — JUL/2026", title: "Professor de Inteligência Artificial", detail: "Grupo Salta Educação" },
+  { date: "JAN/2026 — JUL/2026", title: "Diagramador", detail: "Grupo Salta Educação" },
+  { date: "SET/2025 — AGO/2026", title: "Pesquisa em Jogos Sérios", detail: "Universidade Federal de Goiás" },
+  { date: "MAIO/2025 — DEZ/2025", title: "Apoio Pedagógico", detail: "Grupo Salta Educação" },
+  { date: "SET/2024 — AGO/2025", title: "Pesquisa em Educação", detail: "Universidade Federal de Goiás" },
+  { date: "MAR/2024 — SET/2025", title: "Membro e Diretor", detail: "Gaia Consultoria Ambiental Jr." },
+  { date: "JAN/2024 — JUN/2024", title: "Estágio em Geoprocessamento", detail: "Laboratório de Sensoriamento Remoto e Geoprocessamento" },
+  { date: "MAI/2023 — AGO/2024", title: "Iniciação à Docência", detail: "Universidade Federal de Goiás" },
+  { date: "2023 — ATUALMENTE", title: "Licenciatura em Geografia", detail: "Universidade Federal de Goiás" },
 ];
 
 // Fotografias autorais fornecidas para o portfólio, na ordem do arquivo recebido.
 // As imagens foram padronizadas em 4:3, sem modificar seu conteúdo.
 type GalleryPhoto = { src: string; alt: string };
 const GALLERY_PHOTOS: GalleryPhoto[] = [
+  { src: '/assets/galeria/03-anotacoes.webp', alt: 'Leitor digital com texto acadêmico, acompanhado de uma caneta.' },
   { src: '/assets/galeria/01-leituras.webp', alt: 'Leitura acadêmica aberta em uma tela, sobre uma mesa.' },
   { src: '/assets/galeria/02-projetos.webp', alt: 'Dois monitores com uma conversa por vídeo e um projeto de interface aberto.' },
-  { src: '/assets/galeria/03-anotacoes.webp', alt: 'Leitor digital com texto acadêmico, acompanhado de uma caneta.' },
   { src: '/assets/galeria/04-rotina.webp', alt: 'Notebooks e materiais de estudo sobre mesas em um espaço compartilhado.' },
   { src: '/assets/galeria/05-pesquisa.webp', alt: 'Copo térmico e tela com texto de pesquisa em ambiente de estudo.' },
   { src: '/assets/galeria/06-encontros.webp', alt: 'Crachá de Pedro Albuquerque em um encontro sobre inteligência artificial.' },
@@ -339,7 +339,7 @@ function HomePage({ onNavigate, openPlaceholder, openContact }: { onNavigate: (p
         <p className="hero-description">Um espaço para reunir o que venho criando e estudando em educação, desenvolvimento, testes, design e jogos sérios.</p>
         <div className="hero-actions"><button className="button button-primary hero-projects-button" type="button" onClick={() => onNavigate('/', 'projetos')}>Ver projetos</button><button className="button button-outline hero-cv-button" type="button" onClick={onDownloadCV}>Currículo</button></div>
       </div>
-      <picture><source srcSet="/assets/hero-collage.webp" type="image/webp"/><img className="hero-collage" src="/assets/hero-collage.png" width={1374} height={1145} fetchPriority="high" loading="eager" decoding="async" alt="Colagem editorial em preto, branco e azul com retrato de Pedro Albuquerque e referências a educação, testes, desenvolvimento, design e jogos sérios."/></picture>
+      <div className="hero-visual"><img className="hero-collage" src="/assets/hero-collage.webp" width={1374} height={1145} fetchPriority="high" loading="eager" decoding="async" alt="Colagem editorial em preto, branco e azul com retrato de Pedro Albuquerque e referências a educação, testes, desenvolvimento, design e jogos sérios."/></div>
       <div className="social-links" aria-label="Redes e contato"><a href={CONTACT.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn"><ContactArtwork kind="linkedin"/></a><a href={CONTACT.github} target="_blank" rel="noreferrer" aria-label="GitHub"><ContactArtwork kind="github"/></a><a href={`mailto:${CONTACT.email}`} aria-label="E-mail"><ContactArtwork kind="email"/></a></div>
     </div></section>
     <ProjectsSection onNavigate={onNavigate}/>
@@ -351,7 +351,7 @@ function HomePage({ onNavigate, openPlaceholder, openContact }: { onNavigate: (p
     <div className="section-spacer spacer-large" aria-hidden="true"/>
     <section className="fragments" id="fragmentos" aria-labelledby="fragments-title"><div className="content-width section-content">
       <div className="fragment-intro"><div className="fragment-copy"><SectionLabel>FRAGMENTOS</SectionLabel><h2 id="fragments-title" className="section-title">Notas,<br/>ensaios e<br/><span className="blue-text">ideias.</span></h2><p>Ideias e anotações que surgem entre projetos, leituras e experiências.</p></div>
-        <a className="fragment-featured" href="/fragmentos/a-potencia-do-fazer-digital-na-educacao" onClick={(event) => { if (!shouldNavigateInApp(event)) return; event.preventDefault(); onNavigate('/fragmentos/a-potencia-do-fazer-digital-na-educacao'); }} aria-label="Ler ensaio A potência do fazer digital na educação"><div className="fragment-featured-image"><DeskIllustration/><span className="fragment-image-label">01 / FRAGMENTOS</span></div><div className="fragment-featured-text"><div className="fragment-featured-top"><span className="fragment-featured-type"><i aria-hidden="true"/>ENSAIO</span><span>2026</span></div><h3>A potência do fazer<br/>digital na educação</h3><p>Como a cultura do fazer e as tecnologias digitais podem ampliar a autonomia, a criatividade e a aprendizagem.</p><span className="fragment-read"><span>Ler ensaio</span><span className="fragment-read-arrow" aria-hidden="true">→</span></span></div></a>
+        <a className="fragment-featured" href="/fragmentos/a-potencia-do-fazer-digital-na-educacao" onClick={(event) => { if (!shouldNavigateInApp(event)) return; event.preventDefault(); onNavigate('/fragmentos/a-potencia-do-fazer-digital-na-educacao'); }} aria-label="Ler ensaio A potência do fazer digital na educação"><div className="fragment-featured-image"><img className="fragment-featured-photo" src="/assets/fragmentos/fazer-digital.webp" width={1080} height={810} loading="lazy" decoding="async" alt="Leitor digital com texto, caneta e fones de ouvido sobre uma mesa."/><span className="fragment-image-label">01 / FRAGMENTOS</span></div><div className="fragment-featured-text"><div className="fragment-featured-top"><span className="fragment-featured-type"><i aria-hidden="true"/>ENSAIO</span><time dateTime={ESSAY_PUBLISHED} title="Data de publicação">{ESSAY_PUBLISHED_LABEL}</time></div><h3>{ESSAY_TITLE}</h3><p>{ESSAY_SUBTITLE}</p><span className="fragment-read"><span>Ler ensaio</span><span className="fragment-read-arrow" aria-hidden="true"><ArrowIcon direction="right" size={26}/></span></span></div></a>
       </div>
       <Carousel className="reading-carousel" label="Notas, ensaios e ideias" step={445} controlsPosition="bottom">
         {READINGS.map(reading => <article className="reading-card reading-card-placeholder" key={reading.title} aria-label={`${reading.title} - em preparação`}><ArticleArtwork/><span className="reading-info"><span className="tag-blue">{reading.category}</span><strong>{reading.title}</strong><span className="reading-desc">{reading.description}</span></span></article>)}
@@ -370,7 +370,7 @@ function HomePage({ onNavigate, openPlaceholder, openContact }: { onNavigate: (p
             <div className="about-trajectory" id="trajetoria" role="group" aria-label="Trajetória profissional e acadêmica">
               <Carousel className="timeline-carousel timeline-points about-timeline" label="Trajetória profissional e acadêmica" step={295} controlsPosition="bottom">
                 {TIMELINE_POINTS.map(point => <article className="timeline-point" key={`${point.date}-${point.title}`}>
-                  <time className="timeline-point-date">{point.date}</time>
+                  <span className="timeline-point-date">{point.date}</span>
                   <span className="timeline-point-dot" aria-hidden="true"/>
                   <div className="timeline-point-body"><h3>{point.title}</h3><p>{point.detail}</p></div>
                 </article>)}
@@ -390,8 +390,8 @@ function HomePage({ onNavigate, openPlaceholder, openContact }: { onNavigate: (p
           <p className="contact-description">Projetos, ideias ou uma conversa sobre educação, design e tecnologia.</p>
         </div>
         <div className="contact-actions">
-          <button className="button button-primary contact-button" type="button" onClick={openContact} aria-haspopup="dialog" aria-controls="contact-dialog">Entrar em contato <span className="contact-cta-arrow" aria-hidden="true">↗</span></button>
-          <button className="button contact-cv" type="button" onClick={onDownloadCV}>Baixar currículo <span className="contact-cv-arrow" aria-hidden="true">↓</span></button>
+          <button className="button button-primary contact-button" type="button" onClick={openContact} aria-haspopup="dialog" aria-controls="contact-dialog">Entrar em contato <span className="contact-cta-arrow" aria-hidden="true"><ArrowIcon direction="right" size={22}/></span></button>
+          <button className="button contact-cv" type="button" onClick={onDownloadCV}>Baixar currículo <span className="contact-cv-arrow" aria-hidden="true"><ArrowIcon direction="down" size={22}/></span></button>
         </div>
       </div>
     </section>
@@ -399,7 +399,7 @@ function HomePage({ onNavigate, openPlaceholder, openContact }: { onNavigate: (p
   </>;
 }
 
-function Footer() { return <footer className="site-footer"><div className="content-width footer-inner"><strong>PEDRO ALBUQUERQUE</strong><span>Feito aqui. Por mim</span></div></footer>; }
+function Footer() { return <footer className="site-footer"><div className="content-width footer-inner"><strong>PEDRO ALBUQUERQUE</strong><span>Feito aqui. Por mim.</span></div></footer>; }
 
 
 function ContactModal({ open, close }: { open: boolean; close: () => void }) {
@@ -416,9 +416,9 @@ function ContactModal({ open, close }: { open: boolean; close: () => void }) {
       <h2 id="contact-dialog-title">Por onde começamos<span className="blue-text">?</span></h2>
       <p id="contact-dialog-description">Escolha o canal que preferir.</p>
       <div className="contact-channel-list">
-        <a className="contact-channel" href={`mailto:${CONTACT.email}`} onClick={close}><span className="contact-channel-icon"><ContactArtwork kind="email"/></span><span className="contact-channel-copy"><strong>E-mail</strong><small>{CONTACT.email}</small></span><span className="contact-channel-arrow" aria-hidden="true">↗</span></a>
-        <a className="contact-channel" href={CONTACT.linkedin} target="_blank" rel="noopener noreferrer" onClick={close}><span className="contact-channel-icon"><ContactArtwork kind="linkedin"/></span><span className="contact-channel-copy"><strong>LinkedIn</strong><small>Perfil profissional</small></span><span className="contact-channel-arrow" aria-hidden="true">↗</span></a>
-        <a className="contact-channel" href={CONTACT.github} target="_blank" rel="noopener noreferrer" onClick={close}><span className="contact-channel-icon"><ContactArtwork kind="github"/></span><span className="contact-channel-copy"><strong>GitHub</strong><small>Projetos e código</small></span><span className="contact-channel-arrow" aria-hidden="true">↗</span></a>
+        <a className="contact-channel" href={`mailto:${CONTACT.email}`} onClick={close}><span className="contact-channel-icon"><ContactArtwork kind="email"/></span><span className="contact-channel-copy"><strong>E-mail</strong><small>{CONTACT.email}</small></span><span className="contact-channel-arrow" aria-hidden="true"><ArrowIcon direction="up-right" size={19}/></span></a>
+        <a className="contact-channel" href={CONTACT.linkedin} target="_blank" rel="noopener noreferrer" onClick={close}><span className="contact-channel-icon"><ContactArtwork kind="linkedin"/></span><span className="contact-channel-copy"><strong>LinkedIn</strong><small>Perfil profissional</small></span><span className="contact-channel-arrow" aria-hidden="true"><ArrowIcon direction="up-right" size={19}/></span></a>
+        <a className="contact-channel" href={CONTACT.github} target="_blank" rel="noopener noreferrer" onClick={close}><span className="contact-channel-icon"><ContactArtwork kind="github"/></span><span className="contact-channel-copy"><strong>GitHub</strong><small>Projetos e código</small></span><span className="contact-channel-arrow" aria-hidden="true"><ArrowIcon direction="up-right" size={19}/></span></a>
       </div>
     </div>
   </dialog>;
@@ -431,7 +431,7 @@ function PlaceholderModal({ kind, close }: { kind: PlaceholderKind; close: () =>
     if (kind && element && !element.open) element.showModal();
     if (!kind && element?.open) element.close();
   }, [kind]);
-  return <dialog ref={ref} className="placeholder-dialog" onClose={close} onCancel={close} onClick={event => { if (event.target === ref.current) close(); }} aria-labelledby="modal-title"><div className="modal-header"><span>PA. / PORTFÓLIO</span><button type="button" onClick={close} aria-label="Fechar aviso"><Glyph name="close" size={20}/></button></div><div className="modal-inner"><SectionLabel>EM PREPARAÇÃO</SectionLabel><h2 id="modal-title">Currículo ainda não anexado.</h2><p>O download estará disponível quando o currículo em PDF for adicionado ao portfólio.</p><button type="button" className="button button-dark" onClick={close}>Voltar <span aria-hidden="true">→</span></button></div></dialog>;
+  return <dialog ref={ref} className="placeholder-dialog" onClose={close} onCancel={close} onClick={event => { if (event.target === ref.current) close(); }} aria-labelledby="modal-title"><div className="modal-header"><span>PA. / PORTFÓLIO</span><button type="button" onClick={close} aria-label="Fechar aviso"><Glyph name="close" size={20}/></button></div><div className="modal-inner"><SectionLabel>EM PREPARAÇÃO</SectionLabel><h2 id="modal-title">Currículo ainda não anexado.</h2><p>O download estará disponível quando o currículo em PDF for adicionado ao portfólio.</p><button type="button" className="button button-dark" onClick={close}>Voltar <span aria-hidden="true"><ArrowIcon direction="right" size={19}/></span></button></div></dialog>;
 }
 
 function normalizePath(pathname: string) {
@@ -445,15 +445,15 @@ export default function App() {
   useEffect(() => { const handle = () => setPath(normalizePath(window.location.pathname)); window.addEventListener('popstate', handle); return () => window.removeEventListener('popstate', handle); }, []);
   useEffect(() => {
     updatePageMetadata(path);
-    if (path === '/' && window.location.hash) {
-      const anchor = window.location.hash.slice(1);
-      requestAnimationFrame(() => document.getElementById(anchor)?.scrollIntoView());
+    if (window.location.hash) {
+      const anchor = decodeURIComponent(window.location.hash.slice(1));
+      requestAnimationFrame(() => requestAnimationFrame(() => document.getElementById(anchor)?.scrollIntoView()));
     }
   }, [path]);
   function navigate(to: string, anchor?: string) {
     if (normalizePath(window.location.pathname) !== to) { window.history.pushState({}, '', to + (anchor ? `#${anchor}` : '')); setPath(to); }
     else if (anchor) window.history.replaceState({}, '', `/#${anchor}`);
-    if (anchor) requestAnimationFrame(() => requestAnimationFrame(() => document.getElementById(anchor)?.scrollIntoView({ behavior: 'smooth' })));
+    if (anchor) requestAnimationFrame(() => requestAnimationFrame(() => document.getElementById(anchor)?.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' })));
     else window.scrollTo({ top: 0, behavior: 'instant' });
   }
   return <><a href="#conteudo" className="skip-link">Pular para o conteúdo</a><SiteHeader onNavigate={navigate} currentPath={path}/><main id="conteudo" tabIndex={-1}>{path === '/projetos/educomp' ? <EduCompPage onNavigate={navigate}/> : path.startsWith('/fragmentos/') ? <FragmentosPage onNavigate={navigate}/> : <HomePage onNavigate={navigate} openPlaceholder={setPlaceholder} openContact={() => setContactOpen(true)}/>}</main><PlaceholderModal kind={placeholder} close={() => setPlaceholder(null)}/><ContactModal open={contactOpen} close={() => setContactOpen(false)}/></>;

@@ -250,7 +250,7 @@
     margin-left: 0;
     line-height: 1.58;
   }
-  .hero-body > picture { display: block; width: 100%; }
+  .hero-visual { display: block; width: 100%; }
   .hero-collage { width: 108%; max-width: none; margin-left: -4%; margin-top: 24px; }
   .social-links { margin-top: 5px; }
   .fragment-copy .section-title { font-size: clamp(49px, 12.8vw, 60px); line-height: 1.04; }
@@ -280,9 +280,9 @@
   }
 }
 
-/* QA: o elemento <picture> — não apenas o <img> — deve seguir a apresentação no mobile. */
+/* A colagem permanece após a apresentação no mobile. */
 @media (max-width: 700px) {
-  .hero-body > picture { order: 2; }
+  .hero-visual { order: 2; }
   .contact-actions { align-self: stretch; }
 }
 @media (max-width: 760px) {
@@ -366,4 +366,16 @@
 }
 @media (min-width: 601px) and (max-width: 900px) {
   .area-card { min-height: 410px; }
+}
+
+/* Legibilidade do ensaio longo e foco no conteúdo principal. */
+.reading-prose .reading-article-section > p {
+  max-width: 72ch;
+  hyphens: auto;
+}
+.reading-page .reading-hero h1 { max-width: 1090px; text-wrap: balance; }
+.reading-page .reading-scroll-progress { top: 78px; }
+@media (max-width: 700px) {
+  .reading-page .reading-scroll-progress { top: 70px; }
+  .reading-page .reading-hero h1 { overflow-wrap: break-word; }
 }

@@ -40,7 +40,7 @@
 .case-gallery-feature .case-gallery-image { height: 481px; border-left: 6px solid var(--blue); }
 .case-gallery-small .case-gallery-image { height: 209px; }
 .case-gallery-wide .case-gallery-image { height: 245px; }
-.case-placeholder-plus { display: block; color: var(--blue); font-size: 34px; font-weight: 400; line-height: 1; }
+
 .case-gallery-item figcaption { display: flex; gap: 14px; align-items: center; min-height: 44px; font-size: 16px; }
 .case-gallery-item figcaption span { width: 56px; flex: 0 0 56px; font-weight: 700; font-size: 14px; color: var(--blue); }
 .case-gallery-item figcaption strong { font-weight: 700; }
@@ -351,4 +351,46 @@
   .case-gallery h2, .case-challenge h2, .case-flows h2, .case-process-copy h2,
   .reading-related h2 { text-wrap: balance; }
   .reading-media-panel h2 { text-wrap: balance; }
+}
+
+/* A galeria tem composição editorial até as capturas reais serem publicadas. */
+.case-gallery-image.case-gallery-editorial {
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 22px;
+  padding: clamp(24px, 3.4vw, 46px);
+  background: #e9edf3;
+  border-color: #dde4ed;
+  color: #1c2736;
+}
+.case-gallery-identifier {
+  display: inline-block;
+  color: var(--blue);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .09em;
+}
+.case-gallery-editorial strong {
+  display: block;
+  max-width: 15ch;
+  font-size: clamp(26px, 4vw, 58px);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -.055em;
+  text-wrap: balance;
+}
+.case-gallery-line {
+  display: block;
+  width: 64px;
+  height: 4px;
+  background: var(--blue);
+}
+.case-gallery-small .case-gallery-editorial { padding: 22px 25px; }
+.case-gallery-small .case-gallery-editorial strong { font-size: clamp(23px, 2.4vw, 34px); }
+.case-gallery-small .case-gallery-line { width: 37px; height: 3px; }
+.case-gallery-wide .case-gallery-editorial strong { max-width: none; }
+@media (max-width: 700px) {
+  .case-gallery-editorial { padding: 25px; }
+  .case-gallery-editorial strong { font-size: clamp(26px, 8vw, 43px); }
+  .case-gallery-small .case-gallery-editorial strong { font-size: clamp(22px, 6vw, 30px); }
 }

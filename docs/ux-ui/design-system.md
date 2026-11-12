@@ -39,9 +39,9 @@ Componentes recorrentes:
 
 ## Estados e movimento
 
-Os cards de áreas têm hover sutil, mas não são links. Botões e cards clicáveis devem mostrar estados de hover e foco; os movimentos devem ser reduzidos para visitantes que optaram por isso.
+Os cards de áreas não são links; eventuais efeitos de hover não criam affordances falsas. Botões e cards clicáveis devem mostrar estados de hover e foco; os movimentos devem ser reduzidos para visitantes que optaram por isso.
 
-A faixa de tecnologias pode se mover continuamente, desde que permaneça legível e respeite a preferência por movimento reduzido.
+A faixa de tecnologias se move discretamente, pausa sob o ponteiro e respeita a preferência por movimento reduzido.
 
 ## Responsividade
 

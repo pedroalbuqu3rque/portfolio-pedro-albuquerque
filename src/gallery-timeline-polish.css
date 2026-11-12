@@ -494,9 +494,9 @@ html { scroll-padding-top: 82px; }
   flex: 0 0 auto;
 }
 .hero-actions .hero-cv-button:is(:hover, :focus-visible) {
-  background: var(--blue);
+  background: #111;
   color: #fff;
-  border-color: var(--blue);
+  border-color: #111;
 }
 /* A linha do tempo conserva datas e marcos, mas dispensa titulo e numeros. */
 .about-trajectory .about-timeline { margin-top: 38px; }

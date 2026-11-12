@@ -1,19 +1,19 @@
 {
   "/": {
-    "title": "Pedro Albuquerque | Portfólio",
-    "description": "Projetos, estudos e experimentos em educação, tecnologia, testes, desenvolvimento, UX/UI, design instrucional e jogos sérios.",
+    "title": "Pedro Albuquerque | Professor de Computação · Projetos e ideias",
+    "description": "Projetos e reflexões sobre ensino de Computação, UX/UI, desenvolvimento, qualidade de software e jogos sérios. Portfólio de Pedro Albuquerque.",
     "robots": "index,follow",
     "ogType": "website"
   },
   "/projetos/educomp": {
-    "title": "EduComp | Projeto de Pedro Albuquerque",
-    "description": "EduComp: biblioteca colaborativa de materiais didáticos de Computação. Conheça o problema, a experiência e o processo de design.",
+    "title": "EduComp — Biblioteca colaborativa | Pedro Albuquerque",
+    "description": "Conheça o EduComp: uma biblioteca colaborativa de materiais didáticos de Computação, da concepção do produto à interface, ao desenvolvimento e aos testes.",
     "robots": "index,follow",
-    "ogType": "article"
+    "ogType": "website"
   },
   "/fragmentos/a-potencia-do-fazer-digital-na-educacao": {
-    "title": "A potência do fazer digital na educação | Fragmentos",
-    "description": "Ensaio sobre aprendizagem, criação, tecnologia e cultura do fazer. Fragmentos de Pedro Albuquerque.",
+    "title": "A potência do fazer digital na educação | Pedro Albuquerque",
+    "description": "Um ensaio sobre cultura do fazer, projetos e tecnologias digitais para ampliar autonomia, criatividade e participação na aprendizagem.",
     "robots": "index,follow",
     "ogType": "article"
   }

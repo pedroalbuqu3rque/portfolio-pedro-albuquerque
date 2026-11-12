@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { ESSAY_AUTHOR, ESSAY_TITLE, ESSAY_SUBTITLE, ESSAY_ENDING, ESSAY_SECTIONS, ESSAY_PUBLISHED, ESSAY_PUBLISHED_LABEL } from '../content/ensaio-fazer-digital';
 import { shouldNavigateInApp } from '../navigation';
-import DeskIllustration from '../components/DeskIllustration';
+import ArrowIcon from '../components/ArrowIcon';
+import '../fragmentos-essay.css';
 
 type Props = {
   onNavigate: (path: string, anchor?: string) => void;
@@ -12,11 +14,8 @@ const relatedReadings = [
   { category: 'EM PREPARAÇÃO', title: 'Novas notas', description: 'Espaço reservado para uma futura publicação.' },
 ];
 
-const outline = [
-  { id: 'aprender', title: 'Aprender também é construir' },
-  { id: 'tecnologia', title: 'Tecnologia como meio, não como fim' },
-  { id: 'experimentar', title: 'O espaço de experimentar' },
-] as const;
+const outline = ESSAY_SECTIONS.map(({ id, title }) => ({ id, title }));
+const totalParagraphs = ESSAY_SECTIONS.reduce((count, section) => count + section.paragraphs.length, 0);
 
 function EssayEyebrow({ children }: { children: React.ReactNode }) {
   return <p className="essay-eyebrow"><span className="case-marker" aria-hidden="true" />{children}</p>;
@@ -49,7 +48,7 @@ export default function FragmentosPage({ onNavigate }: Props) {
     const url = new URL('/fragmentos/a-potencia-do-fazer-digital-na-educacao', window.location.origin).toString();
     if (typeof navigator.share === 'function') {
       try {
-        await navigator.share({ title: 'A potência do fazer digital na educação', url });
+        await navigator.share({ title: ESSAY_TITLE, url });
         return;
       } catch (error) {
         if (error instanceof DOMException && error.name === 'AbortError') return;
@@ -68,21 +67,40 @@ export default function FragmentosPage({ onNavigate }: Props) {
     onNavigate('/', 'fragmentos');
   }
 
+
   return <div className="reading-page">
     <EssayProgress />
     <section className="reading-hero" aria-labelledby="reading-title"><div className="content-width">
       <div className="reading-topline"><EssayEyebrow>FRAGMENTOS &nbsp;/&nbsp; ENSAIO</EssayEyebrow></div>
 
-      <h1 id="reading-title">A potência do fazer<br/>digital na educação.</h1>
+      <h1 id="reading-title">{ESSAY_TITLE}<span className="blue-text">.</span></h1>
       <span className="reading-blue-rule" aria-hidden="true"/>
-      <p className="reading-lead">Como a cultura do fazer, os projetos e as tecnologias digitais podem ampliar a autonomia, a criatividade e o engajamento na aprendizagem.</p>
-      <div className="reading-metadata"><strong>PEDRO ALBUQUERQUE</strong><span>EDUCAÇÃO &nbsp;·&nbsp; TECNOLOGIA &nbsp;·&nbsp; APRENDIZAGEM</span><time dateTime="2026-11-11">PUBLICADO EM 11 NOV 2026</time></div>
+      <p className="reading-lead">{ESSAY_SUBTITLE}</p>
+      <div className="reading-metadata"><strong>{ESSAY_AUTHOR.toUpperCase()}</strong><time dateTime={ESSAY_PUBLISHED}>PUBLICADO EM {ESSAY_PUBLISHED_LABEL}</time></div>
     </div></section>
 
     <section className="reading-hero-image" aria-label="Imagem e apresentação do ensaio"><div className="content-width">
       <div className="reading-media">
-        <div className="reading-editorial-photo"><DeskIllustration/></div>
-        <div className="reading-media-panel"><span>IMAGENS, IDEIAS E POSSIBILIDADES.</span><h2>Fazer é<br/>também<br/>pensar.</h2><span className="reading-blue-rule" aria-hidden="true"/><small>CULTURA DO FAZER&nbsp; / &nbsp;EDUCAÇÃO</small></div>
+        <figure className="reading-editorial-figure">
+          <div className="reading-editorial-photo"><img src="/assets/fragmentos/fazer-digital.webp" width={1080} height={810} alt="Leitor digital com texto acadêmico, caneta e fones de ouvido sobre uma mesa." decoding="async" /></div>
+          <figcaption className="reading-image-caption">Anotação, leitura e tecnologia como parte do processo de aprender, testar e refazer ideias.</figcaption>
+        </figure>
+        <aside className="reading-media-panel" aria-label="Apresentação editorial do ensaio">
+          <div className="reading-media-panel-top">
+            <span>ENSAIO</span>
+            <small>{ESSAY_PUBLISHED_LABEL}</small>
+          </div>
+          <h2>{ESSAY_TITLE}</h2>
+          <p>{ESSAY_SUBTITLE}</p>
+          <dl className="reading-media-facts">
+            <div><dt>Formato</dt><dd>Leitura integral</dd></div>
+            <div><dt>Seções</dt><dd>{outline.length} partes</dd></div>
+            <div><dt>Extensão</dt><dd>{totalParagraphs} parágrafos</dd></div>
+          </dl>
+          <a className="reading-media-jump" href={`#${outline[0]?.id ?? 'pensar'}`}>
+            Começar leitura <ArrowIcon direction="down" size={18} />
+          </a>
+        </aside>
       </div>
 
     </div></section>
@@ -92,31 +110,21 @@ export default function FragmentosPage({ onNavigate }: Props) {
         {outline.map(({ id, title }, index) => <a key={id} href={`#${id}`}><span>{String(index + 1).padStart(2, '0')}</span><strong>{title}</strong></a>)}
       </nav>
       <div className="reading-prose">
-        <p className="reading-opening">O fazer digital começa quando uma ideia encontra espaço para ser testada. Criar, experimentar e revisar são movimentos que ajudam a transformar uma pergunta em experiência de aprendizagem.</p>
-
-        <section id="aprender" aria-labelledby="heading-aprender" className="reading-article-section">
-          <h2 id="heading-aprender">Aprender também é construir</h2>
-          <p>Uma atividade de criação abre espaço para escolhas que não cabem em respostas prontas. Ao decidir o que fazer, comparar caminhos e explicar um resultado, o estudante torna seu próprio raciocínio mais visível.</p>
-          <p>Isso pode acontecer com programação, jogos, protótipos de papel ou pequenas investigações. O mais importante não é a quantidade de ferramentas disponíveis, mas a possibilidade de participar, produzir e compartilhar descobertas.</p>
-        </section>
-
-        <section id="tecnologia" aria-labelledby="heading-tecnologia" className="reading-article-section">
-          <h2 id="heading-tecnologia">Tecnologia como meio, não como fim</h2>
-          <p>Usar um dispositivo ou uma plataforma não torna, por si só, a aprendizagem mais ativa. Uma boa proposta começa com uma intenção pedagógica clara e considera o contexto, o tempo e as pessoas envolvidas.</p>
-          <blockquote><span className="reading-quote-rule" aria-hidden="true" />A tecnologia ganha sentido<br/>quando amplia o que podemos<br/>pensar, criar e compartilhar.</blockquote>
-          <p>Por isso, planejar as etapas de uma experiência importa tanto quanto escolher a ferramenta. Perguntas abertas, tempos para testar e momentos de conversa ajudam a dar significado ao que foi produzido.</p>
-        </section>
-
-        <section id="experimentar" aria-labelledby="heading-experimentar" className="reading-article-section">
-          <h2 id="heading-experimentar">O espaço de experimentar</h2>
-          <p>Quando o erro pode ser discutido e uma solução pode ser revista, o processo deixa de ser apenas um caminho até a resposta. Ele passa a ser parte do que se aprende.</p>
-          <p>O fazer digital ganha potência justamente aí: na combinação entre autoria, colaboração e reflexão. Não se trata de fazer mais coisas com tecnologia, mas de criar condições para aprender de outras maneiras.</p>
-        </section>
-        <div className="reading-ending"><span aria-hidden="true"/> <strong>Pensar. Fazer. Refazer.</strong></div>
-        <div className="reading-actions" aria-label="Ações do ensaio"><button className="reading-action reading-action-primary" type="button" onClick={shareEssay}>Compartilhar <span aria-hidden="true">↗</span></button><a className="reading-action reading-action-secondary" href="/#fragmentos" onClick={returnToFragments}><span aria-hidden="true">←</span> Voltar a Fragmentos</a></div>
-        <p className="reading-share-feedback" role="status" aria-live="polite">{shareFeedback}</p>
+        {ESSAY_SECTIONS.map((section, sectionIndex) => (
+          <section key={section.id} id={section.id} className="reading-article-section" aria-labelledby={`section-${section.id}`}>
+            <h2 id={`section-${section.id}`} className="reading-section-sr-only">{section.title}</h2>
+            {section.paragraphs.map((paragraph, index) => (
+              <p key={index} className={sectionIndex === 0 && index === 0 ? 'reading-opening' : undefined}>{paragraph}</p>
+            ))}
+          </section>
+        ))}
+        <div className="reading-ending"><span aria-hidden="true"/><strong>{ESSAY_ENDING}</strong></div>
+        <div className="reading-essay-actions">
+          <a href="/#fragmentos" onClick={returnToFragments}><ArrowIcon direction="left" size={19}/> Voltar a Fragmentos</a>
+          <div className="reading-share"><button type="button" onClick={() => { void shareEssay(); }}>Compartilhar <ArrowIcon direction="up-right" size={19}/></button><span className="reading-share-feedback" role="status" aria-live="polite">{shareFeedback}</span></div>
+        </div>
       </div>
-      <aside className="reading-sidenote" aria-label="Nota de leitura"><span>NOTA DE LEITURA</span><p>Projetos permitem observar os caminhos da aprendizagem, não apenas seus resultados.</p><span className="reading-sidenote-mark" aria-hidden="true">//</span></aside>
+      <aside className="reading-sidenote" aria-label="Nota de leitura"><span>NOTA DE LEITURA</span><p>Quando construímos alguma coisa, não estamos apenas produzindo um resultado. Estamos organizando, de alguma forma, o nosso próprio pensamento.</p><span className="reading-sidenote-mark" aria-hidden="true">//</span></aside>
     </div></article>
 
     <section className="reading-related" aria-labelledby="related-title"><div className="content-width">
@@ -125,6 +133,6 @@ export default function FragmentosPage({ onNavigate }: Props) {
         <span>{reading.category}</span><strong>{reading.title}</strong><p>{reading.description}</p>
       </article>)}</div>
     </div></section>
-    <footer className="reading-footer"><div className="content-width"><a href="/#inicio" onClick={event => { if (!shouldNavigateInApp(event)) return; event.preventDefault(); onNavigate('/', 'inicio'); }} aria-label="Voltar para o início">PA<span>.</span></a><span>Feito aqui. Por mim</span></div></footer>
+    <footer className="reading-footer"><div className="content-width"><a href="/#inicio" onClick={event => { if (!shouldNavigateInApp(event)) return; event.preventDefault(); onNavigate('/', 'inicio'); }} aria-label="Voltar para o início">PA<span>.</span></a><span>Feito aqui. Por mim.</span></div></footer>
   </div>;
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import { shouldNavigateInApp } from '../navigation';
+import ArrowIcon from '../components/ArrowIcon';
 
 type Props = {
   onNavigate: (path: string, anchor?: string) => void;
@@ -27,9 +28,10 @@ function CaseEyebrow({ children }: { children: React.ReactNode }) {
 
 function GallerySlot({ number, label, className }: { number: string; label: string; className: string }) {
   return <figure className={`case-gallery-item ${className}`}>
-    <div className="case-gallery-image" role="img" aria-label={`Espaço reservado para captura da tela ${label} do EduComp`}>
-      <span className="case-placeholder-plus" aria-hidden="true">+</span>
-      <span>ADICIONAR CAPTURA</span>
+    <div className="case-gallery-image case-gallery-editorial" role="img" aria-label={`Destaque editorial da área ${label} do EduComp`}>
+      <span className="case-gallery-identifier">EDUCOMP / {number}</span>
+      <strong>{label}</strong>
+      <span className="case-gallery-line" aria-hidden="true" />
     </div>
     <figcaption><span>{number} /</span><strong>{label}</strong></figcaption>
   </figure>;
@@ -65,13 +67,13 @@ export default function EduCompPage({ onNavigate }: Props) {
   return <div className="case-page">
     <section className="case-hero" aria-labelledby="case-title">
       <div className="content-width case-hero-inner">
-        <a className="case-back" href="/#projetos" onClick={event => { if (!shouldNavigateInApp(event)) return; event.preventDefault(); onNavigate('/', 'projetos'); }}>← VOLTAR A PROJETOS</a>
+        <a className="case-back" href="/#projetos" onClick={event => { if (!shouldNavigateInApp(event)) return; event.preventDefault(); onNavigate('/', 'projetos'); }}><ArrowIcon direction="left" size={17}/> VOLTAR A PROJETOS</a>
         <div className="case-hero-copy">
           <CaseEyebrow>ESTUDO DE CASO&nbsp; / &nbsp;EDUCAÇÃO DIGITAL</CaseEyebrow>
           <h1 id="case-title">EduComp</h1><span className="case-hero-rule" aria-hidden="true" />
           <h2>Uma biblioteca colaborativa<br />para ensinar Computação.</h2>
           <p>Um espaço para encontrar, compartilhar e organizar materiais didáticos de Computação. Recursos, pessoas e ideias reunidos em uma experiência simples de usar.</p>
-          <div className="case-hero-actions"><a href={PROTOTYPE_URL} className="button button-primary" target="_blank" rel="noopener noreferrer">Explorar o protótipo&nbsp; →</a></div>
+          <div className="case-hero-actions"><a href={PROTOTYPE_URL} className="button button-primary" target="_blank" rel="noopener noreferrer">Explorar o protótipo <ArrowIcon direction="right" size={20}/></a></div>
         </div>
         <dl className="case-facts">
           <div><dt>TIPO DE PROJETO</dt><dd>Plataforma web colaborativa</dd></div>
@@ -134,8 +136,8 @@ export default function EduCompPage({ onNavigate }: Props) {
 
     <section className="case-final" aria-labelledby="case-final-title"><div className="content-width">
       <div className="case-tools"><span>FERRAMENTAS E CONTEXTO</span><div className="case-tool-list">{['FIGMA', 'GITHUB', 'SUPABASE', 'PROTÓTIPO INTERATIVO'].map(t => <span key={t}>{t}</span>)}</div><small>PROJETO DE PORTFÓLIO · CONCLUÍDO</small></div>
-      <div className="case-final-cta"><div><CaseEyebrow>EXPLORAR O PROJETO</CaseEyebrow><h2 id="case-final-title">Veja o EduComp<br/>por dentro.</h2><span className="case-process-rule"/><p>O protótipo reúne as principais telas e fluxos da plataforma.</p></div><a className="button button-primary" href={PROTOTYPE_URL} target="_blank" rel="noopener noreferrer">Abrir protótipo no Figma&nbsp; →</a></div>
+      <div className="case-final-cta"><div><CaseEyebrow>EXPLORAR O PROJETO</CaseEyebrow><h2 id="case-final-title">Veja o EduComp<br/>por dentro.</h2><span className="case-process-rule"/><p>O protótipo reúne as principais telas e fluxos da plataforma.</p></div><a className="button button-primary" href={PROTOTYPE_URL} target="_blank" rel="noopener noreferrer">Abrir protótipo no Figma <ArrowIcon direction="right" size={20}/></a></div>
     </div></section>
-    <footer className="case-page-footer"><div className="content-width"><a href="/#inicio" onClick={event => { if (!shouldNavigateInApp(event)) return; event.preventDefault(); onNavigate('/', 'inicio'); }} aria-label="Voltar para o início">PA<span>.</span></a><span>Feito aqui. Por mim</span></div></footer>
+    <footer className="case-page-footer"><div className="content-width"><a href="/#inicio" onClick={event => { if (!shouldNavigateInApp(event)) return; event.preventDefault(); onNavigate('/', 'inicio'); }} aria-label="Voltar para o início">PA<span>.</span></a><span>Feito aqui. Por mim.</span></div></footer>
   </div>;
 }

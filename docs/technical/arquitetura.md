@@ -2,7 +2,7 @@
 
 ## Visão geral
 
-O portfólio utiliza React 19, TypeScript, Vite 6 e CSS. É uma aplicação estática, sem backend ou banco de dados. Os conteúdos desta versão estão definidos no próprio código.
+O portfólio utiliza React 19, TypeScript, Vite 6 e CSS. É uma aplicação estática, sem backend ou banco de dados. Os conteúdos desta versão estão definidos no próprio código. O ensaio está separado em `src/content/ensaio-fazer-digital.ts`.
 
 ## Organização do código
 
@@ -10,7 +10,7 @@ O portfólio utiliza React 19, TypeScript, Vite 6 e CSS. É uma aplicação est�
 - `src/pages/EduCompPage.tsx`: estudo de caso EduComp.
 - `src/pages/FragmentosPage.tsx`: página do ensaio.
 - `src/components/ProjectsSection.tsx`: cards verticais de projetos, separados dos carrosséis.
-- `src/components/`: ilustração editorial e componentes da landing.
+- `src/components/`: componentes da landing.
 - `src/projects.css`: composição e responsividade exclusivas da seção Projetos.
 - `src/finishing-touches.css`: acabamento editorial de Fragmentos e Sobre mim.
 - `src/navigation.ts`: preserva clique modificado e abertura em nova aba nos links internos.
@@ -28,7 +28,7 @@ O portfólio utiliza React 19, TypeScript, Vite 6 e CSS. É uma aplicação est�
 | --- | --- |
 | `/` | Landing |
 | `/projetos/educomp` | EduComp |
-| `/fragmentos/a-potencia-do-fazer-digital-na-educacao` | Ensaio demonstrativo |
+| `/fragmentos/a-potencia-do-fazer-digital-na-educacao` | Ensaio publicado |
 
 A navegação usa a History API do navegador, controlada pelo React, sem biblioteca de roteamento.
 
@@ -36,7 +36,7 @@ O build prepara documentos de entrada para as rotas atuais, mas as URLs diretas 
 
 ## Conteúdo e assets
 
-Os textos dos cards, os marcos individuais da linha do tempo, a lista de fotografias, as áreas e os links de contato estão em `src/App.tsx`. As oito fotografias otimizadas do Sobre mim estão em `public/assets/galeria` e são vinculadas pela constante `GALLERY_PHOTOS`. A colagem do hero está em `public/assets/hero-collage.webp`, com PNG como alternativa.
+Os textos dos cards, os marcos individuais da linha do tempo, a lista de fotografias, as áreas e os links de contato estão em `src/App.tsx`. As oito fotografias otimizadas do Sobre mim estão em `public/assets/galeria` e são vinculadas pela constante `GALLERY_PHOTOS`. A colagem do hero está em `public/assets/hero-collage.webp`. A imagem do ensaio está em `public/assets/fragmentos/fazer-digital.webp`.
 
 O currículo deve ser colocado em:
 
@@ -64,6 +64,8 @@ npm run preview
 ```
 
 `check:content` é uma verificação estrutural. Não substitui testes no navegador.
+
+Consulte [Recursos visuais](recursos.md) para detalhes dos arquivos utilizados.
 
 ## Limites da versão atual
 
