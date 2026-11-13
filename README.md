@@ -1,93 +1,119 @@
 # Portfólio — Pedro Albuquerque
 
-Um espaço para reunir projetos, experiências e reflexões sobre ensino de Computação, desenvolvimento de software, UX/UI, qualidade e jogos sérios.
+Portfólio pessoal desenvolvido para reunir projetos, experiências e produções autorais nas áreas de Ensino de Computação, Desenvolvimento de Software, UX/UI, Qualidade de Software e Jogos Sérios.
 
-O site combina uma página de apresentação, um estudo de caso do **EduComp** e uma área de textos autorais chamada **Fragmentos**. A linguagem visual é editorial: tipografia expressiva, fotografia em preto e branco, espaço para leitura e azul como cor de destaque.
+O projeto foi concebido com uma abordagem visual editorial, combinando tipografia expressiva, fotografias em preto e branco, espaços de respiro e elementos em azul. A proposta é apresentar trabalhos e experiências de maneira clara, acessível e organizada.
 
-## O que você encontra
+## Sobre o projeto
 
-| Área | Conteúdo |
-| --- | --- |
-| Início | Apresentação, colagem visual e acesso aos projetos e ao currículo |
-| Projetos | EduComp em destaque e espaços editoriais para outras publicações |
-| Áreas | Ensino de Computação, QA e testes, UX/UI, desenvolvimento e jogos sérios |
-| Tecnologias | Faixa com as 15 ferramentas e linguagens presentes no portfólio |
-| Fragmentos | Ensaio *A potência do fazer digital na educação*, com leitura integral |
-| Sobre mim | Trajetória, texto de apresentação, galeria de oito fotografias e contato |
+O portfólio reúne minha trajetória acadêmica e profissional, projetos desenvolvidos e reflexões sobre educação e tecnologia.
 
-**Páginas:** `/`, `/projetos/educomp` e `/fragmentos/a-potencia-do-fazer-digital-na-educacao`.
+A interface está organizada em cinco seções principais:
+
+- **Início:** apresentação pessoal e acesso aos conteúdos do portfólio.
+- **Projetos:** trabalhos desenvolvidos, incluindo o estudo de caso do EduComp, com apresentação das etapas de produto, UX/UI, desenvolvimento e QA.
+- **Áreas:** campos de atuação e tecnologias utilizadas.
+- **Fragmentos:** espaço dedicado a ensaios, reflexões e produções autorais.
+- **Sobre mim:** trajetória acadêmica e profissional, galeria de fotografias e informações de contato.
+
+Além da página principal, o projeto possui páginas dedicadas ao estudo de caso do EduComp e à leitura integral do ensaio *A potência do fazer digital na educação*.
 
 ## Tecnologias
 
-React 19, TypeScript, Vite 6 e CSS. O site é estático, com navegação gerenciada no cliente, sem backend, banco de dados ou autenticação. Os textos e as informações das seções são mantidos no próprio repositório.
+O portfólio foi desenvolvido com:
 
-O protótipo visual foi desenvolvido no [Figma](https://www.figma.com/design/Cv3t12N25QRmqZzPKko0L1/Portf%C3%B3lio?node-id=325-64). A implementação incorpora ajustes de responsividade, navegação e acabamento feitos durante o desenvolvimento.
+- **React 19** — construção da interface e organização dos componentes.
+- **TypeScript** — tipagem e manutenção do código.
+- **Vite 6** — ambiente de desenvolvimento e geração do build.
+- **CSS** — identidade visual, layouts responsivos e interações.
 
-## Executar localmente
+A aplicação possui arquitetura estática, com navegação gerenciada no cliente, conteúdo local e recursos visuais organizados no repositório.
 
-Requisitos: Node.js 22 e npm.
+O projeto visual foi desenvolvido no [Figma](https://www.figma.com/design/Cv3t12N25QRmqZzPKko0L1/Portf%C3%B3lio?node-id=325-64).
+
+## Interface e experiência
+
+O desenvolvimento considerou quatro aspectos principais:
+
+- **Identidade visual:** composição editorial, hierarquia tipográfica e uso consistente de cores e elementos gráficos.
+- **Responsividade:** adaptação dos layouts para diferentes tamanhos de tela.
+- **Acessibilidade:** navegação por teclado, indicadores de foco, elementos semânticos e respeito às preferências de movimento reduzido.
+- **Navegação:** organização das informações e transições entre a página principal e os conteúdos internos.
+
+## Executando localmente
+
+**Pré-requisitos:** Node.js 22 e npm.
+
+Clone o repositório:
+
+```bash
+git clone https://github.com/pedroalbuqu3rque/portfolio-pedro-albuquerque.git
+cd portfolio-pedro-albuquerque
+```
+
+Instale as dependências e inicie o ambiente de desenvolvimento:
 
 ```bash
 npm ci
 npm run dev
 ```
 
-O Vite informa o endereço local no terminal. Para gerar e visualizar a versão de produção:
+Para gerar a versão de produção:
 
 ```bash
 npm run build
-npm run preview
 ```
 
-No PowerShell do Windows, utilize `npm.cmd` caso a política de execução bloqueie o comando `npm`.
+## Qualidade e validação
 
-## Qualidade
+O projeto possui verificações automatizadas de conteúdo, integridade dos recursos, documentação, TypeScript e compilação.
+
+Para executar todas as verificações:
 
 ```bash
 npm run verify
 ```
 
-O comando executa as verificações de estrutura e conteúdo, recursos utilizados, links da documentação, TypeScript e build de produção. A mesma rotina é executada no GitHub Actions a cada push ou pull request para `main`.
+A mesma rotina é utilizada no GitHub Actions para validar alterações enviadas ao repositório.
 
-Para testes de interação, acessibilidade e diferentes larguras de tela, consulte o [plano de testes](docs/qa/plano-de-testes.md).
-
-## Organização
+## Estrutura do projeto
 
 ```text
-src/
-  components/       Componentes de navegação e projetos
-  content/          Conteúdo integral do ensaio
-  pages/            Estudo de caso e página do ensaio
-  App.tsx           Página principal e interações compartilhadas
-  *.css             Estilos e ajustes responsivos
-public/
-  assets/           Fotografias, ilustrações e ícones utilizados
-scripts/            Verificações e geração dos metadados
-site-meta.json      Metadados das três páginas
-docs/               Produto, experiência, arquitetura e QA
-.github/workflows/  Integração contínua
+portfolio/
+├── .github/       # Integração contínua
+├── docs/          # Documentação do projeto
+├── public/        # Fotografias, ícones e recursos visuais
+├── scripts/       # Scripts de verificação e geração
+├── src/
+│   ├── components/
+│   ├── content/
+│   ├── pages/
+│   └── App.tsx
+├── index.html
+├── package.json
+├── site-meta.json
+├── tsconfig.json
+└── vite.config.ts
 ```
-
-## Publicação
-
-O build é gerado em `dist/`. Cada rota recebe seu próprio `index.html`, além dos recursos estáticos. A hospedagem deve servir os caminhos publicados corretamente.
-
-Defina `VITE_SITE_URL` com o domínio público, sem barra final, para gerar URLs canônicas e sitemap absoluto. O arquivo `.env.example` mostra o formato. Arquivos `.env` locais não devem ser versionados.
-
-```text
-VITE_SITE_URL=https://seu-dominio.com.br
-```
-
-O botão **Currículo** procura `public/curriculo-pedro-albuquerque.pdf` e mostra um aviso caso o arquivo não esteja disponível. Nenhum PDF é incluído artificialmente nesta entrega.
 
 ## Documentação
 
-- [Produto e decisões](docs/product/product-brief.md)
+A documentação está organizada por área, reunindo as decisões e os registros do processo de desenvolvimento.
+
+**Produto**
+- [Visão do produto](docs/product/product-brief.md)
 - [Escopo funcional](docs/product/escopo.md)
+
+**UX/UI**
+- [Objetivos de experiência](docs/ux-ui/objetivos-de-ux.md)
 - [Arquitetura da informação](docs/ux-ui/arquitetura-da-informacao.md)
 - [Design system](docs/ux-ui/design-system.md)
-- [Handoff do Figma para o código](docs/ux-ui/handoff.md)
+- [Handoff de interface](docs/ux-ui/handoff.md)
+
+**Desenvolvimento**
 - [Arquitetura técnica](docs/technical/arquitetura.md)
 - [Recursos visuais](docs/technical/recursos.md)
+
+**Qualidade**
 - [Plano de testes](docs/qa/plano-de-testes.md)
-- [Verificações e limites da auditoria](docs/qa/relatorio-de-verificacao.md)
+- [Relatório de verificação](docs/qa/relatorio-de-verificacao.md)
