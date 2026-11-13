@@ -10,6 +10,7 @@ A página inicial e as duas rotas internas compartilham o mesmo ambiente de comp
 
 | Caminho | Responsabilidade |
 | --- | --- |
+| `index.html` | Abertura inicial em tela cheia, declarada antes do JavaScript para evitar flash da página |
 | `src/main.tsx` | Montagem da aplicação e ordem de importação dos estilos |
 | `src/App.tsx` | Landing, cabeçalho, estados, navegação e interações |
 | `src/components/ProjectsSection.tsx` | Vitrine de Projetos e cards informativos |
@@ -34,11 +35,11 @@ Os arquivos CSS são importados em ordem por `src/main.tsx`; as folhas das pági
 | `/projetos/educomp` | Estudo de caso do EduComp |
 | `/fragmentos/a-potencia-do-fazer-digital-na-educacao` | Ensaio de Fragmentos |
 
-A History API permite navegar sem recarregar a aplicação. O controle `shouldNavigateInApp` respeita abertura em nova aba e modificadores de teclado. O script de build gera um `index.html` para cada rota; a hospedagem precisa disponibilizar esses arquivos nos respectivos caminhos.
+A abertura inicial com tipografia Archivo ocorre apenas no carregamento da página, com saída controlada pelo React após a montagem e movimento reduzido quando solicitado. A History API permite navegar sem recarregar a aplicação. O controle `shouldNavigateInApp` respeita abertura em nova aba e modificadores de teclado. O script de build gera um `index.html` para cada rota; a hospedagem precisa disponibilizar esses arquivos nos respectivos caminhos.
 
 ## Dados e recursos
 
-As constantes da landing definem as cinco áreas, a faixa de 15 tecnologias, a trajetória e a galeria de oito fotografias. As imagens estão em `public/assets`, enquanto título, texto e data do ensaio são importados de um único arquivo em `src/content/`.
+As constantes da landing definem as cinco áreas, a faixa de 15 tecnologias, a trajetória e a galeria de nove fotografias. As imagens estão em `public/assets`, enquanto título, texto e data do ensaio são importados de um único arquivo em `src/content/`.
 
 A ação do currículo busca `public/curriculo-pedro-albuquerque.pdf`. Se não encontrar um PDF válido, apresenta uma mensagem em vez de entregar um HTML de fallback como arquivo.
 

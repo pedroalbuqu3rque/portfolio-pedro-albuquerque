@@ -5,13 +5,16 @@ import { fileURLToPath } from 'node:url';
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const app = readFileSync(join(root, 'src/App.tsx'), 'utf8');
 const content = readFileSync(join(root, 'src/pages/FragmentosPage.tsx'), 'utf8');
+const educomp = readFileSync(join(root, 'src/pages/EduCompPage.tsx'), 'utf8');
+const projects = readFileSync(join(root, 'src/components/ProjectsSection.tsx'), 'utf8');
 const html = readFileSync(join(root, 'index.html'), 'utf8');
 const manifest = JSON.parse(readFileSync(join(root, 'public/manifest.webmanifest'), 'utf8'));
 const urls = new Set();
-for (const code of [app, content, html]) {
+for (const code of [app, content, educomp, projects, html]) {
   for (const match of code.matchAll(/(?:src|href)=["'](\/[^"']+\.(?:webp|png|jpg|jpeg|svg))["']/g)) urls.add(match[1]);
 }
 for (const { src } of manifest.icons) urls.add(src);
+for (const match of educomp.matchAll(/image: '(\/assets\/educomp\/[^']+\.png)'/g)) urls.add(match[1]);
 for (const match of app.matchAll(/(?:src:\s*['"])(\/assets\/[^'"]+\.webp)/g)) urls.add(match[1]);
 for (const dir of ['areas','stack','contato']) {
   const pattern = dir === 'stack' ? /icon: '([^']+)'/g : dir === 'areas' ? /(?:education|qa|ux|development|games): '([^']+)'/g : /kind: '([^']+)'/g;

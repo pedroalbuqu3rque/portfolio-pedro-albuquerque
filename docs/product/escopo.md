@@ -11,14 +11,14 @@ O portfólio é uma aplicação estática com uma página inicial e duas página
 | Áreas | Cinco áreas com ícones, descrições e tags informativas |
 | Tecnologias | Faixa horizontal com 15 marcas e nomes, respeitando movimento reduzido |
 | Fragmentos | Ensaio em destaque e três espaços de publicação em navegação horizontal |
-| Sobre mim | Texto, trajetória em linha do tempo e galeria de oito fotografias |
+| Sobre mim | Texto, trajetória em linha do tempo e galeria de nove fotografias |
 | Contato | Modal com e-mail, LinkedIn e GitHub |
 
 Os cards reservados em Projetos e Fragmentos não direcionam a páginas inexistentes.
 
 ## EduComp
 
-Página de estudo de caso com contexto, público, desafio, três fluxos de uso, quatro composições editoriais e as fases de produto (PO), UX/UI Design, desenvolvimento e QA. O acesso ao protótipo é um link externo para o Figma.
+Página de estudo de caso com contexto, público, desafio, três fluxos de uso, quatro capturas da plataforma publicada e as fases de produto (PO), UX/UI Design, desenvolvimento e QA. Há acessos externos à plataforma em produção e ao repositório no GitHub.
 
 ## Ensaio
 
@@ -26,12 +26,12 @@ Página de estudo de caso com contexto, público, desafio, três fluxos de uso, 
 
 ## Navegação
 
-A History API mantém a navegação entre as três rotas. O cabeçalho retorna às seções da página inicial. Links internos respeitam Ctrl/Cmd+clique e abertura em nova aba. Galeria, menus, modais e controles de rolagem possuem tratamento para teclado.
+Na primeira abertura, uma tela preta com o nome centralizado antecede a exibição da interface. A History API mantém a navegação entre as três rotas. O cabeçalho retorna às seções da página inicial. Links internos respeitam Ctrl/Cmd+clique e abertura em nova aba. Galeria, menus, modais e controles de rolagem possuem tratamento para teclado.
 
 ## Dependências de conteúdo
 
 - O currículo é servido apenas quando o PDF existe no caminho esperado.
-- As quatro áreas visuais do EduComp são composições tipográficas, não capturas reais da plataforma.
+- As cinco imagens reais do EduComp ficam em `public/assets/educomp/`: uma na capa do card e quatro na galeria do estudo de caso.
 - A geração de URLs canônicas e sitemap absoluto depende de `VITE_SITE_URL` no ambiente de publicação.
 
 Não há necessidade de autenticação, API, banco de dados ou gestão de conteúdo por terceiros para o funcionamento atual.

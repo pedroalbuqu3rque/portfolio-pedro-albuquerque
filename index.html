@@ -7,14 +7,52 @@
     <meta name="color-scheme" content="light" />
     <meta name="description" content="Projetos, estudos e experimentos em educa&#231;&#227;o, tecnologia e design de Pedro Albuquerque." />
     <title>Pedro Albuquerque | Portf&#243;lio</title>
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=20261113" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/manifest.webmanifest" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <style>
+      /* Abertura crítica: aparece antes do carregamento do JavaScript e do CSS principal. */
+      #portfolio-intro {
+        position: fixed;
+        inset: 0;
+        z-index: 10000;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+        background: #0e0e0e;
+        color: #fff;
+        font-family: 'Archivo', Arial, sans-serif;
+        font-weight: 700;
+        font-size: clamp(24px, 4.2vw, 58px);
+        line-height: 1.1;
+        letter-spacing: -.035em;
+        text-align: center;
+        opacity: 1;
+        transition: opacity 450ms ease, visibility 450ms ease;
+      }
+      #portfolio-intro span {
+        animation: portfolio-intro-arrive 650ms cubic-bezier(.2, .8, .2, 1) both;
+      }
+      #portfolio-intro.portfolio-intro--leave {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
+      @keyframes portfolio-intro-arrive {
+        from { opacity: 0; transform: translateY(12px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        #portfolio-intro { transition: none; }
+        #portfolio-intro span { animation: none; }
+      }
+    </style>
   </head>
   <body>
+    <div id="portfolio-intro" role="status" aria-label="Abrindo o portfólio"><span>PEDRO ALBUQUERQUE</span></div>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

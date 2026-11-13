@@ -25,7 +25,7 @@ Portfólio (/)
 
 ## Percursos de leitura
 
-**Projeto:** início → Projetos → EduComp → contexto, fluxos e processo → protótipo no Figma ou retorno a Projetos.
+**Projeto:** início → Projetos → EduComp → contexto, fluxos e processo → plataforma publicada, código no GitHub ou retorno a Projetos.
 
 **Ensaio:** início → Fragmentos → ensaio → índice de seis seções → compartilhar ou retornar a Fragmentos.
 

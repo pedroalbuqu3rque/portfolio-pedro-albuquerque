@@ -60,9 +60,7 @@ export default function ProjectsSection({ onNavigate }: Props) {
               aria-label="Conhecer o projeto EduComp"
             >
               <div className="project-featured-media" aria-hidden="true">
-                <span className="project-media-index">01 / PROJETO EM DESTAQUE</span>
-                <span className="project-media-name">EduComp<span>.</span></span>
-                <span className="project-media-caption">BIBLIOTECA COLABORATIVA / COMPUTAÇÃO NA EDUCAÇÃO</span>
+                <img className="project-featured-screenshot" src="/assets/educomp/tela-inicial-educomp.png" alt="" loading="lazy" decoding="async" />
               </div>
               <div className="project-featured-content">
                 <div className="project-featured-meta">

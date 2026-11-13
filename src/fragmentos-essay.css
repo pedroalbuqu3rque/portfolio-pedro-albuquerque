@@ -7,18 +7,6 @@
   object-position: center;
   filter: grayscale(100%);
 }
-.fragment-featured-image .fragment-image-label {
-  position: absolute;
-  left: 21px;
-  bottom: 20px;
-  z-index: 1;
-  padding: 8px 10px;
-  background: rgb(12 12 12 / 75%);
-  color: #fff;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: .03em;
-}
 .fragment-featured-top time {
   color: #ededed;
   font-size: 12px;

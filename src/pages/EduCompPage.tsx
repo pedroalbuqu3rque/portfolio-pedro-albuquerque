@@ -6,13 +6,14 @@ type Props = {
   onNavigate: (path: string, anchor?: string) => void;
 };
 
-const PROTOTYPE_URL = 'https://www.figma.com/design/r8Lo2AKMd0UglgA8RRDl1y/EduComp?node-id=4437-32684';
+const PLATFORM_URL = 'https://portaleducomp.vercel.app';
+const REPOSITORY_URL = 'https://github.com/pedroalbuqu3rque/educomp.git';
 
 const galleryItems = [
-  { id: '01', title: 'Biblioteca e descoberta', className: 'case-gallery-feature' },
-  { id: '02', title: 'Detalhes do material', className: 'case-gallery-small' },
-  { id: '03', title: 'Envio de materiais', className: 'case-gallery-small' },
-  { id: '04', title: 'Perfis e comunidade', className: 'case-gallery-wide' },
+  { id: '01', title: 'Biblioteca e descoberta', image: '/assets/educomp/biblioteca-educomp.png', alt: 'Biblioteca do EduComp com busca, filtros e materiais didáticos', className: 'case-gallery-feature' },
+  { id: '02', title: 'Detalhes do material', image: '/assets/educomp/detalhes-material-educomp.png', alt: 'Página de um recurso com informações pedagógicas e arquivo para acessar', className: 'case-gallery-small' },
+  { id: '03', title: 'Envio de materiais', image: '/assets/educomp/enviar-materiais-educomp.png', alt: 'Formulário para compartilhar materiais na plataforma', className: 'case-gallery-small' },
+  { id: '04', title: 'Comunidade e participação', image: '/assets/educomp/comunidade-educomp.png', alt: 'Área de comunidade com comentários, relatos e discussões', className: 'case-gallery-wide' },
 ] as const;
 
 const process = [
@@ -22,46 +23,35 @@ const process = [
   { title: 'QA e testes', description: 'Verificação dos fluxos, registro de falhas e revisão do comportamento da aplicação.' },
 ];
 
+const flows = [
+  { number: '01', action: 'BUSCAR', title: 'Encontrar materiais', description: 'Busca e filtros organizam os recursos por tema, tipo, etapa e abordagem.', decision: 'Organizar a descoberta por tema e etapa de ensino, sem exigir que o professor conheça o acervo.', image: '/assets/educomp/biblioteca-educomp.png', alt: 'Tela de busca e biblioteca do EduComp' },
+  { number: '02', action: 'EXPLORAR', title: 'Conhecer o recurso', description: 'Informações do material, autoria e discussões ajudam na escolha do que utilizar.', decision: 'Apresentar o contexto pedagógico e a autoria antes da decisão de utilizar o material.', image: '/assets/educomp/detalhes-material-educomp.png', alt: 'Tela com os detalhes de um material didático' },
+  { number: '03', action: 'CONTRIBUIR', title: 'Enviar material', description: 'Um formulário guiado reúne as informações necessárias para publicar novos recursos.', decision: 'Separar o envio da publicação: o material passa pela etapa de revisão.', image: '/assets/educomp/enviar-materiais-educomp.png', alt: 'Tela de envio de material para revisão' },
+] as const;
+
 function CaseEyebrow({ children }: { children: React.ReactNode }) {
   return <p className="case-eyebrow"><span className="case-marker" aria-hidden="true" />{children}</p>;
 }
 
-function GallerySlot({ number, label, className }: { number: string; label: string; className: string }) {
+function ProjectLinks({ position }: { position: 'hero' | 'final' }) {
+  return <div className={position === 'hero' ? 'case-hero-actions' : 'case-final-actions'}>
+    <a href={PLATFORM_URL} className="button button-primary" target="_blank" rel="noopener noreferrer">
+      Acessar a plataforma <ArrowIcon direction="up-right" size={19} />
+    </a>
+    <a href={REPOSITORY_URL} className="button button-outline" target="_blank" rel="noopener noreferrer">
+      Ver repositório no GitHub <ArrowIcon direction="up-right" size={19} />
+    </a>
+  </div>;
+}
+
+function GallerySlot({ number, label, image, alt, className }: { number: string; label: string; image: string; alt: string; className: string }) {
   return <figure className={`case-gallery-item ${className}`}>
-    <div className="case-gallery-image case-gallery-editorial" role="img" aria-label={`Destaque editorial da área ${label} do EduComp`}>
-      <span className="case-gallery-identifier">EDUCOMP / {number}</span>
-      <strong>{label}</strong>
-      <span className="case-gallery-line" aria-hidden="true" />
+    <div className="case-gallery-image">
+      <img src={image} alt={alt} loading="lazy" decoding="async" />
     </div>
     <figcaption><span>{number} /</span><strong>{label}</strong></figcaption>
   </figure>;
 }
-
-function EduCompMiniature({ kind }: { kind: 'search' | 'detail' | 'submit' }) {
-  return <div className="case-mini-outer" role="img" aria-label={`Prévia ilustrativa: ${kind === 'search' ? 'biblioteca' : kind === 'detail' ? 'detalhes de um material' : 'envio de material'}`}>
-    <div className="case-mini-window">
-      <div className="case-mini-nav"><span className="case-mini-logo"><i />EduComp</span><span>Biblioteca&nbsp;&nbsp; Salvos&nbsp;&nbsp; Enviar</span></div>
-      {kind === 'search' && <div className="case-mini-main">
-        <h4>Biblioteca</h4>
-        <div className="case-mini-search"><span>Buscar por título ou tema...</span><b>Buscar</b></div>
-        <div className="case-mini-results">{['Algoritmos', 'Lógica', 'Scratch'].map(label => <div key={label}><small>RECURSO</small><strong>{label}</strong><i /></div>)}</div>
-      </div>}
-      {kind === 'detail' && <div className="case-mini-main"><small className="case-mini-blue">BIBLIOTECA / MATERIAL</small><h4>Jogos de lógica</h4>
-        <div className="case-mini-detail"><div className="case-mini-figures"><i /><i /><i /></div><div className="case-mini-facts"><small>SOBRE O JOGO</small><span>EF · 5º ano</span><span>Desplugada</span><span>Raciocínio</span></div></div>
-      </div>}
-      {kind === 'submit' && <div className="case-mini-main case-mini-form"><small className="case-mini-blue">COMPARTILHE UM RECURSO</small><h4>Enviar material</h4>
-        <div className="case-mini-fields"><span>Título do material</span><span>Tipo <i>⌄</i></span></div>
-        <div className="case-mini-desc">Descrição do recurso</div><b className="case-mini-send">Enviar para revisão</b>
-      </div>}
-    </div>
-  </div>;
-}
-
-const flows = [
-  { number: '01', action: 'BUSCAR', title: 'Encontrar materiais', description: 'Busca e filtros organizam os recursos por tema, tipo, etapa e abordagem.', decision: 'Organizar a descoberta por tema e etapa de ensino, sem exigir que o professor conheça o acervo.', kind: 'search' },
-  { number: '02', action: 'EXPLORAR', title: 'Conhecer o recurso', description: 'Informações do material, autoria e discussões ajudam na escolha do que utilizar.', decision: 'Apresentar o contexto pedagógico e a autoria antes da decisão de utilizar o material.', kind: 'detail' },
-  { number: '03', action: 'CONTRIBUIR', title: 'Enviar material', description: 'Um formulário guiado reúne as informações necessárias para publicar novos recursos.', decision: 'Separar o envio da publicação: o material passa pela etapa de revisão.', kind: 'submit' },
-] as const;
 
 export default function EduCompPage({ onNavigate }: Props) {
   return <div className="case-page">
@@ -69,11 +59,11 @@ export default function EduCompPage({ onNavigate }: Props) {
       <div className="content-width case-hero-inner">
         <a className="case-back" href="/#projetos" onClick={event => { if (!shouldNavigateInApp(event)) return; event.preventDefault(); onNavigate('/', 'projetos'); }}><ArrowIcon direction="left" size={17}/> VOLTAR A PROJETOS</a>
         <div className="case-hero-copy">
-          <CaseEyebrow>ESTUDO DE CASO&nbsp; / &nbsp;EDUCAÇÃO DIGITAL</CaseEyebrow>
+          <CaseEyebrow>EDUCAÇÃO DIGITAL</CaseEyebrow>
           <h1 id="case-title">EduComp</h1><span className="case-hero-rule" aria-hidden="true" />
           <h2>Uma biblioteca colaborativa<br />para ensinar Computação.</h2>
           <p>Um espaço para encontrar, compartilhar e organizar materiais didáticos de Computação. Recursos, pessoas e ideias reunidos em uma experiência simples de usar.</p>
-          <div className="case-hero-actions"><a href={PROTOTYPE_URL} className="button button-primary" target="_blank" rel="noopener noreferrer">Explorar o protótipo <ArrowIcon direction="right" size={20}/></a></div>
+          <ProjectLinks position="hero" />
         </div>
         <dl className="case-facts">
           <div><dt>TIPO DE PROJETO</dt><dd>Plataforma web colaborativa</dd></div>
@@ -89,7 +79,7 @@ export default function EduCompPage({ onNavigate }: Props) {
         <h2 id="case-gallery-title">Uma plataforma, diferentes experiências.</h2>
         <p className="case-lead">Da descoberta de materiais à participação na comunidade.</p>
         <div className="case-gallery-layout">
-          {galleryItems.map(item => <GallerySlot key={item.id} number={item.id} label={item.title} className={item.className}/>)}
+          {galleryItems.map(item => <GallerySlot key={item.id} number={item.id} label={item.title} image={item.image} alt={item.alt} className={item.className}/>)}
         </div>
       </div>
     </section>
@@ -117,9 +107,8 @@ export default function EduCompPage({ onNavigate }: Props) {
         <CaseEyebrow>03 &nbsp;/&nbsp; EXPERIÊNCIA</CaseEyebrow>
         <h2 id="case-flows-title">Da descoberta à contribuição.</h2>
         <p className="case-lead">Três percursos que conectam quem procura materiais a quem quer compartilhá-los.</p>
-        <p className="case-flow-intro">PO · UX/UI Design · Desenvolvimento · QA</p>
         <div className="case-flow-grid">{flows.map(flow => <article className="case-flow-card" key={flow.number}>
-          <EduCompMiniature kind={flow.kind}/>
+          <div className="case-flow-screen"><img src={flow.image} alt={flow.alt} loading="lazy" decoding="async" /></div>
           <div className="case-flow-label">{flow.number} / {flow.action}</div>
           <h3>{flow.title}</h3><p>{flow.description}</p>
           <div className="case-flow-decision"><span>DECISÃO DE UX</span><p>{flow.decision}</p></div>
@@ -129,14 +118,13 @@ export default function EduCompPage({ onNavigate }: Props) {
 
     <section className="case-process" aria-labelledby="case-process-title">
       <div className="content-width case-process-layout">
-        <div className="case-process-copy"><CaseEyebrow>04 &nbsp;/&nbsp; DA IDEIA À INTERFACE</CaseEyebrow><h2 id="case-process-title">O trabalho por trás<br/>das telas.</h2><p>Entre estrutura, conteúdo e interface, cada decisão procura tornar o acesso aos materiais mais claro e a participação mais simples.</p><span className="case-process-rule"/><small>PO · UX/UI · DESENVOLVIMENTO · QA</small></div>
+        <div className="case-process-copy"><CaseEyebrow>04 &nbsp;/&nbsp; DA IDEIA À INTERFACE</CaseEyebrow><h2 id="case-process-title">O trabalho por trás<br/>das telas.</h2><p>Entre estrutura, conteúdo e interface, cada decisão procura tornar o acesso aos materiais mais claro e a participação mais simples.</p><span className="case-process-rule"/></div>
         <ol className="case-process-grid">{process.map((item, index) => <li key={item.title}><span>{String(index + 1).padStart(2, '0')}</span><h3>{item.title}</h3><p>{item.description}</p></li>)}</ol>
       </div>
     </section>
 
     <section className="case-final" aria-labelledby="case-final-title"><div className="content-width">
-      <div className="case-tools"><span>FERRAMENTAS E CONTEXTO</span><div className="case-tool-list">{['FIGMA', 'GITHUB', 'SUPABASE', 'PROTÓTIPO INTERATIVO'].map(t => <span key={t}>{t}</span>)}</div><small>ESTUDO DE CASO · EDUCOMP</small></div>
-      <div className="case-final-cta"><div><CaseEyebrow>EXPLORAR O PROJETO</CaseEyebrow><h2 id="case-final-title">Veja o EduComp<br/>por dentro.</h2><span className="case-process-rule"/><p>O protótipo reúne as principais telas e fluxos da plataforma.</p></div><a className="button button-primary" href={PROTOTYPE_URL} target="_blank" rel="noopener noreferrer">Abrir protótipo no Figma <ArrowIcon direction="right" size={20}/></a></div>
+      <div className="case-final-cta"><div><CaseEyebrow>EXPLORAR O PROJETO</CaseEyebrow><h2 id="case-final-title">Veja o EduComp<br/>por dentro.</h2><span className="case-process-rule"/><p>Acesse a plataforma publicada ou consulte o código-fonte no GitHub.</p></div><ProjectLinks position="final" /></div>
     </div></section>
     <footer className="case-page-footer"><div className="content-width"><a href="/#inicio" onClick={event => { if (!shouldNavigateInApp(event)) return; event.preventDefault(); onNavigate('/', 'inicio'); }} aria-label="Voltar para o início">PA<span>.</span></a><span>Feito aqui. Por mim.</span></div></footer>
   </div>;

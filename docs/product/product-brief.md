@@ -17,7 +17,7 @@ Oferecer uma apresentação pessoal clara, dar contexto aos projetos e reservar 
 - **Áreas de atuação:** cinco áreas apresentadas com descrições e temas de interesse.
 - **Tecnologias:** 15 ferramentas e linguagens exibidas em faixa contínua.
 - **Fragmentos:** ensaio autoral com índice de seis partes, fotografia, data e compartilhamento.
-- **Sobre mim:** trajetória cronológica e galeria com oito fotografias.
+- **Sobre mim:** trajetória cronológica e galeria com nove fotografias.
 
 ## Decisões de produto
 

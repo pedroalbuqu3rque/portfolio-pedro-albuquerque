@@ -2,7 +2,7 @@
 
 ## Escopo
 
-A auditoria concentra-se em organização dos arquivos, consistência da documentação, comentários no código, estrutura do conteúdo, referências locais e configuração de integração contínua. Os textos autorais, fotografias e comportamento visual existente foram preservados; a identificação editorial do EduComp substituiu um rótulo redundante.
+A auditoria concentra-se em organização dos arquivos, consistência da documentação, comentários no código, estrutura do conteúdo, referências locais e configuração de integração contínua. Os demais conteúdos, fotografias e comportamentos visuais existentes foram preservados; a identificação editorial do EduComp substituiu um rótulo redundante.
 
 ## Pontos conferidos
 

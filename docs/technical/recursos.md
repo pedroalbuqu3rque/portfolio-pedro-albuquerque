@@ -13,7 +13,7 @@ Os arquivos de imagem usados no site estão centralizados em `public/`. Os recur
 
 ## Galeria
 
-`public/assets/galeria/` contém oito fotografias em WebP, numeradas de `01-leituras.webp` a `08-eventos.webp`. O array `GALLERY_PHOTOS`, em `src/App.tsx`, define a ordem e os textos alternativos usados na interface.
+`public/assets/galeria/` contém nove fotografias em WebP. A foto `00-apresentacao.webp` aparece primeiro, seguida dos arquivos existentes, de `01-leituras.webp` a `08-eventos.webp`. O array `GALLERY_PHOTOS`, em `src/App.tsx`, define a ordem e os textos alternativos usados na interface.
 
 ## Áreas, tecnologias e contato
 
@@ -21,6 +21,10 @@ Os arquivos de imagem usados no site estão centralizados em `public/`. Os recur
 - `public/assets/visuais/stack/`: 15 marcas de ferramentas e linguagens.
 - `public/assets/visuais/contato/`: ícones de e-mail, LinkedIn e GitHub.
 
-As setas de interface são geradas pelo componente SVG `src/components/ArrowIcon.tsx`. Os quatro painéis do EduComp são composições tipográficas da própria aplicação, não imagens de telas reais.
+## Capturas do EduComp
+
+`public/assets/educomp/` contém cinco PNGs: `tela-inicial-educomp.png` aparece na capa do projeto e `biblioteca-educomp.png`, `detalhes-material-educomp.png`, `enviar-materiais-educomp.png` e `comunidade-educomp.png` ilustram o estudo de caso. As três primeiras telas internas também aparecem nos percursos de uso.
+
+As setas de interface são geradas pelo componente SVG `src/components/ArrowIcon.tsx`.
 
 O comando `npm run check:assets` verifica os caminhos referenciados pelo código e pelos arquivos de configuração. Não é necessário manter arquivos README ou manifestos dentro de `public/assets/`.

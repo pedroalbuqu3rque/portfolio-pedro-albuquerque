@@ -34,34 +34,27 @@
 
 .case-flows {
   height: auto;
-  min-height: 1040px;
+  min-height: 0;
   padding-bottom: 104px;
-}
-.case-flows .case-flow-intro {
-  margin: 12px 0 0;
-  max-width: 71ch;
-  color: #596372;
-  font-size: 15px;
-  line-height: 1.6;
 }
 .case-flow-grid { margin-top: 39px; gap: 30px; }
 .case-flow-card {
   height: auto;
-  min-height: 601px;
+  min-height: 0;
   display: flex;
   flex-direction: column;
   padding-bottom: 24px;
   transition: transform .28s var(--movement-ease), border-color .22s ease,
               box-shadow .28s ease;
 }
-.case-flow-card > .case-mini-outer { flex: none; }
+.case-flow-card > .case-flow-screen { flex: none; }
 .case-flow-label { margin-top: 26px; }
 .case-flow-card h3 { margin-top: 19px; letter-spacing: -.034em; }
 .case-flow-card > p { font-size: 17px; line-height: 1.5; margin-top: 16px; }
 .case-flow-decision {
   padding-top: 20px;
   border-top: 1px solid #dfe3eb;
-  margin-top: auto;
+  margin-top: 25px;
 }
 .case-flow-decision span {
   display: block;
@@ -83,7 +76,7 @@
 .case-process-grid li { transition: border-color .25s ease; }
 .case-process-grid li h3 { letter-spacing: -.024em; }
 .case-process-grid li p { max-width: 31ch; }
-.case-flow-card .case-mini-outer { transition: background-color .22s ease; }
+.case-flow-card .case-flow-screen { transition: background-color .22s ease; }
 
 .contact-section { min-height: 446px; height: auto; }
 .contact-inner {
@@ -140,7 +133,7 @@
   a:hover .fragment-read > span { transform: translateX(4px); }
   .contact-actions .contact-button:hover .contact-cta-arrow { transform: translate(3px, -3px); }
   .case-flow-card:hover { transform: translateY(-3px); border-color: #b5c5e5; box-shadow: 0 14px 35px rgb(24 39 71 / .06); }
-  .case-flow-card:hover .case-mini-outer { background: #eaf0fb; }
+  .case-flow-card:hover .case-flow-screen { background: #eaf0fb; }
   .case-process-grid li:hover { border-color: var(--blue); }
   .reading-related-card:hover { box-shadow: 0 12px 30px rgb(17 30 59 / .07); }
 }
@@ -170,7 +163,7 @@
 @media (max-width: 1200px) {
   .case-flows { min-height: 0; padding-bottom: 90px; }
   .case-flow-card { min-height: 0; }
-  .case-flow-decision { margin-top: 30px; }
+  .case-flow-decision { margin-top: 25px; }
   .reading-scroll-progress { top: 96px; }
   .case-gallery h2, .case-challenge h2, .case-flows h2,
   .case-process h2, .reading-related h2 { text-wrap: balance; }
@@ -205,9 +198,8 @@
   .case-flow-grid { gap: 21px; }
   .case-flow-card { padding-bottom: 24px; }
   .case-flow-label { margin-top: 24px; }
-  .case-flow-intro { margin-top: 9px; }
   .case-flow-card > p { font-size: 16px; }
-  .case-flow-decision { margin-top: 28px; }
+  .case-flow-decision { margin-top: 24px; }
   .case-flow-decision p { font-size: 14px; }
   .case-gallery-small:nth-child(2) { margin-left: 0; margin-right: min(8vw, 32px); }
   .case-gallery-small:nth-child(3) { margin-left: min(8vw, 32px); margin-right: 0; }
@@ -263,7 +255,7 @@
 }
 @media (prefers-reduced-motion: reduce) {
   .contact-cta-arrow, .text-link > span,
-  .fragment-read > span, .case-flow-card, .case-mini-outer,
+  .fragment-read > span, .case-flow-card, .case-flow-screen,
   .case-process-grid li, .reading-outline a, .reading-scroll-progress > span {
     animation: none !important;
     transition: none !important;

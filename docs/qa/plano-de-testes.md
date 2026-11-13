@@ -23,16 +23,19 @@ O GitHub Actions executa `verify` após `npm ci` em pushes e pull requests para 
 
 | ID | Procedimento | Resultado esperado |
 | --- | --- | --- |
+| INT-01 | Abrir o site em uma nova aba | Abertura preta com “PEDRO ALBUQUERQUE” centralizado, seguida de transição para a página |
+| INT-02 | Navegar entre as páginas internas sem atualizar | A abertura não se repete nas navegações internas |
 | NAV-01 | Abrir `/` e acessar cada item do menu | Rolagem para a seção correta e indicação da seção ativa |
 | NAV-02 | Abrir EduComp e usar retorno a Projetos | Retorno à landing na seção de Projetos |
 | NAV-03 | Abrir o ensaio, atualizar a página e usar o retorno | A rota carrega diretamente e a volta funciona |
 | NAV-04 | Usar voltar/avançar do navegador entre rotas | Histórico preservado sem páginas vazias |
 | PRO-01 | Examinar Projetos no desktop e no celular | Dois destaques no topo em desktop e empilhamento no mobile; cards inferiores preservados |
 | PRO-02 | Acionar os cards de reserva | Ausência de links para conteúdo inexistente |
-| EDU-01 | Abrir EduComp e acessar o protótipo | Estudo de caso e link externo funcionam |
+| EDU-01 | Abrir EduComp e acessar a plataforma e o GitHub | As duas ações externas abrem os endereços corretos, sem alterar a página do portfólio |
+| EDU-02 | Conferir capa do card, galeria e imagens dos percursos | As cinco capturas são carregadas e permanecem legíveis nas larguras de teste |
 | FRA-01 | Percorrer as seis entradas do índice | Cada entrada leva ao trecho correspondente |
 | FRA-02 | Compartilhar o ensaio | Compartilhamento nativo ou cópia do link, com retorno acessível |
-| GAL-01 | Percorrer e ampliar as oito fotografias | Imagem correta, proporção adequada e fechamento por botão/Esc |
+| GAL-01 | Percorrer e ampliar as nove fotografias, começando pela apresentação acadêmica | Primeira imagem correta, proporção adequada e fechamento por botão/Esc |
 | CON-01 | Abrir e fechar o modal de contato | Links corretos, fechamento por botão/Esc e retorno do foco |
 | CUR-01 | Acionar Currículo com e sem PDF | Download de arquivo válido ou aviso informativo |
 | ACC-01 | Percorrer menus, links e controles somente com teclado | Ordem lógica e foco visível |

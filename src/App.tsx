@@ -72,6 +72,7 @@ const TIMELINE_POINTS: TimelinePoint[] = [
 ];
 type GalleryPhoto = { src: string; alt: string };
 const GALLERY_PHOTOS: GalleryPhoto[] = [
+  { src: '/assets/galeria/00-apresentacao.webp', alt: 'Pedro Albuquerque em apresentação acadêmica, ao lado de um pôster de pesquisa e um notebook.' },
   { src: '/assets/galeria/03-anotacoes.webp', alt: 'Leitor digital com texto acadêmico, acompanhado de uma caneta.' },
   { src: '/assets/galeria/01-leituras.webp', alt: 'Leitura acadêmica aberta em uma tela, sobre uma mesa.' },
   { src: '/assets/galeria/02-projetos.webp', alt: 'Dois monitores com uma conversa por vídeo e um projeto de interface aberto.' },
@@ -340,7 +341,7 @@ function HomePage({ onNavigate, openPlaceholder, openContact }: { onNavigate: (p
     <div className="section-spacer spacer-large" aria-hidden="true"/>
     <section className="fragments" id="fragmentos" aria-labelledby="fragments-title"><div className="content-width section-content">
       <div className="fragment-intro"><div className="fragment-copy"><SectionLabel>FRAGMENTOS</SectionLabel><h2 id="fragments-title" className="section-title">Notas,<br/>ensaios e<br/><span className="blue-text">ideias.</span></h2><p>Ideias e anotações que surgem entre projetos, leituras e experiências.</p></div>
-        <a className="fragment-featured" href="/fragmentos/a-potencia-do-fazer-digital-na-educacao" onClick={(event) => { if (!shouldNavigateInApp(event)) return; event.preventDefault(); onNavigate('/fragmentos/a-potencia-do-fazer-digital-na-educacao'); }} aria-label="Ler ensaio A potência do fazer digital na educação"><div className="fragment-featured-image"><img className="fragment-featured-photo" src="/assets/fragmentos/fazer-digital.webp" width={1080} height={810} loading="lazy" decoding="async" alt="Leitor digital com texto, caneta e fones de ouvido sobre uma mesa."/><span className="fragment-image-label">01 / FRAGMENTOS</span></div><div className="fragment-featured-text"><div className="fragment-featured-top"><span className="fragment-featured-type"><i aria-hidden="true"/>ENSAIO</span><time dateTime={ESSAY_PUBLISHED} title="Data de publicação">{ESSAY_PUBLISHED_LABEL}</time></div><h3>{ESSAY_TITLE}</h3><p>{ESSAY_SUBTITLE}</p><span className="fragment-read"><span>Ler ensaio</span><span className="fragment-read-arrow" aria-hidden="true"><ArrowIcon direction="right" size={26}/></span></span></div></a>
+        <a className="fragment-featured" href="/fragmentos/a-potencia-do-fazer-digital-na-educacao" onClick={(event) => { if (!shouldNavigateInApp(event)) return; event.preventDefault(); onNavigate('/fragmentos/a-potencia-do-fazer-digital-na-educacao'); }} aria-label="Ler ensaio A potência do fazer digital na educação"><div className="fragment-featured-image"><img className="fragment-featured-photo" src="/assets/fragmentos/fazer-digital.webp" width={1080} height={810} loading="lazy" decoding="async" alt="Leitor digital com texto, caneta e fones de ouvido sobre uma mesa."/></div><div className="fragment-featured-text"><div className="fragment-featured-top"><span className="fragment-featured-type"><i aria-hidden="true"/>ENSAIO</span><time dateTime={ESSAY_PUBLISHED} title="Data de publicação">{ESSAY_PUBLISHED_LABEL}</time></div><h3>{ESSAY_TITLE}</h3><p>{ESSAY_SUBTITLE}</p><span className="fragment-read"><span>Ler ensaio</span><span className="fragment-read-arrow" aria-hidden="true"><ArrowIcon direction="right" size={26}/></span></span></div></a>
       </div>
       <Carousel className="reading-carousel" label="Notas, ensaios e ideias" step={445} controlsPosition="bottom">
         {READINGS.map(reading => <article className="reading-card reading-card-placeholder" key={reading.title} aria-label={`${reading.title} - em preparação`}><ArticleArtwork/><span className="reading-info"><span className="tag-blue">{reading.category}</span><strong>{reading.title}</strong><span className="reading-desc">{reading.description}</span></span></article>)}
@@ -365,7 +366,7 @@ function HomePage({ onNavigate, openPlaceholder, openContact }: { onNavigate: (p
                 </article>)}
               </Carousel>
             </div>
-            <div className="about-text"><p>Minha trajetória passa pela sala de aula, pela pesquisa e por projetos que vão de materiais didáticos e jogos educacionais a interfaces e testes de software. Já trabalhei com educação inclusiva, ensino de inteligência artificial e pesquisa em jogos digitais. Hoje, também exploro UX/UI, qualidade de software e desenvolvimento. Acredito que boa parte do aprendizado acontece quando a gente coloca a mão na massa. Por aqui, compartilho um pouco do que faço, estudo e invento pelo caminho.</p></div>
+            <div className="about-text"><p>Minha trajetória passa pela sala de aula, pela pesquisa e por projetos que vão de materiais didáticos e jogos educacionais a interfaces e testes de software. Já trabalhei com educação inclusiva, ensino de inteligência artificial e pesquisa em jogos digitais. Hoje, também exploro UX/UI, qualidade de software e desenvolvimento. <strong>Acredito que boa parte do aprendizado acontece quando a gente coloca a mão na massa.</strong> Por aqui, compartilho um pouco do que faço, estudo e invento pelo caminho.</p></div>
           </div>
           <div className="about-gallery"><PhotoGallery/></div>
         </div>
@@ -430,6 +431,20 @@ export default function App() {
   const [path, setPath] = useState(() => normalizePath(window.location.pathname));
   const [placeholder, setPlaceholder] = useState<PlaceholderKind>(null);
   const [contactOpen, setContactOpen] = useState(false);
+  // Exibe a abertura apenas no carregamento inicial; navegações internas não a repetem.
+  useEffect(() => {
+    const intro = document.getElementById('portfolio-intro');
+    if (!intro) return;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const showDelay = reduceMotion ? 120 : 1100;
+    const fadeDuration = reduceMotion ? 0 : 450;
+    const fadeTimer = window.setTimeout(() => intro.classList.add('portfolio-intro--leave'), showDelay);
+    const cleanupTimer = window.setTimeout(() => intro.remove(), showDelay + fadeDuration + 40);
+    return () => {
+      window.clearTimeout(fadeTimer);
+      window.clearTimeout(cleanupTimer);
+    };
+  }, []);
   useEffect(() => { const handle = () => setPath(normalizePath(window.location.pathname)); window.addEventListener('popstate', handle); return () => window.removeEventListener('popstate', handle); }, []);
   useEffect(() => {
     updatePageMetadata(path);

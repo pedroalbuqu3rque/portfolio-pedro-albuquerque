@@ -2,11 +2,26 @@
 
 Portfólio pessoal desenvolvido para reunir projetos, experiências e produções autorais nas áreas de Ensino de Computação, Desenvolvimento de Software, UX/UI, Qualidade de Software e Jogos Sérios.
 
+<<<<<<< HEAD
 O projeto foi concebido com uma abordagem visual editorial, combinando tipografia expressiva, fotografias em preto e branco, espaços de respiro e elementos em azul. A proposta é apresentar trabalhos e experiências de maneira clara, acessível e organizada.
+=======
+O site combina uma página de apresentação, um estudo de caso do **EduComp** (plataforma concluída e publicada) e uma área de textos autorais chamada **Fragmentos**. A linguagem visual é editorial: tipografia expressiva, fotografia em preto e branco, espaço para leitura e azul como cor de destaque.
+>>>>>>> ef0a8c2 (feat: atualiza EduComp)
 
 ## Sobre o projeto
 
+<<<<<<< HEAD
 O portfólio reúne minha trajetória acadêmica e profissional, projetos desenvolvidos e reflexões sobre educação e tecnologia.
+=======
+| Área | Conteúdo |
+| --- | --- |
+| Início | Apresentação, colagem visual e acesso aos projetos e ao currículo |
+| Projetos | EduComp em destaque e espaços editoriais para outras publicações |
+| Áreas | Ensino de Computação, QA e testes, UX/UI, desenvolvimento e jogos sérios |
+| Tecnologias | Faixa com as 15 ferramentas e linguagens presentes no portfólio |
+| Fragmentos | Ensaio *A potência do fazer digital na educação*, com leitura integral |
+| Sobre mim | Trajetória, texto de apresentação, galeria de nove fotografias e contato |
+>>>>>>> ef0a8c2 (feat: atualiza EduComp)
 
 A interface está organizada em cinco seções principais:
 
@@ -17,6 +32,8 @@ A interface está organizada em cinco seções principais:
 - **Sobre mim:** trajetória acadêmica e profissional, galeria de fotografias e informações de contato.
 
 Além da página principal, o projeto possui páginas dedicadas ao estudo de caso do EduComp e à leitura integral do ensaio *A potência do fazer digital na educação*.
+
+**EduComp:** [acessar plataforma](https://portaleducomp.vercel.app) · [código no GitHub](https://github.com/pedroalbuqu3rque/educomp.git).
 
 ## Tecnologias
 

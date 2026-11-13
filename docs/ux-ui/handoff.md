@@ -18,11 +18,11 @@ As dimensões do protótipo não são reproduzidas como telas fixas. A largura d
 
 **Projetos.** O EduComp ocupa o primeiro dos dois destaques superiores. O segundo espaço é editorial e não interativo. Dois cards compactos permanecem abaixo em lista vertical. Essa composição está em `src/components/ProjectsSection.tsx` e `src/projects.css`.
 
-**EduComp.** O estudo de caso apresenta contexto, desafio, três percursos e as fases de PO, UX/UI, desenvolvimento e QA. A galeria utiliza quatro composições tipográficas; não são apresentadas como capturas da plataforma. Os links para o protótipo abrem o Figma.
+**EduComp.** O estudo de caso apresenta contexto, desafio, três percursos e as fases de PO, UX/UI, desenvolvimento e QA. A capa do card usa a imagem da página inicial, enquanto a galeria e os percursos usam capturas reais da plataforma. As ações externas levam à aplicação publicada e ao repositório no GitHub.
 
 **Fragmentos.** A capa usa a fotografia autoral, seguida da rota do ensaio. A página interna dispõe a imagem e uma apresentação editorial lado a lado no desktop, sem filete azul entre elas. O texto aparece integralmente em seis partes, com índice, progresso de leitura, compartilhamento e retorno.
 
-**Sobre mim.** A trajetória acompanha o texto na coluna de conteúdo; a galeria utiliza oito imagens em proporção 4:3. As fotografias podem ser percorridas e ampliadas. Na versão mobile, os blocos ficam empilhados.
+**Sobre mim.** A trajetória acompanha o texto na coluna de conteúdo; a galeria utiliza nove imagens em proporção 4:3. As fotografias podem ser percorridas e ampliadas. Na versão mobile, os blocos ficam empilhados.
 
 **Contato.** O modal reúne e-mail, LinkedIn e GitHub. A ação do currículo verifica a presença do PDF antes de tentar o download.
 
