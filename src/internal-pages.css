@@ -1,4 +1,3 @@
-/* Internal pages - mapped to the desktop Figma frames (1440px canvas, 1312px content). */
 .case-page, .reading-page { background: #fff; color: var(--black); }
 .case-page h1, .case-page h2, .case-page h3, .reading-page h1, .reading-page h2, .reading-page h3 { margin: 0; font-weight: 900; letter-spacing: -.035em; }
 .case-page p, .reading-page p { margin: 0; }
@@ -6,7 +5,6 @@
 .case-marker { flex: 0 0 12px; display: inline-block; width: 12px; height: 12px; background: var(--blue); }
 .case-page .button { min-height: 54px; }
 
-/* EduComp / opening - 1440 x 646 */
 .case-hero { height: 646px; background: #fff; }
 .case-hero-inner { height: 100%; position: relative; border-bottom: 1px solid #dedede; }
 .case-back, .reading-return { position: absolute; right: 8px; top: 24px; color: #111; font-size: 13px; font-weight: 700; line-height: 20px; transition: color .2s ease; }
@@ -25,7 +23,6 @@
 .case-facts dt, .case-context-meta dt { font-size: 13px; font-weight: 700; color: #515764; }
 .case-facts dd, .case-context-meta dd { margin: 11px 0 0; font-size: 17px; line-height: 1.3; font-weight: 700; }
 
-/* EduComp / editorial gallery - empty slots are intentional. */
 .case-gallery { height: 1205px; padding-top: 35px; background: #f8f9fa; }
 .case-gallery h2 { font-size: 49px; line-height: 1.22; margin: 51px 0 16px -6px; }
 .case-lead { color: #626a77; font-size: 19px; line-height: 29px; }
@@ -45,7 +42,6 @@
 .case-gallery-item figcaption span { width: 56px; flex: 0 0 56px; font-weight: 700; font-size: 14px; color: var(--blue); }
 .case-gallery-item figcaption strong { font-weight: 700; }
 
-/* EduComp / project context */
 .case-context { height: 580px; padding-top: 76px; }
 .case-context-grid { margin-top: 41px; display: grid; grid-template-columns: 645px minmax(0, 1fr); column-gap: 58px; }
 .case-context h2 { font-size: 53px; line-height: 1.1; margin-left: -6px; }
@@ -55,7 +51,6 @@
 .case-context-meta { margin: 63px 0 0; padding-top: 35px; border-top: 1px solid #dce0e5; display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
 .case-context-meta dd { font-size: 19px; margin-top: 13px; }
 
-/* EduComp / challenge on dark background */
 .case-challenge { height: 515px; color: #fff; background: #0e0e0e; padding-top: 70px; }
 .case-challenge-intro { display: grid; grid-template-columns: 2fr 1fr; gap: 47px; margin-top: 42px; }
 .case-challenge h2 { font-size: 54px; line-height: 1.12; }
@@ -66,7 +61,6 @@
 .case-challenge-steps strong { font-size: 19px; }
 .case-challenge-steps p { font-size: 15px; color: #c3c6cb; line-height: 23px; grid-column: 1 / -1; }
 
-/* EduComp / three illustrated pathways */
 .case-flows { height: 877px; padding-top: 75px; }
 .case-flows h2 { font-size: 55px; line-height: 1.16; margin: 36px 0 22px -6px; }
 .case-flow-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px; margin-top: 50px; }
@@ -102,7 +96,6 @@
 .case-mini-desc { height: 46px; margin-top: 10px; }
 .case-mini-send { width: 125px; height: 24px; float: right; margin-top: 8px; }
 
-/* EduComp / design process */
 .case-process { height: 592px; background: #f7f8fa; }
 .case-process-layout { display: grid; grid-template-columns: 590px 1fr; gap: 71px; padding-top: 66px; }
 .case-process-copy h2 { font-size: 55px; line-height: 1.11; margin: 42px 0 0 -6px; }
@@ -116,7 +109,6 @@
 .case-process-grid h3 { font-size: 20px; margin: 16px 0 14px; }
 .case-process-grid p { color: #626a77; font-size: 15px; line-height: 23px; }
 
-/* EduComp / tools and CTA */
 .case-final { height: 620px; background: #fff; }
 .case-tools { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 20px; min-height: 189px; border-bottom: 1px solid #dce0e7; padding: 48px 0 34px; }
 .case-tools > span { font-size: 13px; font-weight: 700; color: #626a77; grid-column: 1 / -1; }
@@ -133,7 +125,6 @@
 .case-page-footer a span, .reading-footer a span { color: var(--blue); }
 .case-page-footer .content-width > span, .reading-footer .content-width > span { font-size: 13px; font-weight: 600; color: #e1e1e1; }
 
-/* Fragmentos / desktop editorial article */
 .reading-hero { height: 554px; background: #fff; }
 .reading-hero .content-width { position: relative; height: 100%; }
 .reading-topline { padding-top: 71px; display: flex; justify-content: space-between; align-items: center; }
@@ -186,7 +177,6 @@
 .reading-related-card > strong { font-size: 26px; font-weight: 900; line-height: 1.22; margin-top: 17px; max-width: 360px; }
 .reading-related-card > p { font-size: 17px; line-height: 1.4; margin-top: 17px; color: #67707e; }
 
-/* Tablet: use fluid typography and rearrange the desktop columns, not scaled screenshots. */
 @media (max-width: 1200px) {
   .case-hero, .case-gallery, .case-context, .case-challenge, .case-flows, .case-process, .case-final,
   .reading-hero, .reading-hero-image, .reading-related { height: auto; }
@@ -336,8 +326,6 @@
   .case-back, .reading-return, .reading-related-card { transition: none; }
 }
 
-
-/* V0.4 — internal editorial refinement. */
 @media (min-width: 1201px) {
   .case-hero-copy > p { text-wrap: pretty; }
   .case-process-copy > p { text-wrap: pretty; }
@@ -353,7 +341,6 @@
   .reading-media-panel h2 { text-wrap: balance; }
 }
 
-/* A galeria tem composição editorial até as capturas reais serem publicadas. */
 .case-gallery-image.case-gallery-editorial {
   align-items: flex-start;
   justify-content: space-between;

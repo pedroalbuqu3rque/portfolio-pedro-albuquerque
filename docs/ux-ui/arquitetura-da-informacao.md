@@ -1,6 +1,6 @@
 # Arquitetura da informação
 
-O portfólio tem uma página principal e duas páginas internas. A navegação global sempre permite voltar às seções da landing.
+O site parte de uma página principal e aprofunda dois conteúdos em páginas próprias. O menu mantém cinco pontos de acesso; tecnologias, trajetória, galeria e contato integram as seções sem aumentar a navegação global.
 
 ## Mapa do site
 
@@ -9,38 +9,35 @@ Portfólio (/)
 ├── Início
 ├── Projetos
 │   └── EduComp (/projetos/educomp)
-├── Áreas de atuação
-├── Tecnologias
+├── Áreas
+│   └── Tecnologias
 ├── Fragmentos
-│   └── Ensaio (/fragmentos/a-potencia-do-fazer-digital-na-educacao)
+│   └── A potência do fazer digital na educação
+│       (/fragmentos/a-potencia-do-fazer-digital-na-educacao)
 ├── Sobre mim
-│   ├── Trajetória em linha horizontal
-│   └── Galeria pessoal em preto e branco
+│   ├── Trajetória
+│   └── Galeria de fotografias
 └── Contato (modal)
     ├── E-mail
     ├── LinkedIn
     └── GitHub
 ```
 
-O menu visível utiliza **Início, Projetos, Áreas, Fragmentos e Sobre mim**. Tecnologias, Trajetória e Contato fazem parte da landing, mas não precisam ocupar uma posição própria no menu.
+## Percursos de leitura
 
-## Caminhos principais
+**Projeto:** início → Projetos → EduComp → contexto, fluxos e processo → protótipo no Figma ou retorno a Projetos.
 
-**Conhecer um projeto:** Início → Projetos → card EduComp → estudo de caso → protótipo externo ou retorno à landing.
+**Ensaio:** início → Fragmentos → ensaio → índice de seis seções → compartilhar ou retornar a Fragmentos.
 
-**Ler um ensaio:** Início → Fragmentos → ensaio em destaque → índice do texto → leituras relacionadas ou retorno a Fragmentos.
-
-**Entrar em contato:** botão Entrar em contato → modal → e-mail, LinkedIn ou GitHub.
-
-**Baixar o currículo:** botão dedicado → PDF, se disponível; caso contrário, aviso de indisponibilidade.
+**Apresentação pessoal:** início → Áreas → tecnologias → Sobre mim → trajetória, fotografias e canais de contato.
 
 ## Comportamentos
 
-As páginas internas reutilizam o cabeçalho. Seus links retornam à landing e posicionam a pessoa na seção correspondente.
+O cabeçalho acompanha a navegação e indica a seção ativa. Os links internos preservam o comportamento nativo do navegador para abertura em nova aba. No mobile, o menu se adapta à largura e pode ser fechado por teclado.
 
-Projetos organiza o EduComp em destaque e, abaixo, dois cards de reserva em uma lista vertical sem carrossel. Os cards reservados não são links. Fragmentos, trajetória e galeria preservam a navegação horizontal quando há conteúdo adicional. A trajetória usa uma única linha horizontal, com um ponto por experiência, sem agrupamento em anos. A galeria pessoal integra a coluna direita do Sobre mim no desktop, exibe uma das oito fotografias em formato 4:3 por vez e permite ampliá-las. No desktop, há controles discretos; em telas sensíveis ao toque, é possível deslizar. Os controles não devem depender exclusivamente do mouse.
+A seção Projetos tem dois espaços de destaque lado a lado no desktop e dois cards compactos abaixo. Em telas estreitas, a composição se reorganiza em uma coluna. Apenas o EduComp possui navegação interna.
 
-A estrutura não exige autenticação, busca interna nem filtros na primeira versão.
+Fragmentos apresenta um ensaio com rota própria, e os demais cards são espaços informativos. A trajetória e a galeria têm navegação horizontal; as fotografias também podem ser ampliadas. O conteúdo mantém ordem de leitura quando a interface passa para uma coluna.
 
 ## Referências
 

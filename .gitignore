@@ -1,19 +1,18 @@
-# Dependências e produtos de compilação
 node_modules/
 dist/
 *.tsbuildinfo
 
-# Arquivos locais
 .env
 .env.*
 !.env.example
 *.local
-.DS_Store
-Thumbs.db
 
-# Backups, logs e arquivos temporários
+.portfolio-backup/
 .fragmentos-backup/
 *.log
 *.zip
 *.rar
 *.7z
+
+.DS_Store
+Thumbs.db

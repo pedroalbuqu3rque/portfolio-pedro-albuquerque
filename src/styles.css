@@ -42,7 +42,6 @@ main { overflow: clip; }
 .text-link { display: inline-flex; gap: 8px; align-items: center; color: var(--blue); font-size: 16px; font-weight: 700; line-height: 21px; transition: gap .18s ease; }
 a:hover .text-link, button:hover .text-link { gap: 14px; }
 
-/* Global navigation: 1440 x 96 in the reference desktop design. */
 .site-header { position: relative; z-index: 20; background: var(--black); height: 96px; color: #ebebeb; }
 .header-inner { margin: auto; height: 100%; width: min(var(--page-width), 100%); padding: 0 56px; display: flex; justify-content: space-between; align-items: center; }
 .monogram { color: white; font-weight: 900; font-size: 35px; line-height: 1; letter-spacing: -4px; }
@@ -53,12 +52,10 @@ a:hover .text-link, button:hover .text-link { gap: 14px; }
 .nav-menu .nav-active::after { position: absolute; bottom: 20px; left: 12%; width: 76%; height: 3px; border-radius: 2px; background: var(--blue); content: ''; }
 .mobile-toggle { display: none; border: 0; background: transparent; color: #fff; font-size: 29px; }
 
-/* Editorial white space between major sections is part of the Figma composition. */
 .section-spacer { background: #fff; }
 .spacer-large { height: 125px; }
 .spacer-medium { height: 80px; }
 
-/* Hero */
 .hero { background: #fff; height: 726px; }
 .hero-body { height: 100%; position: relative; }
 .hero-copy { position: absolute; top: 102px; left: 32px; width: 600px; z-index: 1; }
@@ -75,7 +72,6 @@ a:hover .text-link, button:hover .text-link { gap: 14px; }
 .social-links a { color: #000; display: grid; width: 26px; height: 26px; place-items: center; transition: color .15s ease, transform .15s ease; }
 .social-links a:hover { color: var(--blue); transform: translateY(-2px); }
 
-/* Horizontally scrolling, keyboard-accessible carousels */
 .carousel { position: relative; }
 .carousel-viewport { width: 100%; height: 100%; overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; scrollbar-width: none; overscroll-behavior-x: contain; touch-action: pan-x pan-y; }
 .carousel-viewport::-webkit-scrollbar { display: none; }
@@ -89,10 +85,8 @@ a:hover .text-link, button:hover .text-link { gap: 14px; }
 .carousel-arrow:hover:not(:disabled) { background: #eef2ff; border-color: var(--blue); }
 .carousel-arrow:disabled { opacity: .4; }
 
-/* Badges de conteúdo */
 .tag-blue { display: inline-block; background: #eef2ff; color: var(--blue); padding: 6px 10px; font-size: 12px; font-weight: 700; border-radius: 4px; line-height: 15px; }
 
-/* Areas of practice */
 .areas { height: 715px; background: var(--white); }
 .areas .section-label { position: absolute; top: 80px; }
 .areas .section-title { position: absolute; top: 116px; left: -6px; font-size: 72px; line-height: 83px; }
@@ -106,7 +100,6 @@ a:hover .text-link, button:hover .text-link { gap: 14px; }
 .area-tags span { display: inline-block; color: #fff; background: #111; font-size: 10px; line-height: 1.1; font-weight: 700; padding: 3px 4px; }
 .area-accent { position: absolute; left: 21px; bottom: 21px; background: var(--blue); height: 4px; width: 50px; }
 
-/* Technology marquee */
 .stack-section { height: 160px; background: #111; overflow: hidden; display: flex; align-items: center; }
 .stack-marquee { width: 100%; height: 160px; position: relative; overflow: hidden; }
 .stack-marquee::before, .stack-marquee::after { position: absolute; width: 70px; top: 0; bottom: 0; content: ''; z-index: 1; pointer-events: none; }
@@ -125,7 +118,6 @@ a:hover .text-link, button:hover .text-link { gap: 14px; }
 @keyframes marquee-right { from { transform: translateX(-50%); } to { transform: translateX(0); } }
 .stack-marquee:hover .stack-track, .stack-marquee:focus-within .stack-track { animation-play-state: paused; }
 
-/* Fragmentos */
 .fragments { height: 865px; background: #fff; }
 .fragment-intro { display: grid; grid-template-columns: minmax(0, 460px) minmax(0, 825px); gap: 27px; position: absolute; top: 80px; left: 0; width: 100%; }
 .fragment-copy .section-title { font-size: 68px; line-height: 79px; margin: 39px 0 0 -5px; }
@@ -150,7 +142,6 @@ button.reading-card:hover { border-color: #a8bbef; }
 .upcoming-reading .new-article-plus { font-size: 59px; width: 151px; height: 187px; display: grid; place-items: center; background: #f6f8fc; color: var(--blue); }
 .upcoming-reading .eyebrow { font-size: 12px; }
 
-/* Timeline */
 .trajectory { height: 376px; background: #f9f9fa; }
 .trajectory .section-label { position: absolute; top: 80px; font-size: 16px; }
 .timeline-carousel { position: absolute; top: 134px; left: 0; width: 100%; height: 202px; }
@@ -162,7 +153,6 @@ button.reading-card:hover { border-color: #a8bbef; }
 .timeline-card h3 { position: absolute; top: 61px; left: 2px; right: 13px; font-size: 19px; line-height: 24px; font-weight: 900; }
 .timeline-card p { position: absolute; top: 117px; left: 2px; right: 18px; font-size: 15px; line-height: 21px; color: #333; }
 
-/* About, contact, footer */
 .about { height: 480px; background: #fff; }
 .about-inner { height: 100%; display: grid; grid-template-columns: 690px 1fr; align-items: start; }
 .about-heading { padding: 55px 0 0 5px; }
@@ -180,7 +170,6 @@ button.reading-card:hover { border-color: #a8bbef; }
 .footer-inner strong { font-weight: 700; }
 .footer-inner span { color: #cfcfcf; }
 
-/* Unpublished content / modal */
 .placeholder-dialog { border: 1px solid #d4d7dd; border-radius: 9px; padding: 0; max-width: min(548px, calc(100vw - 32px)); width: 548px; box-shadow: 0 30px 90px rgba(0,0,0,.18); background: white; }
 .placeholder-dialog::backdrop { background: rgb(0 0 0 / .5); backdrop-filter: blur(5px); }
 .modal-header { background: #111; color: white; display: flex; justify-content: space-between; align-items: center; height: 69px; padding: 0 32px; font-size: 12px; font-weight: 700; }
@@ -191,7 +180,6 @@ button.reading-card:hover { border-color: #a8bbef; }
 .modal-inner p { color: #555; font-size: 16px; line-height: 25px; margin-top: 18px; }
 .modal-inner .button { margin-top: 28px; margin-left: auto; display: flex; width: 154px; min-height: 44px; }
 
-/* Internal pages: functional previews while implementation of case/article is phased. */
 .internal-preview, .essay-page { min-height: calc(100vh - 184px); background: #fff; }
 .internal-preview .content-width, .essay-page .content-width { position: relative; padding: 78px 0 130px; }
 .back-link { display: inline-block; float: right; color: #111; font-size: 13px; font-weight: 700; }
@@ -223,7 +211,6 @@ button.reading-card:hover { border-color: #a8bbef; }
   .contact-copy h2 { font-size: 58px; }
 }
 
-/* Tablet: cards retain a horizontal swipe while sections become content-driven. */
 @media (max-width: 1100px) {
   .content-width { width: min(100% - 64px, 880px); }
   .spacer-large { height: 68px; }
@@ -356,7 +343,6 @@ button.reading-card:hover { border-color: #a8bbef; }
   .stack-marquee { overflow-x: auto; }
 }
 
-/* V0.3 - interaction polish, accessibility, and mobile refinements. */
 .skip-link {
   position: fixed;
   z-index: 1000;
@@ -375,7 +361,6 @@ button.reading-card:hover { border-color: #a8bbef; }
 #conteudo:focus { outline: none; }
 ::selection { background: #b9ceff; color: #111; }
 
-/* Area cards stay informational: hover adds depth but does not pretend to be a link. */
 .area-card {
   isolation: isolate;
   overflow: hidden;
@@ -406,7 +391,6 @@ button.reading-card:hover { border-color: #a8bbef; }
   .area-card:hover .area-accent { width: 86px; }
 }
 
-/* Keep sufficient tap targets, including icon-only actions. */
 .social-links { gap: 6px; }
 .social-links a { width: 44px; height: 44px; }
 .carousel-arrow { min-width: 44px; min-height: 44px; }
@@ -421,7 +405,6 @@ button.reading-card:hover { border-color: #a8bbef; }
   .nav-menu a { font-size: 13px; }
 }
 
-/* Two generous columns beat three narrow cards on small tablets. */
 @media (min-width: 601px) and (max-width: 900px) {
   .areas-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
   .area-card { min-height: 333px; height: auto; }
@@ -443,7 +426,6 @@ button.reading-card:hover { border-color: #a8bbef; }
   .hero-collage { filter: drop-shadow(0 3px 2px rgb(0 0 0 / .07)); }
 }
 
-/* Readable single-column area cards at phone widths. */
 @media (max-width: 600px) {
   .areas-grid { grid-template-columns: 1fr; gap: 14px; }
   .area-card {
@@ -528,8 +510,6 @@ button.reading-card:hover { border-color: #a8bbef; }
   .stack-track { animation: none !important; transform: translateX(0) !important; }
 }
 
-
-/* V0.4 — editorial navigation, minimal carousel controls, and quieter motion. */
 .site-header {
   position: sticky;
   inset-block-start: 0;
@@ -600,7 +580,6 @@ button.reading-card:hover { border-color: #a8bbef; }
 }
 .carousel-arrow:focus-visible { background: rgb(5 79 255 / .08); }
 
-/* Cards remain clean: subtle affordances only for genuinely interactive items. */
 .fragment-featured, .reading-card {
   transition: border-color .25s ease, box-shadow .28s ease, transform .28s cubic-bezier(.2,.7,.2,1);
 }
@@ -624,11 +603,10 @@ button.reading-card:hover { border-color: #a8bbef; }
   .reading-related-card:hover { box-shadow: 0 14px 24px rgb(10 25 50 / .07); transform: translateY(-3px); }
   .area-card:hover .area-mark { transform: translateY(-3px) scale(1.05); }
 }
-/* A card about an area of practice isn't clickable; no pointer cursor, no number. */
+
 .area-card { cursor: default; }
 .area-card::before { background: linear-gradient(145deg, rgb(5 79 255 / .035), transparent 66%); }
 
-/* Sticky header should never cover in-page targets. */
 section[id], .reading-article-section { scroll-margin-top: 112px; }
 
 @media (max-width: 1100px) {
@@ -636,7 +614,7 @@ section[id], .reading-article-section { scroll-margin-top: 112px; }
   .case-gallery-image { transition: border-color .2s ease; }
 }
 @media (min-width: 761px) and (max-width: 1100px) {
-  /* Flow thumbnails get usable width instead of three cramped miniatures. */
+
   .case-flow-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
   .case-flow-card { min-height: 465px; }
   .case-flow-card:last-child { grid-column: 1 / -1; width: min(100%, 430px); justify-self: center; }
@@ -726,8 +704,6 @@ section[id], .reading-article-section { scroll-margin-top: 112px; }
   .case-flow-card:hover { box-shadow: none; }
 }
 
-/* V0.7 — Elementos visuais enviados pelo autor e normalizados em 256 × 256.
-   Cada categoria compartilha a mesma caixa óptica; sem deformação de logos. */
 .area-mark { width: 72px; height: 72px; object-fit: contain; flex: none; }
 .tech-symbol { width: 58px; height: 58px; flex: none; font-size: initial; }
 .tech-symbol img { width: 58px; height: 58px; object-fit: contain; display: block; }
@@ -746,7 +722,6 @@ section[id], .reading-article-section { scroll-margin-top: 112px; }
   .area-mark { width: 58px; height: 58px; }
 }
 
-/* Navegação e estados acessíveis em todos os tamanhos. */
 :where(a, button, [tabindex="0"]):focus-visible {
   outline: 3px solid var(--blue);
   outline-offset: 4px;
@@ -758,8 +733,6 @@ section[id], .reading-article-section { scroll-margin-top: 112px; }
   .stack-track { animation: none !important; transform: translateX(0) !important; }
 }
 
-
-/* SVG arrows remain crisp across platforms; no glyph/emoji font fallback. */
 .arrow-icon { display: inline-block; flex: none; vertical-align: middle; }
 .button .arrow-icon { margin-left: 8px; }
 .case-back { display: inline-flex; align-items: center; gap: 7px; }

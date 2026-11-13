@@ -1,27 +1,23 @@
 # Objetivos de UX
 
-O principal objetivo é permitir que alguém entenda a proposta do portfólio e encontre o conteúdo que procura sem precisar descobrir como a interface funciona.
+## Clareza de apresentação
 
-## Clareza
+A abertura comunica a identidade do portfólio e dá dois caminhos diretos: explorar projetos ou acessar o currículo. O visitante consegue identificar áreas de atuação e tecnologias sem sair da página principal.
 
-A apresentação inicial deve explicar quem sou e o que faço. Os títulos e as chamadas precisam funcionar mesmo para quem percorre a página rapidamente.
+## Profundidade sem excesso de navegação
 
-## Navegação
+Os projetos e textos têm suas próprias páginas quando exigem mais contexto. O cabeçalho e os links de retorno mantêm uma referência à landing, sem depender de menus extensos ou etapas intermediárias.
 
-A pessoa deve conseguir abrir o estudo de caso do EduComp, ler o ensaio e voltar à landing sem perder a referência de onde estava. O cabeçalho acompanha a rolagem para manter o acesso ao menu.
+## Leitura e conteúdo
 
-## Leitura
+Fragmentos oferece uma coluna confortável para texto longo, índice de seis partes e ações simples de compartilhar e voltar. O EduComp apresenta decisões e fluxos de forma progressiva, sem substituir conteúdo por uma sequência de imagens genéricas.
 
-Fragmentos prioriza texto, com largura de coluna confortável, contrastes claros e um índice que leva aos trechos do artigo. A experiência mobile exige cuidado com quebras de linha e espaçamentos, não apenas redução de tamanho.
+## Coerência das interações
 
-## Interação
+Controles com aparência clicável executam uma ação. Espaços reservados permanecem informativos; setas, modais e links usam rótulos claros e não dependem de caracteres emoji para a iconografia.
 
-As setas e os carrosséis devem ser compreensíveis por si mesmos, sem frases de instrução em excesso. As microinterações são discretas e não podem ser necessárias para compreender o conteúdo.
+## Acessibilidade e adaptação
 
-## Acessibilidade
+Foco visível, semântica dos controles, imagens com descrições adequadas e redução de movimento fazem parte dos critérios de interface. Os conteúdos precisam conservar uma ordem lógica em telas estreitas e poder ser percorridos por teclado.
 
-Os elementos de navegação precisam oferecer foco visível, rótulos compreensíveis e uso por teclado. O modal deve permitir fechar por botão, Esc e clique fora. A interface deve respeitar a preferência por movimento reduzido.
-
-## Como avaliar
-
-A validação será feita com os fluxos descritos no [plano de testes](../qa/plano-de-testes.md), em desktop e celular. Essas verificações ainda não representam uma pesquisa com usuários ou uma certificação de acessibilidade.
+Os procedimentos de verificação estão no [plano de testes](../qa/plano-de-testes.md). Este documento descreve objetivos e critérios da experiência, não resultados de pesquisa com usuários.

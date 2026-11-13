@@ -1,63 +1,48 @@
 # Plano de testes
 
-Este documento organiza as verificações antes de publicar o portfólio. **Não é um registro de aprovação:** os resultados devem ser preenchidos após os testes no navegador e no endereço público.
+O plano combina verificações automatizadas do repositório e cenários de regressão para uso no navegador. Ele documenta o procedimento e o resultado esperado; não equivale a uma certificação de acessibilidade ou a uma pesquisa com usuários.
 
-## Preparação
+## Verificações automatizadas
 
 ```bash
 npm ci
-npm run check:content
-npm run typecheck
-npm run build
-npm run preview
+npm run verify
 ```
 
-No PowerShell, use `npm.cmd` se o Windows bloquear a execução de `npm.ps1`.
+| Comando | Cobertura |
+| --- | --- |
+| `check:content` | Estrutura de páginas, navegação, composição, dados e integrações internas |
+| `check:assets` | Existência de imagens, ícones e arquivos usados na interface |
+| `check:docs` | Referências relativas entre arquivos Markdown |
+| `typecheck` | Análise de tipos do TypeScript |
+| `build` | Compilação de produção e geração dos documentos de SEO |
 
-## Navegação
+O GitHub Actions executa `verify` após `npm ci` em pushes e pull requests para `main`.
 
-- [ ] A landing abre e apresenta as seções na ordem esperada.
-- [ ] O botão azul **Ver projetos** leva à seção Projetos e **Currículo** mantém seu comportamento de download ou aviso.
-- [ ] O cabeçalho permanece visível ao rolar e os links levam às seções corretas.
-- [ ] O card EduComp abre `/projetos/educomp` e o retorno funciona.
-- [ ] O EduComp aparece como card principal, com área de imagem vazia acima das informações, sem cortes ou sobreposições.
-- [ ] Os outros dois projetos aparecem abaixo dele, um por linha, sem links que levem a conteúdo inexistente.
-- [ ] As tags das cinco áreas não se sobrepõem às descrições em desktop e mobile.
-- [ ] Os cards de Áreas ganham leve escala e sombra no hover sem parecer links; a animação é desativada com movimento reduzido.
-- [ ] A trajetória apresenta os marcos reais de 2026 a 2023 em uma linha horizontal e pode ser percorrida sem mouse.
-- [ ] O ensaio abre sua rota e o índice leva aos trechos correspondentes.
-- [ ] Atualizar uma página interna diretamente não gera erro.
-- [ ] Os botões voltar e avançar do navegador funcionam entre páginas.
+## Cenários de regressão
 
-## Interações
+| ID | Procedimento | Resultado esperado |
+| --- | --- | --- |
+| NAV-01 | Abrir `/` e acessar cada item do menu | Rolagem para a seção correta e indicação da seção ativa |
+| NAV-02 | Abrir EduComp e usar retorno a Projetos | Retorno à landing na seção de Projetos |
+| NAV-03 | Abrir o ensaio, atualizar a página e usar o retorno | A rota carrega diretamente e a volta funciona |
+| NAV-04 | Usar voltar/avançar do navegador entre rotas | Histórico preservado sem páginas vazias |
+| PRO-01 | Examinar Projetos no desktop e no celular | Dois destaques no topo em desktop e empilhamento no mobile; cards inferiores preservados |
+| PRO-02 | Acionar os cards de reserva | Ausência de links para conteúdo inexistente |
+| EDU-01 | Abrir EduComp e acessar o protótipo | Estudo de caso e link externo funcionam |
+| FRA-01 | Percorrer as seis entradas do índice | Cada entrada leva ao trecho correspondente |
+| FRA-02 | Compartilhar o ensaio | Compartilhamento nativo ou cópia do link, com retorno acessível |
+| GAL-01 | Percorrer e ampliar as oito fotografias | Imagem correta, proporção adequada e fechamento por botão/Esc |
+| CON-01 | Abrir e fechar o modal de contato | Links corretos, fechamento por botão/Esc e retorno do foco |
+| CUR-01 | Acionar Currículo com e sem PDF | Download de arquivo válido ou aviso informativo |
+| ACC-01 | Percorrer menus, links e controles somente com teclado | Ordem lógica e foco visível |
+| ACC-02 | Ativar movimento reduzido no sistema | Animações não essenciais reduzidas ou interrompidas |
+| SEO-01 | Abrir as três rotas pelo endereço direto | HTML e metadados adequados em cada rota |
 
-- [ ] Os carrosséis de Fragmentos, Trajetória e Galeria podem ser percorridos com setas, teclado e toque. Projetos não usa carrossel.
-- [ ] As oito fotografias da galeria integrada ao Sobre mim aparecem em 4:3, com cantos arredondados e sem distorção.
-- [ ] Cada fotografia abre ampliada e fecha pelo botão, clique externo ou Esc; as setas permitem percorrer as fotos.
-- [ ] A animação das tecnologias não impede a leitura e respeita movimento reduzido.
-- [ ] O modal de contato abre e fecha pelo X, Esc e clique fora.
-- [ ] E-mail, LinkedIn e GitHub abrem os destinos corretos.
-- [ ] O botão de currículo faz download do PDF válido ou informa a indisponibilidade.
-- [ ] Botões e links oferecem foco visível e nomes compreensíveis.
+## Tamanhos e navegadores
 
-## Responsividade e acessibilidade
+Conferir larguras de 320, 390, 768, 1024 e 1440 px. Em todas elas, observar cortes de texto, rolagem horizontal inesperada, contraste, escala das imagens e ordem de leitura. Testar pelo menos um navegador desktop e um navegador mobile.
 
-Conferir as três páginas pelo menos em 320, 390, 768, 1024 e 1440 px.
+## Registro de evidência
 
-- [ ] Não há rolagem horizontal indevida.
-- [ ] Títulos, imagens e tags não ficam cortados.
-- [ ] A apresentação mobile mantém ordem de leitura adequada.
-- [ ] O modal e o menu podem ser usados sem mouse.
-- [ ] Os conteúdos têm contraste, hierarquia de títulos e textos alternativos adequados.
-- [ ] O índice de Fragmentos e os controles de carrossel funcionam por teclado.
-
-## Publicação
-
-- [ ] A URL pública está em `VITE_SITE_URL`.
-- [ ] Uma instalação limpa (`npm ci`) seguida de `npm run build` funciona no sistema usado para publicar.
-- [ ] O favicon, os títulos e a imagem de compartilhamento foram conferidos.
-- [ ] Sitemap, `robots.txt` e indexação correspondem ao conteúdo publicado.
-- [ ] Os arquivos públicos carregam corretamente.
-- [ ] O site foi testado no endereço final, em desktop e celular.
-
-Pendências de conteúdo e links de referência estão registradas no [handoff](../ux-ui/handoff.md).
+Para cada execução manual, registrar data, navegador, largura, resultado (aprovado, falhou ou não executado) e evidência em caso de falha. O documento de [verificação do repositório](relatorio-de-verificacao.md) distingue testes executados de itens que dependem da hospedagem ou da inspeção visual.

@@ -2,71 +2,59 @@
 
 ## Visão geral
 
-O portfólio utiliza React 19, TypeScript, Vite 6 e CSS. É uma aplicação estática, sem backend ou banco de dados. Os conteúdos desta versão estão definidos no próprio código. O ensaio está separado em `src/content/ensaio-fazer-digital.ts`.
+O portfólio é uma aplicação client-side construída com React 19, TypeScript e Vite 6. O resultado publicado é estático e não utiliza autenticação, API própria ou banco de dados.
 
-## Organização do código
+A página inicial e as duas rotas internas compartilham o mesmo ambiente de componentes e estilos. Conteúdo de projetos, trajetória, tecnologias e contato é mantido no código; o ensaio está isolado em um módulo de conteúdo.
 
-- `src/App.tsx`: landing, cabeçalho, carrosséis de Fragmentos, trajetória e galeria, modais e dados das seções.
-- `src/pages/EduCompPage.tsx`: estudo de caso EduComp.
-- `src/pages/FragmentosPage.tsx`: página do ensaio.
-- `src/components/ProjectsSection.tsx`: cards verticais de projetos, separados dos carrosséis.
-- `src/components/`: componentes da landing.
-- `src/projects.css`: composição e responsividade exclusivas da seção Projetos.
-- `src/finishing-touches.css`: acabamento editorial de Fragmentos e Sobre mim.
-- `src/navigation.ts`: preserva clique modificado e abertura em nova aba nos links internos.
-- `src/styles.css`: estilos principais.
-- `src/internal-pages.css`: estilos das páginas internas.
-- `src/editorial.css`: ajustes de tipografia, composição e responsividade.
-- `src/gallery-timeline-polish.css`: barra de navegação, pontos da trajetória e galeria de fotografias.
-- `src/seo.ts`: atualização de metadados durante a navegação.
-- `public/`: imagens e arquivos servidos diretamente.
-- `scripts/`: verificações e geração dos documentos de SEO.
+## Estrutura
 
-## Rotas
-
-| Caminho | Página |
+| Caminho | Responsabilidade |
 | --- | --- |
-| `/` | Landing |
-| `/projetos/educomp` | EduComp |
-| `/fragmentos/a-potencia-do-fazer-digital-na-educacao` | Ensaio publicado |
+| `src/main.tsx` | Montagem da aplicação e ordem de importação dos estilos |
+| `src/App.tsx` | Landing, cabeçalho, estados, navegação e interações |
+| `src/components/ProjectsSection.tsx` | Vitrine de Projetos e cards informativos |
+| `src/components/ArrowIcon.tsx` | Setas SVG compartilhadas |
+| `src/pages/EduCompPage.tsx` | Estudo de caso |
+| `src/pages/FragmentosPage.tsx` | Apresentação e leitura do ensaio |
+| `src/content/ensaio-fazer-digital.ts` | Texto integral, índice e metadados do ensaio |
+| `src/navigation.ts` | Comportamento de links internos e cliques modificados |
+| `src/seo.ts` | Atualização de título e metadados durante a navegação |
+| `src/*.css` | Layout, componentes visuais, estados e media queries |
+| `public/assets/` | Fotografias, ícones e imagens de apresentação |
+| `site-meta.json` | Metadados de SEO por rota |
+| `scripts/` | Verificações e geração dos documentos do build |
 
-A navegação usa a History API do navegador, controlada pelo React, sem biblioteca de roteamento.
+Os arquivos CSS são importados em ordem por `src/main.tsx`; as folhas das páginas internas são importadas pelos componentes correspondentes. Essa ordem faz parte da cascata e deve ser preservada em eventuais reorganizações.
 
-O build prepara documentos de entrada para as rotas atuais, mas as URLs diretas ainda precisam ser conferidas na hospedagem escolhida.
+## Rotas e navegação
 
-## Conteúdo e assets
+| Rota | Conteúdo |
+| --- | --- |
+| `/` | Página principal |
+| `/projetos/educomp` | Estudo de caso do EduComp |
+| `/fragmentos/a-potencia-do-fazer-digital-na-educacao` | Ensaio de Fragmentos |
 
-Os textos dos cards, os marcos individuais da linha do tempo, a lista de fotografias, as áreas e os links de contato estão em `src/App.tsx`. As oito fotografias otimizadas do Sobre mim estão em `public/assets/galeria` e são vinculadas pela constante `GALLERY_PHOTOS`. A colagem do hero está em `public/assets/hero-collage.webp`. A imagem do ensaio está em `public/assets/fragmentos/fazer-digital.webp`.
+A History API permite navegar sem recarregar a aplicação. O controle `shouldNavigateInApp` respeita abertura em nova aba e modificadores de teclado. O script de build gera um `index.html` para cada rota; a hospedagem precisa disponibilizar esses arquivos nos respectivos caminhos.
 
-O currículo deve ser colocado em:
+## Dados e recursos
 
-```text
-public/curriculo-pedro-albuquerque.pdf
-```
+As constantes da landing definem as cinco áreas, a faixa de 15 tecnologias, a trajetória e a galeria de oito fotografias. As imagens estão em `public/assets`, enquanto título, texto e data do ensaio são importados de um único arquivo em `src/content/`.
 
-Na ausência do arquivo, o botão informa que o download não está disponível.
+A ação do currículo busca `public/curriculo-pedro-albuquerque.pdf`. Se não encontrar um PDF válido, apresenta uma mensagem em vez de entregar um HTML de fallback como arquivo.
 
-## SEO
+## SEO e publicação
 
-O arquivo `site-meta.json` define título, descrição e indexação por rota. O script `scripts/generate-seo.mjs` gera os metadados do build e o sitemap quando a URL pública está configurada.
+`site-meta.json` define título, descrição, tipo Open Graph e indexação de cada página. `scripts/generate-seo.mjs` cria os HTMLs de entrada com metadados próprios, dados estruturados e, quando `VITE_SITE_URL` está definido, URL canônica e sitemap absoluto.
 
-Após definir o domínio, configure `VITE_SITE_URL` em `.env.production`, sem barra final. As três rotas atuais estão configuradas para indexação. Antes de publicar, conferir se cada texto e metadado está pronto para divulgação.
+Para produção, configure `VITE_SITE_URL` com a origem pública (protocolo e domínio, sem barra ao final). O arquivo `.env.example` documenta o formato. Nenhuma credencial precisa estar no código-fonte.
 
-## Comandos
+## Verificação
 
 ```bash
 npm ci
-npm run dev
-npm run check:content
-npm run typecheck
-npm run build
-npm run preview
+npm run verify
 ```
 
-`check:content` é uma verificação estrutural. Não substitui testes no navegador.
+`verify` executa verificações de conteúdo, recursos, documentação, TypeScript e build. A configuração em `.github/workflows/ci.yml` repete o processo em pushes e pull requests para `main`.
 
-Consulte [Recursos visuais](recursos.md) para detalhes dos arquivos utilizados.
-
-## Limites da versão atual
-
-Não existe CMS, sistema de autenticação, envio de mensagens por servidor ou persistência de dados. Novas páginas precisam ser adicionadas ao código e às regras de navegação.
+Os scripts estáticos verificam convenções do projeto, mas não substituem testes de interação, contraste ou responsividade em navegador. O [plano de testes](../qa/plano-de-testes.md) descreve essa cobertura complementar.

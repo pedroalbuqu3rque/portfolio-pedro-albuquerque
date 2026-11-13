@@ -44,9 +44,6 @@ export function updatePageMetadata(path: string) {
     document.head.appendChild(canonical);
   }
   canonical.href = url;
-
-  // Use a single data source for client metadata and generated route entry pages.
-  // Do not include unverified social profiles in structured data.
   const entity = path === '/'
     ? { '@context': 'https://schema.org', '@type': 'Person', name: 'Pedro Albuquerque',
         description: 'Professor de Computacao com interesse em tecnologia, design e desenvolvimento.', url: origin }

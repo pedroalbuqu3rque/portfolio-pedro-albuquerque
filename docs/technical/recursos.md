@@ -1,18 +1,26 @@
 # Recursos visuais
 
-## Imagens
+Os arquivos de imagem usados no site estão centralizados em `public/`. Os recursos mantêm seus nomes estáveis para facilitar manutenção e conferência das referências no código.
 
-- `public/assets/hero-collage.webp`: colagem editorial da página inicial. A versão WebP mantém transparência e substitui o PNG anterior, sem alterar a composição.
-- `public/assets/fragmentos/fazer-digital.webp`: fotografia escolhida para a capa e a página do ensaio *A potência do fazer digital na educação*.
-- `public/assets/galeria/`: oito fotografias, do arquivo `01-leituras.webp` ao `08-eventos.webp`, padronizadas para proporção 4:3.
-- `public/assets/og-portfolio.png`: imagem para compartilhamento nas redes sociais.
+## Apresentação e leitura
 
-## Ícones
+| Caminho | Uso |
+| --- | --- |
+| `public/assets/hero-collage.webp` | Colagem editorial da abertura |
+| `public/assets/fragmentos/fazer-digital.webp` | Capa e apresentação do ensaio |
+| `public/assets/og-portfolio.png` | Compartilhamento em redes sociais |
+| `public/favicon.svg`, `public/icon-192.png`, `public/icon-512.png` | Identidade do navegador e ícones da aplicação |
 
-- `public/assets/visuais/stack/`: 15 tecnologias apresentadas na faixa escura.
-- `public/assets/visuais/areas/`: cinco marcas das áreas de atuação.
-- `public/assets/visuais/contato/`: e-mail, GitHub e LinkedIn.
+## Galeria
 
-As imagens decorativas têm texto alternativo vazio quando o conteúdo textual ao lado já as descreve. As fotografias da galeria e do ensaio recebem descrições específicas.
+`public/assets/galeria/` contém oito fotografias em WebP, numeradas de `01-leituras.webp` a `08-eventos.webp`. O array `GALLERY_PHOTOS`, em `src/App.tsx`, define a ordem e os textos alternativos usados na interface.
 
-Os quatro espaços do estudo de caso EduComp são composições tipográficas intencionais. Não devem ser confundidos com capturas reais da plataforma.
+## Áreas, tecnologias e contato
+
+- `public/assets/visuais/areas/`: cinco ícones de áreas.
+- `public/assets/visuais/stack/`: 15 marcas de ferramentas e linguagens.
+- `public/assets/visuais/contato/`: ícones de e-mail, LinkedIn e GitHub.
+
+As setas de interface são geradas pelo componente SVG `src/components/ArrowIcon.tsx`. Os quatro painéis do EduComp são composições tipográficas da própria aplicação, não imagens de telas reais.
+
+O comando `npm run check:assets` verifica os caminhos referenciados pelo código e pelos arquivos de configuração. Não é necessário manter arquivos README ou manifestos dentro de `public/assets/`.

@@ -1,7 +1,3 @@
-/* v0.12 — final refinements to the compact navigation, area cards,
-   horizontal timeline and a photo-first personal gallery. */
-
-/* Slimmer navigation: smaller vertical footprint, same structure. */
 .site-header { height: 78px; }
 .header-inner { max-width: 1440px; }
 .monogram { font-size: 32px; }
@@ -11,10 +7,8 @@
 .nav-menu a::after, .nav-menu .nav-active::after { bottom: 14px; }
 html { scroll-padding-top: 82px; }
 
-/* One blue throughout the portfolio. */
 .contact-highlight { color: var(--blue); }
 
-/* Keep description > tags > signature in one compact cluster. */
 .area-card .area-tags {
   margin-top: 12px;
   padding: 0;
@@ -29,7 +23,6 @@ html { scroll-padding-top: 82px; }
 }
 .area-card { padding-bottom: 20px; }
 
-/* Horizontal trajectory: one continuous line and one marker per milestone. */
 .trajectory { background: #f8f9fa; height: auto; }
 .trajectory .section-content { padding: 69px 0 119px; height: auto; }
 .trajectory .section-label { margin: 0 0 28px; }
@@ -121,7 +114,6 @@ html { scroll-padding-top: 82px; }
 .timeline-points .carousel-progress { background: #d6dce4; }
 .timeline-points .carousel-progress span { background: var(--blue); }
 
-/* Sobre mim: apresentação e galeria fazem parte da mesma seção editorial. */
 .about { background: #fff; height: auto; }
 .about-inner { padding-top: 86px; padding-bottom: 43px; }
 .memory-gallery { padding-bottom: 105px; }
@@ -204,7 +196,6 @@ html { scroll-padding-top: 82px; }
 .memory-caption strong { color: #111; font-size: 14px; font-weight: 800; letter-spacing: -.02em; text-align: right; }
 .memory-carousel .carousel-controls-bottom { bottom: -64px; }
 
-/* Ampliação das oito fotos, com navegação por teclado e botões. */
 .memory-lightbox {
   border: 0;
   background: #111;
@@ -261,9 +252,6 @@ html { scroll-padding-top: 82px; }
   .memory-photo > img { transition: none; }
 }
 
-/* v0.14 | Refinamento de proporções e ritmo visual da landing. */
-
-/* Hero com uma transição intencional, sem uma área vazia artificial. */
 .hero { border-bottom: 1px solid #e1e5eb; }
 .hero-body::after {
   content: ''; position: absolute; bottom: -1px; left: 0; z-index: 1;
@@ -283,7 +271,6 @@ html { scroll-padding-top: 82px; }
   .hero-body { padding-bottom: 62px; }
 }
 
-/* Áreas: mesma linha de base para tags e traços, com o mínimo espaço livre. */
 .areas .section-content { padding-bottom: 56px; }
 @media (min-width: 601px) {
   .area-card {
@@ -315,11 +302,8 @@ html { scroll-padding-top: 82px; }
   .area-card .area-accent { margin-top: 13px; }
 }
 
-/* A faixa de tecnologias encosta diretamente na seção cinza de áreas.
-   O espaço intencional permanece depois da faixa preta. */
 .areas + .stack-section { margin-top: 0; }
 
-/* Galeria fotografica integrada ao Sobre mim, sem botoes sobrepostos. */
 .memory-gallery-intro { display: block; }
 .memory-gallery-intro h3 { max-width: none; }
 .memory-photo { border-radius: 12px; }
@@ -329,14 +313,11 @@ html { scroll-padding-top: 82px; }
 @media (max-width: 700px) {
   .memory-gallery-intro h3 { max-width: 100%; }
 }
-/* Tags curtas passam a ocupar duas linhas como as demais. */
+
 @media (min-width: 601px) {
   .area-card:nth-child(2) .area-tags { max-width: 140px; }
 }
 
-
-/* v0.15 | Trajetoria integrada ao Sobre mim e respiro simetrico da faixa de tecnologias. */
-/* Aproxima a faixa de tecnologias do centro visual entre as duas secoes. */
 @media (min-width: 1101px) {
   .areas { height: 784px; }
   .section-spacer.spacer-large { height: 65px; }
@@ -352,7 +333,6 @@ html { scroll-padding-top: 82px; }
   .fragments .section-content { padding-top: 55px; }
 }
 
-/* Um so bloco: apresentacao, linha do tempo e galeria fotografica. */
 .about-inner {
   height: auto;
   grid-template-columns: minmax(0, 1.04fr) minmax(0, 1fr);
@@ -488,7 +468,6 @@ html { scroll-padding-top: 82px; }
   }
 }
 
-/* v0.16 — botoes, percurso sem numeracao e galeria independente. */
 .hero-actions .hero-cv-button {
   width: 184px;
   flex: 0 0 auto;
@@ -498,12 +477,11 @@ html { scroll-padding-top: 82px; }
   color: #fff;
   border-color: #111;
 }
-/* A linha do tempo conserva datas e marcos, mas dispensa titulo e numeros. */
+
 .about-trajectory .about-timeline { margin-top: 38px; }
 .about-trajectory .about-timeline .carousel-controls { top: -42px; }
 .about-text strong { color: inherit; font-weight: 800; }
 
-/* Fotografias com uma secao propria, separada semanticamente do Sobre mim. */
 .about-inner { padding-bottom: 28px; }
 .gallery-section {
   background: #fff;
@@ -520,10 +498,6 @@ html { scroll-padding-top: 82px; }
   .gallery-section .memory-gallery { padding-bottom: 93px; }
 }
 
-
-/* v0.17 | A primeira dobra apresenta apenas a abertura no desktop.
-   O calculo leva em conta a barra de navegacao fixa no fluxo (78px desktop,
-   76px tablet, 70px mobile). O conteudo permanece centralizado na area visivel. */
 @media (min-width: 1101px) {
   .hero {
     height: max(690px, calc(100vh - 78px));
@@ -547,9 +521,6 @@ html { scroll-padding-top: 82px; }
   }
 }
 
-
-/* v0.18 | Hero, percurso validado pelo autor, tags e galeria. */
-/* Restore the two primary actions without affecting the full-screen hero. */
 .hero-actions .hero-projects-button {
   width: 212px;
   flex: 0 0 auto;
@@ -559,7 +530,6 @@ html { scroll-padding-top: 82px; }
   .hero-actions .hero-cv-button { width: auto; flex: 1 1 135px; }
 }
 
-/* Slightly larger labels while retaining the shared tag and accent baseline. */
 @media (min-width: 1101px) {
   .area-card { grid-template-rows: 91px 57px minmax(96px, 1fr) 61px 4px; }
   .area-card .area-tags { height: 61px; min-height: 61px; padding-bottom: 12px; }
@@ -587,7 +557,6 @@ html { scroll-padding-top: 82px; }
   .area-card:hover { transform: none; box-shadow: none; }
 }
 
-/* Allow longer role names and institution names to remain fully visible. */
 .about-trajectory .about-timeline { min-height: 215px; }
 .about-trajectory .about-timeline .carousel-viewport { height: 207px; }
 .about-trajectory .about-timeline .carousel-track { height: 201px; min-height: 201px; }
@@ -606,12 +575,6 @@ html { scroll-padding-top: 82px; }
   .about-trajectory .timeline-point { min-height: 207px; flex-basis: 224px; width: 224px; }
 }
 
-
-
-/* v0.19 | Unify the Areas background and keep Game Design with Imersão on the first tag row. */
-
-/* v0.20 | A apresentacao pessoal vira uma so composicao editorial:
-   esquerda: titulo, percurso e texto; direita: fotografia 4:3 navegavel. */
 .about-editorial {
   background: #fff;
 }
@@ -646,7 +609,6 @@ html { scroll-padding-top: 82px; }
 .about-editorial .about-text p + p { margin-top: 19px; }
 .about-editorial .about-text strong { font-weight: 800; }
 
-/* Galeria de uma imagem por vez, sem legendas ou controles sobre a foto. */
 .about-editorial .about-gallery { padding-top: clamp(76px, 7vw, 103px); }
 .about-editorial .memory-gallery { padding: 0; }
 .about-editorial .memory-gallery-intro { display: block; }
@@ -728,11 +690,6 @@ html { scroll-padding-top: 82px; }
   .about-editorial .memory-photo > img { transition: none !important; }
 }
 
-
-/* v0.21 | Sobre mim compacto e divisorias editoriais entre secoes.
-   Mantem a composicao e o carrossel existentes, sem elementos decorativos novos. */
-
-/* Linhas discretas definem o ritmo entre as partes principais da landing. */
 #areas, #fragmentos, #sobre, #contato { border-top: 1px solid #e0e4ea; }
 #areas, #fragmentos, #sobre { position: relative; }
 #areas::before, #fragmentos::before, #sobre::before {
@@ -747,7 +704,6 @@ html { scroll-padding-top: 82px; }
 }
 #contato { border-top-color: #262626; }
 
-/* Dois marcos inteiros por vista, com texto logo abaixo da linha do tempo. */
 .about-editorial .about-trajectory { margin-top: 24px; container-type: inline-size; }
 .about-editorial .about-trajectory .about-timeline {
   margin-top: 21px;
@@ -778,7 +734,6 @@ html { scroll-padding-top: 82px; }
 }
 .about-editorial .about-text p + p { margin-top: 18px; }
 
-/* O titulo da galeria ocupa uma unica linha no desktop, valorizando a foto 4:3. */
 .about-editorial .about-gallery { padding-top: clamp(76px, 7vw, 101px); }
 .about-editorial .memory-gallery-intro h3 {
   max-width: none;

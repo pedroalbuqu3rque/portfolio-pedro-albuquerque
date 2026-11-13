@@ -56,9 +56,6 @@ const READINGS: Reading[] = [
 ];
 
 type TimelinePoint = { date: string; title: string; detail: string };
-
-// Percurso sem agrupamento por ano: cada marco é um ponto da mesma linha do tempo.
-// Periodos e titulos fornecidos pelo autor, do mais recente ao mais antigo.
 const TIMELINE_POINTS: TimelinePoint[] = [
   { date: "SET/2026 — ATUALMENTE", title: "Projetos em Tecnologia", detail: "Level 5 Jr." },
   { date: "SET/2026 — ATUALMENTE", title: "Desenvolvimento de Jogo Educacional", detail: "Universidade Federal de Goiás" },
@@ -73,9 +70,6 @@ const TIMELINE_POINTS: TimelinePoint[] = [
   { date: "MAI/2023 — AGO/2024", title: "Iniciação à Docência", detail: "Universidade Federal de Goiás" },
   { date: "2023 — ATUALMENTE", title: "Licenciatura em Geografia", detail: "Universidade Federal de Goiás" },
 ];
-
-// Fotografias autorais fornecidas para o portfólio, na ordem do arquivo recebido.
-// As imagens foram padronizadas em 4:3, sem modificar seu conteúdo.
 type GalleryPhoto = { src: string; alt: string };
 const GALLERY_PHOTOS: GalleryPhoto[] = [
   { src: '/assets/galeria/03-anotacoes.webp', alt: 'Leitor digital com texto acadêmico, acompanhado de uma caneta.' },
@@ -87,8 +81,6 @@ const GALLERY_PHOTOS: GalleryPhoto[] = [
   { src: '/assets/galeria/07-experimentos.webp', alt: 'Tela de computador com programação visual em blocos.' },
   { src: '/assets/galeria/08-eventos.webp', alt: 'Crachá de equipe em um evento, em frente à tela de um notebook.' },
 ];
-
-// A ordem segue a seleção de tecnologias do portfólio.
 const TECHNOLOGIES: Array<{ name: string; icon?: string }> = [
   { name: 'Figma', icon: 'figma' },
   { name: 'React', icon: 'react' },
@@ -268,7 +260,6 @@ function ArticleArtwork() {
   return <div className="article-art art-placeholder" aria-hidden="true"><span>+</span></div>;
 }
 
-
 function SiteHeader({ onNavigate, currentPath }: { onNavigate: (path: string, anchor?: string) => void; currentPath: string }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(() => window.scrollY > 12);
@@ -314,8 +305,6 @@ function SiteHeader({ onNavigate, currentPath }: { onNavigate: (path: string, an
 const CV_FILE = '/curriculo-pedro-albuquerque.pdf';
 
 async function downloadCurriculum(onUnavailable: () => void) {
-  // On Vite, a missing public file may fall back to index.html with HTTP 200.
-  // Checking the MIME type avoids a broken PDF download in that situation.
   try {
     const response = await fetch(CV_FILE, { method: 'HEAD', cache: 'no-store' });
     if (response.ok && response.headers.get('content-type')?.toLowerCase().includes('application/pdf')) {
@@ -327,7 +316,7 @@ async function downloadCurriculum(onUnavailable: () => void) {
       anchor.remove();
       return;
     }
-  } catch { /* CV ainda não disponível */ }
+  } catch {  }
   onUnavailable();
 }
 
@@ -400,7 +389,6 @@ function HomePage({ onNavigate, openPlaceholder, openContact }: { onNavigate: (p
 }
 
 function Footer() { return <footer className="site-footer"><div className="content-width footer-inner"><strong>PEDRO ALBUQUERQUE</strong><span>Feito aqui. Por mim.</span></div></footer>; }
-
 
 function ContactModal({ open, close }: { open: boolean; close: () => void }) {
   const ref = useRef<HTMLDialogElement>(null);

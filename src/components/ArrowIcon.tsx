@@ -1,4 +1,3 @@
-/** Simple SVG navigation arrows: consistent on desktop and mobile, independent of fonts. */
 import type { SVGProps } from 'react';
 
 type Direction = 'left' | 'right' | 'up-right' | 'down';

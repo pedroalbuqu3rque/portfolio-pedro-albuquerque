@@ -1,4 +1,3 @@
-/* Fragmentos: fotografia autoral e leitura integral. */
 .fragment-featured-image { position: relative; }
 .fragment-featured-photo {
   display: block;
@@ -28,7 +27,6 @@
 }
 .reading-page .reading-metadata time { color: #505765; }
 
-/* Polimento da abertura editorial do ensaio. */
 .reading-page .reading-hero {
   background:
     radial-gradient(circle at top right, rgb(29 91 255 / 5%), transparent 22%),
@@ -225,7 +223,6 @@
 .reading-essay-actions a:focus-visible,
 .reading-essay-actions button:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
 
-/* A ação permanece estável; o retorno da cópia é anunciado sem mover o botão. */
 .reading-share { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
 .reading-share-feedback { min-height: 1.2em; color: #4c5868; font-size: 12px; }
 

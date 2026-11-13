@@ -3,7 +3,6 @@ import { readFile, writeFile, mkdir } from 'node:fs/promises';
 const dist = new URL('../dist/', import.meta.url);
 const seo = JSON.parse(await readFile(new URL('../site-meta.json', import.meta.url), 'utf8'));
 const shell = await readFile(new URL('./index.html', dist), 'utf8');
-// Read the same production URL that Vite uses, without an extra dependency.
 for (const file of ['.env.production', '.env']) {
   try {
     const lines = (await readFile(new URL(`../${file}`, import.meta.url), 'utf8')).split(/\r?\n/);
@@ -11,7 +10,7 @@ for (const file of ['.env.production', '.env']) {
       const m = line.match(/^\s*(VITE_SITE_URL|SITE_URL)\s*=\s*[\"']?([^\"'#\s]+)[\"']?/);
       if (m && !process.env[m[1]]) process.env[m[1]] = m[2];
     }
-  } catch { /* Optional config file not present. */ }
+  } catch {  }
 }
 const envOrigin = (process.env.VITE_SITE_URL || process.env.SITE_URL || '').trim().replace(/\/+$/, '');
 const origin = /^https?:\/\/[^/]+$/.test(envOrigin) ? envOrigin : '';

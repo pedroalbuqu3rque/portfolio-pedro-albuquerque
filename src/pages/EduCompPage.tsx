@@ -135,7 +135,7 @@ export default function EduCompPage({ onNavigate }: Props) {
     </section>
 
     <section className="case-final" aria-labelledby="case-final-title"><div className="content-width">
-      <div className="case-tools"><span>FERRAMENTAS E CONTEXTO</span><div className="case-tool-list">{['FIGMA', 'GITHUB', 'SUPABASE', 'PROTÓTIPO INTERATIVO'].map(t => <span key={t}>{t}</span>)}</div><small>PROJETO DE PORTFÓLIO · CONCLUÍDO</small></div>
+      <div className="case-tools"><span>FERRAMENTAS E CONTEXTO</span><div className="case-tool-list">{['FIGMA', 'GITHUB', 'SUPABASE', 'PROTÓTIPO INTERATIVO'].map(t => <span key={t}>{t}</span>)}</div><small>ESTUDO DE CASO · EDUCOMP</small></div>
       <div className="case-final-cta"><div><CaseEyebrow>EXPLORAR O PROJETO</CaseEyebrow><h2 id="case-final-title">Veja o EduComp<br/>por dentro.</h2><span className="case-process-rule"/><p>O protótipo reúne as principais telas e fluxos da plataforma.</p></div><a className="button button-primary" href={PROTOTYPE_URL} target="_blank" rel="noopener noreferrer">Abrir protótipo no Figma <ArrowIcon direction="right" size={20}/></a></div>
     </div></section>
     <footer className="case-page-footer"><div className="content-width"><a href="/#inicio" onClick={event => { if (!shouldNavigateInApp(event)) return; event.preventDefault(); onNavigate('/', 'inicio'); }} aria-label="Voltar para o início">PA<span>.</span></a><span>Feito aqui. Por mim.</span></div></footer>

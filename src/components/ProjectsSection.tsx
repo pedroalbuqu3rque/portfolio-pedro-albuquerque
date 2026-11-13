@@ -1,4 +1,3 @@
-/** Two editorial showcase slots on desktop; the compact upcoming list stays below. */
 import ArrowIcon from './ArrowIcon';
 import { shouldNavigateInApp } from '../navigation';
 
@@ -54,7 +53,6 @@ export default function ProjectsSection({ onNavigate }: Props) {
               className="project-featured"
               href="/projetos/educomp"
               onClick={(event) => {
-                // Maintains SPA navigation and browser support for opening in a new tab.
                 if (!shouldNavigateInApp(event)) return;
                 event.preventDefault();
                 onNavigate('/projetos/educomp');

@@ -1,40 +1,39 @@
-# Handoff
+# Handoff — Figma e implementação
 
-Este documento relaciona as telas do Figma à implementação atual. Serve como referência de continuidade, não como declaração de que todos os testes já foram aprovados.
+Este documento relaciona as referências de interface ao código. O Figma orientou a linguagem visual; os arquivos da aplicação descrevem o comportamento efetivamente entregue.
 
-## Telas
+## Páginas
 
-| Tela | Referência | Código |
+| Página | Referência | Implementação |
 | --- | --- | --- |
-| Landing — 1440 × 5039 px | [Figma](https://www.figma.com/design/Cv3t12N25QRmqZzPKko0L1/Portf%C3%B3lio?node-id=325-64) | `src/App.tsx` |
-| EduComp — 1440 × 5227 px | [Figma](https://www.figma.com/design/Cv3t12N25QRmqZzPKko0L1/Portf%C3%B3lio?node-id=399-14) | `src/pages/EduCompPage.tsx` |
-| Fragmentos — 1440 × 3787 px | [Figma](https://www.figma.com/design/Cv3t12N25QRmqZzPKko0L1/Portf%C3%B3lio?node-id=456-2459) | `src/pages/FragmentosPage.tsx` |
+| Landing | [Figma](https://www.figma.com/design/Cv3t12N25QRmqZzPKko0L1/Portf%C3%B3lio?node-id=325-64) | `src/App.tsx` |
+| EduComp | [Figma](https://www.figma.com/design/Cv3t12N25QRmqZzPKko0L1/Portf%C3%B3lio?node-id=399-14) | `src/pages/EduCompPage.tsx` |
+| Fragmentos | [Figma](https://www.figma.com/design/Cv3t12N25QRmqZzPKko0L1/Portf%C3%B3lio?node-id=456-2459) | `src/pages/FragmentosPage.tsx` |
 
-As alturas representam o protótipo desktop. No navegador, variam conforme fonte, conteúdo e largura.
+As dimensões do protótipo não são reproduzidas como telas fixas. A largura de conteúdo e os pontos de quebra são definidos por CSS.
 
-## Estrutura atual
+## Correspondência dos elementos
 
-A landing reúne Início, Projetos, Áreas, tecnologias, Fragmentos e Sobre mim (com trajetória e galeria), seguida do contato. O cabeçalho continua visível durante a rolagem.
+**Início.** A composição reúne headline, colagem pessoal, acessos a Projetos e Currículo e ícones de contato. Os estados de foco, hover e a composição mobile estão no CSS.
 
-**Projetos:** a seção é vertical. O EduComp aparece primeiro, com uma área de imagem acima do texto; dois espaços reservados aparecem abaixo, um por linha. Os cards reservados não são interativos. A página interna do EduComp apresenta o caso, quatro espaços para futuras capturas, três fluxos e as fases PO, UX/UI Design, Desenvolvimento e QA. O projeto é apresentado como concluído.
+**Projetos.** O EduComp ocupa o primeiro dos dois destaques superiores. O segundo espaço é editorial e não interativo. Dois cards compactos permanecem abaixo em lista vertical. Essa composição está em `src/components/ProjectsSection.tsx` e `src/projects.css`.
 
-**Fragmentos:** há um ensaio principal com data de publicação, índice de leitura, botão de compartilhar e retorno à seção. As publicações seguintes ainda são reservas de conteúdo. O carrossel horizontal permanece nessa área.
+**EduComp.** O estudo de caso apresenta contexto, desafio, três percursos e as fases de PO, UX/UI, desenvolvimento e QA. A galeria utiliza quatro composições tipográficas; não são apresentadas como capturas da plataforma. Os links para o protótipo abrem o Figma.
 
-**Sobre mim:** a coluna esquerda reúne apresentação, trajetória horizontal de 12 marcos e texto; a direita contém a galeria de oito fotos 4:3, que podem ser ampliadas. Em telas menores, os blocos passam a ficar empilhados.
+**Fragmentos.** A capa usa a fotografia autoral, seguida da rota do ensaio. A página interna dispõe a imagem e uma apresentação editorial lado a lado no desktop, sem filete azul entre elas. O texto aparece integralmente em seis partes, com índice, progresso de leitura, compartilhamento e retorno.
 
-O contato abre um modal com e-mail, LinkedIn e GitHub. O currículo só é oferecido para download quando o PDF existe; caso contrário, a interface informa a ausência do arquivo.
+**Sobre mim.** A trajetória acompanha o texto na coluna de conteúdo; a galeria utiliza oito imagens em proporção 4:3. As fotografias podem ser percorridas e ampliadas. Na versão mobile, os blocos ficam empilhados.
 
-## Antes da publicação
+**Contato.** O modal reúne e-mail, LinkedIn e GitHub. A ação do currículo verifica a presença do PDF antes de tentar o download.
 
-- Adicionar `public/curriculo-pedro-albuquerque.pdf`.
-- Substituir os quatro espaços da galeria EduComp por capturas reais quando estiverem disponíveis.
-- Conferir a imagem editorial do ensaio com a versão do Figma.
-- Validar os destinos de redes sociais e do protótipo.
-- Executar `npm ci`, `npm run check:content`, `npm run typecheck` e `npm run build` em uma instalação limpa.
-- Conferir desktop e mobile, acessibilidade básica, navegação direta nas rotas e metadados no domínio definitivo.
+## Pontos de manutenção
 
-## Continuidade
+Mudanças em cards ou textos da landing partem de `src/App.tsx` e `src/components/ProjectsSection.tsx`. O ensaio fica em `src/content/ensaio-fazer-digital.ts`; sua apresentação fica em `src/pages/FragmentosPage.tsx`. Mudanças de endereço ou descrição de páginas também precisam ser refletidas em `site-meta.json`.
 
-O Figma registra a direção visual, enquanto os componentes e estilos atuais definem o comportamento implementado. A seção Projetos está em `src/components/ProjectsSection.tsx` e `src/projects.css`, sem dependência do carrossel geral.
+As imagens servidas diretamente estão em `public/assets/`. Não há dependência de CMS ou de recursos remotos além da fonte tipográfica externa e dos destinos de links.
 
-Para verificações funcionais, consultar o [plano de testes](../qa/plano-de-testes.md). Para dependências e rotas, consultar a [arquitetura técnica](../technical/arquitetura.md).
+## Referências
+
+- [Design system](design-system.md)
+- [Arquitetura técnica](../technical/arquitetura.md)
+- [Plano de testes](../qa/plano-de-testes.md)

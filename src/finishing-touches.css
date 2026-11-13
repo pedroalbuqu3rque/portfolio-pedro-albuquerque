@@ -1,6 +1,3 @@
-/* Ajustes de acabamento para Fragmentos, ensaio e Sobre mim. */
-
-/* Fragmentos: capa como um card editorial, com tipografia e rodape proprios. */
 .fragments .fragment-featured {
   grid-template-columns: 45% minmax(0, 1fr);
   height: 445px;
@@ -88,7 +85,6 @@
   .fragments .fragment-featured:hover .fragment-read-arrow { transform: translateX(4px); }
 }
 
-/* Os demais Fragmentos sao reservas editoriais, sem clique enganoso. */
 .fragments .reading-card-placeholder { cursor: default; border-color: #e1e5eb; background: #fff; }
 .fragments .reading-card-placeholder:hover { transform: none; box-shadow: none; border-color: #e1e5eb; }
 .fragments .reading-card-placeholder .art-placeholder { background: #f3f5f8; border: 1px solid #edf0f4; display: grid; place-items: center; }
@@ -97,7 +93,6 @@
 .fragments .reading-card-placeholder .reading-info strong { margin-top: 15px; font-size: 21px; line-height: 1.17; color: #253044; }
 .fragments .reading-card-placeholder .reading-desc { color: #7c8692; font-size: 13px; line-height: 1.5; margin-top: 9px; }
 
-/* A barra de experiencias ganha um pouco mais de corpo, sem competir com o Sobre. */
 .about-editorial .about-trajectory .about-timeline { min-height: 195px; }
 .about-editorial .about-trajectory .about-timeline .carousel-viewport { height: 191px; }
 .about-editorial .about-trajectory .about-timeline .carousel-track { height: 187px; min-height: 187px; }
@@ -110,7 +105,6 @@
 .about-editorial .about-trajectory .about-timeline .carousel-progress { flex: 0 0 66px; width: 66px; height: 2px; }
 .about-editorial .about-text { margin-top: -8px; }
 
-/* Ensaio: metadados limpos; controles somente depois da leitura. */
 .reading-page .reading-topline { justify-content: flex-start; }
 .reading-page .reading-metadata time { color: #5c6675; font-size: 12px; font-weight: 650; font-variant-numeric: tabular-nums; }
 .reading-page .reading-hero-image { height: auto; padding-bottom: 51px; }

@@ -26,7 +26,7 @@ const tests = [
   ['Layout de projetos fluido para mobile', projectCss.includes('grid-template-columns: minmax(0, 1fr)') && projectCss.includes('@media (max-width: 700px)')],
   ['Rotas internas renderizadas', app.includes('<EduCompPage onNavigate={navigate}/>') && app.includes('<FragmentosPage onNavigate={navigate}/>')],
   ['Navegação preserva abrir em nova aba', has('src/navigation.ts') && projects.includes('shouldNavigateInApp') && casePage.includes('shouldNavigateInApp')],
-  ['EduComp apresentado como concluído', casePage.includes('PROJETO DE PORTFÓLIO · CONCLUÍDO') && !casePage.includes('EM DESENVOLVIMENTO')],
+  ['EduComp apresentado como estudo de caso', casePage.includes('ESTUDO DE CASO · EDUCOMP') && !casePage.includes('EM DESENVOLVIMENTO')],
   ['EduComp descreve todas as fases', ['Produto (PO)', 'UX/UI Design', 'Desenvolvimento', 'QA e testes'].every(phase => casePage.includes(phase))],
   ['EduComp possui os três fluxos', ["kind: 'search'", "kind: 'detail'", "kind: 'submit'"].every(kind => casePage.includes(kind))],
   ['Galeria do caso com quatro espaços editoriais', (casePage.match(/id: '0[1-4]'/g) || []).length === 4],

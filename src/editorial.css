@@ -1,5 +1,3 @@
-/* V0.5 — direção de arte final: ritmo editorial, mobile, estudo de caso e acabamento.
-   Este arquivo vem por último: mantém intactas as especificações originais do Figma. */
 :root {
   --type-ink: #0e0e0e;
   --type-secondary: #525a66;
@@ -7,7 +5,6 @@
   --movement-ease: cubic-bezier(.22, .68, 0, 1);
 }
 
-/* 02. Tipografia como elemento de composição — sem trocar a família Archivo. */
 .hero h1, .section-title, .case-page h1, .case-page h2,
 .reading-page h1, .reading-page h2, .contact-copy h2 {
   text-wrap: balance;
@@ -35,7 +32,6 @@
 .reading-article-section h2 { letter-spacing: -.043em; text-wrap: balance; }
 .reading-article-section { scroll-margin-top: 130px; }
 
-/* 04. EduComp: mostrar o raciocínio de interface, e não apenas a tela. */
 .case-flows {
   height: auto;
   min-height: 1040px;
@@ -89,7 +85,6 @@
 .case-process-grid li p { max-width: 31ch; }
 .case-flow-card .case-mini-outer { transition: background-color .22s ease; }
 
-/* 05. Encerramento com foco tipográfico, caminho de contato direto e hierarquia. */
 .contact-section { min-height: 446px; height: auto; }
 .contact-inner {
   min-height: 446px;
@@ -135,7 +130,6 @@
 .site-footer { background: #0e0e0e; }
 .site-footer .footer-inner { border-top: 1px solid #22272d; }
 
-/* 06. Um único repertório de microinterações e elementos de interface. */
 .text-link > span, .fragment-read > span {
   display: inline-block;
   transition: transform .24s var(--movement-ease);
@@ -151,7 +145,6 @@
   .reading-related-card:hover { box-shadow: 0 12px 30px rgb(17 30 59 / .07); }
 }
 
-/* Uma barra de progresso silenciosa na página de ensaio. */
 .reading-page { position: relative; }
 .reading-scroll-progress {
   position: sticky;
@@ -174,7 +167,6 @@
   .reading-outline a:hover { transform: translateX(3px); }
 }
 
-/* 03. Tablet — fluxo, boa medida de leitura e título com respiro. */
 @media (max-width: 1200px) {
   .case-flows { min-height: 0; padding-bottom: 90px; }
   .case-flow-card { min-height: 0; }
@@ -193,7 +185,6 @@
   .contact-description { font-size: 16px; }
 }
 
-/* Mobile editorial: a fotografia ganha protagonismo e o ritmo não é mero empilhamento. */
 @media (max-width: 760px) {
   .section-label, .case-eyebrow, .essay-eyebrow { letter-spacing: .09em; }
   .hero h1 { text-wrap: initial; }
@@ -280,7 +271,6 @@
   }
 }
 
-/* A colagem permanece após a apresentação no mobile. */
 @media (max-width: 700px) {
   .hero-visual { order: 2; }
   .contact-actions { align-self: stretch; }
@@ -289,10 +279,6 @@
   .reading-sidenote { margin-top: 48px; }
 }
 
-/* QA mobile: centralizar a miniatura sem cortar a base do notebook. */
-
-
-/* V0.6 — contato editorial e encerramento mais simples. */
 .contact-section { min-height: 398px; }
 .contact-inner { min-height: 398px; padding-bottom: 62px; }
 .contact-actions { gap: 14px; }
@@ -349,7 +335,6 @@
   .contact-cv-arrow, .contact-channel, .contact-channel-arrow { transition: none !important; transform: none !important; }
 }
 
-/* Iconografia de contato / dimensões iguais para os três canais. */
 .contact-channel-icon .contact-artwork {
   display: block; width: 35px; height: 35px; object-fit: contain;
 }
@@ -357,9 +342,6 @@
   .contact-channel-icon .contact-artwork { width: 31px; height: 31px; }
 }
 
-
-/* V0.9 — O texto de Ensino de Computação é mais completo.
-   Ajustes mínimos de altura evitam encobrir tags sem alterar a grade. */
 @media (min-width: 901px) {
   .area-card { height: 390px; }
   .area-card:first-child p { font-size: 14px; line-height: 19px; }
@@ -368,7 +350,6 @@
   .area-card { min-height: 410px; }
 }
 
-/* Legibilidade do ensaio longo e foco no conteúdo principal. */
 .reading-prose .reading-article-section > p {
   max-width: 72ch;
   hyphens: auto;

@@ -1,9 +1,3 @@
-/* v0.10 — revisões da landing: EduComp, áreas e trajetória.
-   Ajustes isolados das páginas internas e dos demais elementos do portfólio. */
-
-/* EduComp: a interface é o foco; sem mockup de notebook ou painel preto pesado. */
-
-/* Área de atuação: margem inferior fixa e tags alinhadas sem sobreposição. */
 .areas { height: 797px; }
 .area-card {
   height: 459px; min-height: 459px; padding: 25px 17px 17px;
@@ -17,7 +11,6 @@
 .area-tags span { padding: 4px 5px; font-size: 9px; line-height: 1.15; font-weight: 800; }
 .area-accent { position: static; display: block; flex: 0 0 4px; margin-top: 12px; width: 51px; }
 
-/* Trajetória: quatro anos em vez de reproduzir o LinkedIn ou usar um carrossel. */
 .trajectory { height: auto; min-height: 0; background: #f8f9fa; }
 .trajectory .section-content { height: auto; padding: 60px 0 66px; }
 .trajectory .section-label { position: static; font-size: 15px; line-height: 20px; letter-spacing: .06em; margin: 0 0 27px; }
@@ -62,8 +55,6 @@
   .timeline-year-card li span { font-size: 11px; }
 }
 
-/* Nos telefones, os cards são editoriais e legíveis em uma coluna,
-   com o título abaixo do ícone e as tags alinhadas no rodapé. */
 @media (max-width: 600px) {
   .areas-grid { grid-template-columns: 1fr; gap: 13px; }
   .area-card {
@@ -90,11 +81,6 @@
   .area-card .area-accent { left: auto; bottom: auto; margin-top: 12px; width: 52px; }
 }
 
-
-/* V0.11 — áreas compactas, percurso linear e apresentação pessoal. */
-
-/* O bloco passou a acompanhar a altura dos cards. Tags ficam logo após o texto;
-   somente o filete azul permanece junto à borda inferior dos cards. */
 .areas { height: auto; }
 .areas .section-content { height: auto; padding: 79px 0 81px; }
 .areas .section-label, .areas .section-title, .areas-lead, .areas-grid {
@@ -128,10 +114,9 @@
   gap: 4px; align-items: flex-start; align-content: flex-start;
 }
 .area-card .area-tags span { font-size: 9px; line-height: 1.15; padding: 4px 5px; }
-/* Uma folga curta após as tags, sem prendê-las ao rodapé. */
+
 .area-card .area-accent { margin-top: 21px; padding-top: 0; width: 52px; height: 4px; flex: 0 0 4px; }
 
-/* Trajetória: uma faixa horizontal por ano, sem colunas em cascata. */
 .trajectory { height: auto; min-height: 0; background: #f8f9fa; }
 .trajectory .section-content { height: auto; padding: 66px 0 74px; }
 .trajectory .section-label { position: static; margin: 0 0 33px; font-size: 15px; line-height: 20px; letter-spacing: .06em; }
@@ -164,7 +149,6 @@
 }
 .timeline-event span { color: #626d7b; font-size: 12px; line-height: 17px; }
 
-/* Sobre: ampliar a voz pessoal sem aumentar o peso visual da seção. */
 .about { height: auto; }
 .about-inner {
   height: auto; display: grid;
@@ -236,8 +220,6 @@
   .area-card .area-tags span { font-size: 9px; }
 }
 
-/* Em telas com cards lado a lado, os filetes azuis mantêm a mesma linha de base;
-   as tags continuam próximas das respectivas descrições. */
 @media (min-width: 601px) {
   .area-card .area-accent { margin-top: auto; }
 }

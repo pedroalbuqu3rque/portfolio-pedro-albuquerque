@@ -10,7 +10,8 @@
     "typecheck": "tsc --noEmit",
     "check:content": "node scripts/check-content.mjs",
     "check:assets": "node scripts/check-assets.mjs",
-    "verify": "npm run check:content && npm run check:assets && npm run typecheck && npm run build"
+    "check:docs": "node scripts/check-docs.mjs",
+    "verify": "npm run check:content && npm run check:assets && npm run check:docs && npm run typecheck && npm run build"
   },
   "dependencies": {
     "react": "^19.1.0",

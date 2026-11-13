@@ -67,7 +67,6 @@ export default function FragmentosPage({ onNavigate }: Props) {
     onNavigate('/', 'fragmentos');
   }
 
-
   return <div className="reading-page">
     <EssayProgress />
     <section className="reading-hero" aria-labelledby="reading-title"><div className="content-width">

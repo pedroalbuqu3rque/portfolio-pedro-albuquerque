@@ -2,52 +2,51 @@
 
 ## Direção visual
 
-O portfólio usa linguagem editorial: tipografia forte, contraste, espaços amplos e imagens que ajudam a contar a história dos projetos. Preto e branco organizam a composição; o azul aparece em ações, marcações e detalhes.
+A interface segue uma linguagem editorial: títulos grandes, hierarquia clara, bastante espaço em branco e fotografias que não competem com a leitura. O azul concentra a atenção em ações, marcações e estados. A colagem da abertura e os recortes fotográficos introduzem contraste sem exigir ilustrações genéricas.
 
-A referência original está no [Figma](https://www.figma.com/design/Cv3t12N25QRmqZzPKko0L1/Portf%C3%B3lio?node-id=325-64). Parte dos refinamentos posteriores, principalmente no mobile, foi feita diretamente no CSS.
+A referência de composição está no [Figma](https://www.figma.com/design/Cv3t12N25QRmqZzPKko0L1/Portf%C3%B3lio?node-id=325-64). O CSS define os ajustes finais de comportamento e responsividade.
 
 ## Cores
 
-| Uso | Referência |
+| Função | Valor |
 | --- | --- |
-| Fundo claro | `#FFFFFF` |
-| Texto e superfícies escuras | `#0E0E0E` |
-| Azul principal | `#054FFF` |
-| Tons auxiliares | Cinzas claros para superfícies, divisórias e textos secundários |
+| Fundo principal | `#FFFFFF` |
+| Preto editorial | `#0E0E0E` |
+| Azul de destaque | `#054FFF` |
+| Fundo de apoio | `#F8F9FA` |
+| Divisórias | `#DADADA` |
 
-Os arquivos CSS são a referência para os valores efetivamente usados na implementação.
+Variações de cinza aparecem nas áreas secundárias, nas legendas e nos estados informativos. As cores acima correspondem aos tokens presentes em `src/styles.css`.
 
 ## Tipografia
 
-A família principal é **Archivo**, com pesos diferentes para títulos, navegação, descrições e detalhes editoriais. Os títulos usam quebras intencionais, mas precisam se adaptar quando a largura muda.
+A família principal é **Archivo**, carregada pelo Google Fonts. Pesos altos organizam títulos de abertura e seções; pesos intermediários distinguem textos de apoio e metadados. A leitura do ensaio prioriza largura de linha moderada e espaçamento entre parágrafos.
 
-A hierarquia deve diferenciar títulos de seção, subtítulos, textos de apoio, metadados e links sem depender apenas da cor.
+A tipografia deve respeitar larguras menores sem cortes, sobreposições ou dependência de quebras fixas em todos os tamanhos.
 
-## Composição e componentes
+## Componentes e padrões
 
-A referência desktop do Figma tem 1440 px de largura, com margens laterais próximas de 64 px. No código, o conteúdo usa limites e regras responsivas, não uma tela de tamanho fixo.
+| Elemento | Padrão |
+| --- | --- |
+| Cabeçalho | Fundo escuro, monograma, navegação global e versão mobile |
+| Botão principal | Azul com texto branco; foco visível |
+| Botão secundário | Fundo branco e contorno escuro; hover preto no Currículo |
+| Projetos | Dois destaques editoriais no topo; cards compactos em lista abaixo |
+| Fragmentos | Foto em preto e branco, texto de destaque escuro e navegação para o ensaio |
+| Ensaio | Coluna de leitura, índice de seis partes e apresentação editorial junto à fotografia |
+| Trajetória e galeria | Navegação horizontal discreta e ampliação das fotos |
+| Contato | Modal e links externos com identificação clara |
 
-Componentes recorrentes:
+As setas de navegação são vetoriais, para manter a aparência em desktop e celular sem depender de fontes de emoji.
 
-- Cabeçalho fixo e navegação global.
-- Botões principais azuis, secundários com contorno e links textuais.
-- Cards de projeto e publicação.
-- Cards de áreas de atuação, com ícones e tags.
-- Carrosséis com chevrons minimalistas e progresso discreto.
-- Modal de contato.
-- Rodapé com a assinatura **“Feito aqui. Por mim”**.
+## Acessibilidade e interação
 
-## Estados e movimento
+Os estados de foco devem ser visíveis, inclusive para controles só com ícones. Links e botões devem indicar ações reais; cards informativos não simulam cliques. Menus e modais precisam responder a teclado, e os efeitos de movimento devem respeitar `prefers-reduced-motion`.
 
-Os cards de áreas não são links; eventuais efeitos de hover não criam affordances falsas. Botões e cards clicáveis devem mostrar estados de hover e foco; os movimentos devem ser reduzidos para visitantes que optaram por isso.
-
-A faixa de tecnologias se move discretamente, pausa sob o ponteiro e respeita a preferência por movimento reduzido.
-
-## Responsividade
-
-A versão mobile tem composição própria. Na abertura, apresentação e ações vêm antes da colagem; cards passam a ocupar menos colunas; páginas internas priorizam largura de leitura e respiro entre blocos.
+As fotografias relevantes recebem descrições; marcas decorativas não repetem desnecessariamente o conteúdo textual. Em dispositivos móveis, a composição se reorganiza mantendo a hierarquia da leitura.
 
 ## Referências
 
 - [Arquitetura da informação](arquitetura-da-informacao.md)
 - [Handoff](handoff.md)
+- [Recursos visuais](../technical/recursos.md)

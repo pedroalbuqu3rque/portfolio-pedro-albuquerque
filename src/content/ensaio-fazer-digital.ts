@@ -1,4 +1,3 @@
-// Texto integral do autor. Os titulos das secoes servem apenas a navegacao.
 export type EssaySection = { id: string; title: string; paragraphs: string[] };
 export const ESSAY_TITLE = "A potência do fazer digital na educação";
 export const ESSAY_SUBTITLE = "Como a cultura do fazer, os projetos e as tecnologias digitais podem ampliar a autonomia, a criatividade e o engajamento na aprendizagem.";
